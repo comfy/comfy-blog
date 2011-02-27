@@ -16,7 +16,7 @@ class BlogComment < ActiveRecord::Base
   
   # -- Scopes ----------------------------------------------------------
 
-  scope :approved, :conditions => {:approved => true }
+  scope :approved, where(:approved => true)
   
   # -- AR Callbacks ---------------------------------------------------------
   

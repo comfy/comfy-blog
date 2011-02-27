@@ -15,9 +15,10 @@ class BlogPost < ActiveRecord::Base
   
   # -- Scopes ----------------------------------------------------------
 
-  named_scope :published, 
-    :conditions => {:is_published => true },
-    :order => 'created_at DESC'
+  scope :published, where(:published => true).order('created_at DESC')
+  scope :tagged_with, lambda { |tag_id|
+    joins(:blog_taggings).where('blog_taggings.blog_tag_id' => tag_id)
+  }
   
   # -- AR Callbacks ---------------------------------------------------------
   

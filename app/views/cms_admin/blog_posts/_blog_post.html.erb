@@ -12,6 +12,9 @@
         Published <%= time_ago_in_words(blog_post.updated_at) %> ago
         by <strong><%= blog_post.author %></strong>
         <% if !blog_post.published? %>[DRAFT]<% end %>
+        <% blog_post.blog_tags.each do |tag| %>
+          <span class="tag"><%= tag.name %></span>
+        <% end %>
       </div>
     </div>
   </div>
