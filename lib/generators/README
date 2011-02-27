@@ -1,0 +1,12 @@
+   ____         __         ____  _             
+  / ___|  ___  / _| __ _  | __ )| | ___   __ _ 
+  \___ \ / _ \| |_ / _` | |  _ \| |/ _ \ / _` |
+   ___) | (_) |  _| (_| | | |_) | | (_) | (_| |
+  |____/ \___/|_|  \__,_| |____/|_|\___/ \__, |
+                                         |___/ 
+
+Hey! Everything is almost done. Please don't forget to
+  
+  * run migrations -> `rake db:migrate`
+  
+After that go to http://your-awesome-app/cms-admin to start populating content.

@@ -1,0 +1,22 @@
+<li>
+  <div class='item'>
+    <div class='icon' style="background-image:url(http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(blog_comment.email.downcase)%>?s=28&d=identicon)"></div>
+    <div class='action_links'>
+      <%= render :partial => 'status', :locals => {:blog_comment => blog_comment} %>
+      <%= link_to 'Edit', edit_cms_admin_blog_post_blog_comment_path(@blog_post, blog_comment) %>
+      <%= link_to 'Delete', cms_admin_blog_post_blog_comment_path(@blog_post, blog_comment), :method => 'delete', :confirm => 'Are you sure?' %>
+    </div>
+    <div class='label'>
+      <div class='sublabel'>
+        <em>
+          <%= time_ago_in_words(blog_comment.updated_at) %> ago 
+          <strong><%= mail_to(blog_comment.email, blog_comment.name) %></strong> wrote
+          <% if !blog_comment.approved? %>[Waiting approval]<% end %>
+        </em>
+      </div>
+    </div>
+    <div class='content'>
+      <%= simple_format(auto_link(blog_comment.content)) %>
+    </div>
+  </div>
+</li>

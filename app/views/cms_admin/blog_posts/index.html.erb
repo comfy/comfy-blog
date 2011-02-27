@@ -1,0 +1,8 @@
+<%= link_to span_tag('Create New Blog Post'), new_cms_admin_blog_post_path, :class => 'big button' %>
+
+<h1>Blog posts</h1>
+
+<ul class='list'>
+  <%= render @blog_posts %>
+</ul>
+        

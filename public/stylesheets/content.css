@@ -1,0 +1,44 @@
+.c_cms_admin_blog_posts.a_index ul.list li .item .label, 
+.c_cms_admin_blog_comments.a_index ul.list li .item .label {
+  margin-left: 32px;
+}
+.c_cms_admin_blog_comments.a_index ul.list li .item .content {
+  font-size: 11px;
+  font-weight: normal;
+  margin: 5px 0px 0 32px;
+}
+
+/* === Autocomplete === */
+.ac_results {
+  padding: 0px;
+  border: 1px solid #999;
+  background-color: white;
+  overflow: hidden;
+  z-index: 99999;
+  color: #666;
+  } ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    } li {
+      margin: 0px;
+      padding: 2px 5px;
+      cursor: default;
+      display: block;
+      font-size: 12px;
+      line-height: 16px;
+      overflow: hidden;
+    }
+
+.ac_loading {
+  background: white url('/images/ajax_loader.gif') right center no-repeat;
+}
+.ac_odd {
+  background-color: #eee;
+}
+.ac_over {
+  background-color: #C4EAF6;
+  color: #000;
+}

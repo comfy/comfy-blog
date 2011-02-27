@@ -1,0 +1,7 @@
+<%= link_to span_tag('Create New Comment'), new_cms_admin_blog_post_blog_comment_path(@blog_post), :class => 'big button' %>
+
+<h1><%= truncate(@blog_post.title) %></h1>
+
+<ul class='list'>
+  <%= render @blog_comments %>
+</ul>

@@ -1,0 +1,33 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'comfortable_mexican_sofa/blog/jquery.autocomplete.pack' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#blog_post_title').focus();
+      $("#blog_post_tag_names").autocomplete(<%= BlogTag.all.collect(&:name).to_json.html_safe %>, {
+        multiple: true,
+        selectFirst: false
+      });
+    }) 
+  </script>
+<% end %>
+
+<% content_for :right_column do %>
+  <%= render :partial => 'cms_admin/uploads/index' %>
+<% end %>
+
+<div id='form_blocks'>
+  <%= form.text_field :title %>
+  <%= form.text_field :author %>
+  <%= form.text_field :tag_names, :label => 'Tags' %>
+  <%= form.text_area :content, :class=> 'rich_text' %>
+</div>
+
+<%= form.simple_field nil, nil, :class => 'submit_element' do %>
+  <%= form.check_box :published, :disable_builder => true %>
+  <%= form.label_for :published, :label => 'Published' %>
+  <%= form.submit @blog_post.new_record?? 'Create post' : 'Update post', :disable_builder => true %>
+  or
+  <%= link_to 'cancel', :back%>
+<% end %>
+
+  
