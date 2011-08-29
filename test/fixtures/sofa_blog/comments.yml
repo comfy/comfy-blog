@@ -1,0 +1,6 @@
+default:
+  post: default
+  name: Default Name
+  email: default@test.test
+  content: Default Content
+  approved: true

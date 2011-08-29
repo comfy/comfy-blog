@@ -1,0 +1,7 @@
+default:
+  title: Default Title
+  content: Default Content
+  author: Default Author
+  published: true
+  comments_count: 1
+  approved_comments_count: 1

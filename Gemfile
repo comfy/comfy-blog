@@ -1,3 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'comfortable_mexican_sofa', '>=1.0.46'
+gem 'rails', '>=3.1.0.rc8'
+
+group :development do
+  gem 'sqlite3'
+  gem 'jeweler'
+end
