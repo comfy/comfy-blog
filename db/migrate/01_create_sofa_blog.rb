@@ -5,24 +5,25 @@ class CreateSofaBlog < ActiveRecord::Migration
       t.string  :title
       t.text    :content
       t.string  :author
-      t.boolean :published, :null => false, :default => false
-      t.integer :comments_count, :null => false, :default => 0
+      t.boolean :is_published,    :null => false, :default => false
+      t.integer :comments_count,  :null => false, :default => 0
       t.integer :approved_comments_count, :null => false, :default => 0
       t.timestamps
     end
     add_index :sofa_blog_posts, :created_at
-    add_index :sofa_blog_posts, [:published, :created_at]
+    add_index :sofa_blog_posts, [:is_published, :created_at]
     
     create_table :sofa_blog_comments do |t|
       t.integer :post_id
       t.string  :name
       t.string  :email
       t.text    :content
-      t.boolean :approved, :null => false, :default => false
+      t.boolean :is_approved, :null => false, :default => false
       t.timestamps
     end
     add_index :sofa_blog_comments, [:post_id, :created_at]
-    add_index :sofa_blog_comments, [:post_id, :approved, :created_at]
+    add_index :sofa_blog_comments, [:post_id, :is_approved, :created_at],
+      :name => 'index_sofa_blog_comments_on_post_and_approved_and_created_at'
   end
   
   def self.down

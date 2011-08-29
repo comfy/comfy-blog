@@ -18,19 +18,19 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "name"
     t.string   "email"
     t.text     "content"
-    t.boolean  "approved",   :default => false, :null => false
+    t.boolean  "is_approved", :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sofa_blog_comments", ["post_id", "approved", "created_at"], :name => "index_sofa_blog_comments_on_post_id_and_approved_and_created_at"
   add_index "sofa_blog_comments", ["post_id", "created_at"], :name => "index_sofa_blog_comments_on_post_id_and_created_at"
+  add_index "sofa_blog_comments", ["post_id", "is_approved", "created_at"], :name => "index_sofa_blog_comments_on_post_and_approved_and_created_at"
 
   create_table "sofa_blog_posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "author"
-    t.boolean  "published",               :default => false, :null => false
+    t.boolean  "is_published",            :default => false, :null => false
     t.integer  "comments_count",          :default => 0,     :null => false
     t.integer  "approved_comments_count", :default => 0,     :null => false
     t.datetime "created_at"
@@ -38,6 +38,6 @@ ActiveRecord::Schema.define(:version => 1) do
   end
 
   add_index "sofa_blog_posts", ["created_at"], :name => "index_sofa_blog_posts_on_created_at"
-  add_index "sofa_blog_posts", ["published", "created_at"], :name => "index_sofa_blog_posts_on_published_and_created_at"
+  add_index "sofa_blog_posts", ["is_published", "created_at"], :name => "index_sofa_blog_posts_on_is_published_and_created_at"
 
 end

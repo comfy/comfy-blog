@@ -9,8 +9,8 @@ class SofaBlog::Post < ActiveRecord::Base
   validates_presence_of :title, :content
   
   # -- Scopes ---------------------------------------------------------------
-  scope :published, 
-    where(:published => true).order('created_at DESC')
+  default_scope order('created_at DESC')
+  scope :published, where(:is_published => true)
     
   # -- Instance Methods -----------------------------------------------------
   def to_param

@@ -16,19 +16,19 @@ class SofaBlog::Comment < ActiveRecord::Base
     :with       => /^([\w.%-+]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
     
   # -- Callbacks ------------------------------------------------------------
-  after_save :update_approved_comments_counter, :update_comments_counter
+  after_save    :update_approved_comments_counter, :update_comments_counter
   after_destroy :update_approved_comments_counter, :update_comments_counter
     
   # -- Scopes ---------------------------------------------------------------
-  scope :approved, where(:approved => true)
+  scope :approved, where(:is_approved => true)
   
   # -- Instance Methods -----------------------------------------------------
   def approve!
-    update_attribute(:approved, true)
+    update_attribute(:is_approved, true)
   end
   
   def disapprove!
-    update_attribute(:approved, false)
+    update_attribute(:is_approved, false)
   end
   
 protected
