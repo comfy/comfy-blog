@@ -7,7 +7,8 @@ class SofaBlog::Comment < ActiveRecord::Base
     :counter_cache => :comments_count
     
   # -- Validations ----------------------------------------------------------
-  validates_presence_of :content
+  validates_presence_of :post_id
+  validates_presence_of :content, :name, :email
   validates_length_of :email,
     :in         => 6..100,
     :too_short  => 'Your email address needs to be at least 6 characters long.'
