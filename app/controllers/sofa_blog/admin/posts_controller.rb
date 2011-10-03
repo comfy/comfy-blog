@@ -8,7 +8,11 @@ class SofaBlog::Admin::PostsController < SofaBlog::Admin::BaseController
   end
   
   def new
-    @post.published ||= true
+    @post.is_published ||= true
+  end
+  
+  def edit
+    render
   end
   
   def create
@@ -18,10 +22,6 @@ class SofaBlog::Admin::PostsController < SofaBlog::Admin::BaseController
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create BlogPost'
     render :action => :new
-  end
-  
-  def edit
-    render
   end
   
   def update

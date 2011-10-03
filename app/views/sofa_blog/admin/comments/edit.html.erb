@@ -1,7 +1,7 @@
-<%= link_to span_tag('Create New Blog Post'), new_cms_admin_blog_post_path, :class => 'big button' %>
+<%= link_to span_tag('Create New Comment'), new_cms_admin_blog_post_path, :class => 'big button' %>
     
-<h1> Edit blog post </h1>
+<h1>Edit comment</h1>
 
-<%= cms_form_for @blog_post, :url => {:action => :update} do |form| %>
+<%= cms_form_for @blog_comment, :url => {:action => :update} do |form| %>
   <%= render :partial => form %>
 <% end %>

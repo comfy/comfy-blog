@@ -1,24 +1,7 @@
-<%= content_for :head do %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#blog_comment_content').focus();
-    })
-  </script>
-<% end %>  
+<%= form.text_field :title %>
+<%= form.text_field :author %>
+<%= form.text_area :content, :class => 'rich_text' %>
+<%= form.check_box :is_published %>
 
-<div id='form_blocks'>
-  <%= form.text_field :name %>
-  <%= form.text_field :email %>
-  <%= form.text_area :content %>
-</div>
-
-
-<%= form.simple_field nil, nil, :class => 'submit_element' do %>
-  <%= form.check_box :approved, :disable_builder => true %>
-  <%= form.label_for :approved, :label => 'Approved' %>
-  <%= form.submit @blog_post.new_record?? 'Create comment' : 'Update comment', :disable_builder => true %>
-  or
-  <%= link_to 'cancel', :back%>
-<% end %>
-
+<%= form.submit 'Save' %>
   
