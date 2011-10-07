@@ -4,3 +4,4 @@ log/
 tmp/
 .sass-cache/
 .DS_Store
+pkg/
