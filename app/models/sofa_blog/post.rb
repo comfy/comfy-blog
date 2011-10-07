@@ -11,11 +11,15 @@ class SofaBlog::Post < ActiveRecord::Base
   has_many :tags, :through => :taggings
   
   # -- Validations ----------------------------------------------------------
-  validates_presence_of :title, :content
+  validates :content, :presence => {:message => 'Please enter some content for this post'}
+  validates :title, :presence => {:message => 'Please enter a title for this post'}
   
   # -- Scopes ---------------------------------------------------------------
   default_scope order('created_at DESC')
   scope :published, where(:is_published => true)
+  scope :tagged_with, lambda { |tag_id|
+    joins(:taggings).where('sofa_blog_taggings.tag_id' => tag_id)
+  }
     
   # -- Callbacks ---------------------------------------------------------------
   before_save :assign_tags

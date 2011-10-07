@@ -1,7 +1,3 @@
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
 require File.expand_path('../config/application', __FILE__)
 
 SofaBlog::Application.load_tasks
@@ -15,7 +11,8 @@ begin
     gem.summary     = 'SofaBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)'
     gem.description = ''
     gem.email       = 'jack@theworkinggroup.ca'
-    gem.authors     = ['Jack Neto', 'Oleg Khabarov', 'The Working Group Inc.']
+    gem.authors     = ['Jack Neto', 'The Working Group Inc.']
+    gem.version     = File.read('VERSION').chomp
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

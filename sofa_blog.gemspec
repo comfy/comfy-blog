@@ -8,38 +8,56 @@ Gem::Specification.new do |s|
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Jack Neto", "Oleg Khabarov", "The Working Group Inc."]
+  s.authors = ["Jack Neto", "The Working Group Inc."]
   s.date = %q{2011-10-07}
   s.description = %q{}
   s.email = %q{jack@theworkinggroup.ca}
   s.extra_rdoc_files = [
-    "README"
+    "LICENSE",
+    "README.md"
   ]
   s.files = [
     "Gemfile",
     "Gemfile.lock",
-    "README",
     "Rakefile",
     "VERSION",
     "app/assets/images/rails.png",
+    "app/assets/javascripts/sofa_blog/application.js",
+    "app/assets/javascripts/sofa_blog/jquery.autocomplete.js",
+    "app/assets/javascripts/sofa_blog/posts.js",
+    "app/assets/stylesheets/sofa_blog/admin.css",
+    "app/assets/stylesheets/sofa_blog/application.css",
+    "app/assets/stylesheets/sofa_blog/reset.css",
     "app/controllers/application_controller.rb",
     "app/controllers/sofa_blog/admin/base_controller.rb",
     "app/controllers/sofa_blog/admin/comments_controller.rb",
     "app/controllers/sofa_blog/admin/posts_controller.rb",
+    "app/controllers/sofa_blog/posts_controller.rb",
+    "app/helpers/sofa_blog/posts_helper.rb",
     "app/helpers/sofa_blog_helper.rb",
     "app/models/.gitkeep",
     "app/models/sofa_blog/comment.rb",
     "app/models/sofa_blog/post.rb",
+    "app/models/sofa_blog/tag.rb",
+    "app/models/sofa_blog/tagging.rb",
     "app/views/layouts/application.html.erb",
+    "app/views/sofa_blog/admin/_html_head.html.erb",
+    "app/views/sofa_blog/admin/_navigation.html.erb",
+    "app/views/sofa_blog/admin/comments/_comment.html.erb",
     "app/views/sofa_blog/admin/comments/_form.html.erb",
     "app/views/sofa_blog/admin/comments/_status.html.erb",
+    "app/views/sofa_blog/admin/comments/approve.js.erb",
+    "app/views/sofa_blog/admin/comments/disapprove.js.erb",
     "app/views/sofa_blog/admin/comments/edit.html.erb",
     "app/views/sofa_blog/admin/comments/index.html.erb",
     "app/views/sofa_blog/admin/comments/new.html.erb",
     "app/views/sofa_blog/admin/posts/_form.html.erb",
+    "app/views/sofa_blog/admin/posts/_post.html.erb",
     "app/views/sofa_blog/admin/posts/edit.html.erb",
     "app/views/sofa_blog/admin/posts/index.html.erb",
     "app/views/sofa_blog/admin/posts/new.html.erb",
+    "app/views/sofa_blog/posts/_post.html.erb",
+    "app/views/sofa_blog/posts/index.html.erb",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -58,17 +76,23 @@ Gem::Specification.new do |s|
     "lib/sofa_blog.rb",
     "lib/sofa_blog/configuration.rb",
     "lib/sofa_blog/engine.rb",
+    "lib/sofa_blog/form_builder.rb",
     "script/rails",
+    "sofa_blog.gemspec",
     "test/fixtures/.gitkeep",
     "test/fixtures/sofa_blog/comments.yml",
     "test/fixtures/sofa_blog/posts.yml",
     "test/functional/.gitkeep",
     "test/functional/sofa_blog/admin/comments_controller_test.rb",
     "test/functional/sofa_blog/admin/posts_controller_test.rb",
+    "test/functional/sofa_blog/posts_controller_test.rb",
     "test/test_helper.rb",
     "test/unit/.gitkeep",
     "test/unit/comment_test.rb",
-    "test/unit/post_test.rb"
+    "test/unit/helpers/sofa_blog/posts_helper_test.rb",
+    "test/unit/post_test.rb",
+    "test/unit/tag_test.rb",
+    "test/unit/tagging_test.rb"
   ]
   s.homepage = %q{http://github.com/twg/sofa-blog}
   s.licenses = ["MIT"]
