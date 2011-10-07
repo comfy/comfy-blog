@@ -12,10 +12,9 @@ module SofaBlog
     
     # Configuration defaults
     def initialize
-      @upload_options     = { }
       @admin_route_prefix = 'admin'
       @admin_controller   = 'ApplicationController'
-      @form_builder       = 'ActionView::Helpers::FormBuilder'
+      @form_builder       = 'SofaBlog::FormBuilder'
     end
     
   end

@@ -5,13 +5,15 @@ module SofaBlog
   class Engine < Rails::Engine
     initializer 'sofa_blog.configuration' do |app|
       if defined?(ComfortableMexicanSofa)
-        # applying configuraion
-        SofaGallery.configure do |conf|
+        # Applying configuraion
+        SofaBlog.configure do |conf|
+          conf.admin_route_prefix = ComfortableMexicanSofa.config.admin_route_prefix
           conf.admin_controller = 'CmsAdmin::BaseController'
-          conf.form_builder     = 'ComfortableMexicanSofa::FormBuilder'
+          conf.form_builder = 'ComfortableMexicanSofa::FormBuilder'
         end
-        # applying nav elements
-        ComfortableMexicanSofa::ViewHooks.add(:navigation, '/sofa_blog_admin/navigation')
+        # Adding view hooks
+        ComfortableMexicanSofa::ViewHooks.add(:navigation, '/sofa_blog/admin/navigation')
+        ComfortableMexicanSofa::ViewHooks.add(:html_head, '/sofa_blog/admin/html_head')
       end
     end
   end

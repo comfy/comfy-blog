@@ -4,9 +4,11 @@ unless defined? SofaBlog::Application
 end
 
 require File.expand_path('sofa_blog/configuration', File.dirname(__FILE__))
+require File.expand_path('sofa_blog/form_builder', File.dirname(__FILE__))
 
 module SofaBlog
   class << self
+    
     def configure
       yield configuration
     end
@@ -15,5 +17,6 @@ module SofaBlog
       @configuration ||= Configuration.new
     end
     alias :config :configuration
+    
   end
 end

@@ -11,31 +11,31 @@ class SofaBlog::Admin::PostsController < SofaBlog::Admin::BaseController
     @post.is_published ||= true
   end
   
-  def edit
-    render
-  end
-  
   def create
     @post.save!
-    flash[:notice] = 'BlogPost created'
-    redirect_to :action => :edit, :id => @post
+    flash[:notice] = 'Blog post created'
+    redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create BlogPost'
     render :action => :new
   end
   
+  def edit
+    render
+  end
+  
   def update
     @post.update_attributes!(params[:post])
-    flash[:notice] = 'BlogPost updated'
-    redirect_to :action => :edit, :id => @post
+    flash[:notice] = 'Blog post updated'
+    redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to update BlogPost'
     render :action => :edit
   end
   
   def destroy
-    @blog_post.destroy
-    flash[:notice] = 'BlogPost removed'
+    @post.destroy
+    flash[:notice] = 'Blog post removed'
     redirect_to :action => :index
   end
   
@@ -44,7 +44,7 @@ protected
   def load_post
     @post = SofaBlog::Post.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'BlogPost not found'
+    flash[:error] = 'Blog post not found'
     redirect_to :action => :index
   end
   

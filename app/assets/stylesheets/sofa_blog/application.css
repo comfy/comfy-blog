@@ -1,0 +1,73 @@
+/*
+= require ./reset
+= require_self
+*/
+
+body {
+  padding: 25px;
+  font: 13px/18px Arial, sans-serif;
+}
+h1 {
+  font: bold 26px/34px Arial, sans-serif;
+  margin-bottom: 15px;
+}
+h2 {
+  font: bold 18px/20px Arial, sans-serif;
+  margin-bottom: 10px;
+}
+a {
+  color: #3875D7;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+table.formatted td, 
+table.formatted th {
+  padding: 2px 5px;
+  border-bottom: 1px dotted #ccc;
+}
+table.formatted th {
+  background-color: #666;
+  color: #fff;
+}
+table.formatted td img {
+  float: left;
+  padding: 2px;
+  margin-right: 2px;
+}
+table.formatted td .sublabel {
+  font-size: 11px;
+  line-height: 11px;
+  color: #888;
+}
+
+.form_element {
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.form_element .label {
+  width: 125px;
+  float: left;
+  text-align: right;
+}
+.form_element .value,
+.form_element .errors {
+  margin-left: 135px;
+}
+.form_element .value input[type='text'],
+.form_element .value textarea {
+  width: 400px;
+}
+
+.jcrop-holder {
+  margin-bottom: 15px;
+}
+
+.flash{
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+

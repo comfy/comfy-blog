@@ -1,7 +1,7 @@
-<span id="<%= dom_id(blog_comment, :status) %>">
-  <% if blog_comment.approved? %>
-    <%= link_to 'Disapprove', disapprove_cms_admin_blog_post_blog_comment_path(@blog_post, blog_comment), :remote => true, :method => :put, :before => "$('##{dom_id(blog_comment, :status)}').html('disapproving ...')", :update => dom_id(blog_comment, :status) %>
+<span id="<%= dom_id(comment, :status) %>">
+  <% if comment.is_approved? %>
+    <%= link_to 'Disapprove', disapprove_sofa_blog_admin_post_comment_path(@post, comment), :remote => true, :method => :put %>
   <% else %>
-    <%= link_to 'Approve', approve_cms_admin_blog_post_blog_comment_path(@blog_post, blog_comment), :remote => true, :method => :put, :before => "$('##{dom_id(blog_comment, :status)}').html('approving ...')", :update => dom_id(blog_comment, :status) %>
+    <%= link_to 'Approve', approve_sofa_blog_admin_post_comment_path(@post, comment), :remote => true, :method => :put %>
   <% end %>
 </span>

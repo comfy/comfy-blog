@@ -1,6 +1,6 @@
 require File.expand_path('../test_helper', File.dirname(__FILE__))
 
-class CommentTest < ActiveSupport::TestCase
+class SofaBlog::CommentTest < ActiveSupport::TestCase
   
   def test_fixtures_validity
     SofaBlog::Comment.all.each do |comment|

@@ -1,7 +1,35 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'sofa_blog/jquery.autocomplete' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#post_title').focus();
+      $("#post_tag_names").autocomplete(<%= SofaBlog::Tag.all.collect(&:name).to_json.html_safe %>, {
+        multiple: true,
+        selectFirst: false
+      });
+    }) 
+  </script>
+<% end %>
+
+
 <%= form.text_field :title %>
 <%= form.text_field :author %>
+<%= form.text_field :tag_names, :label => 'Tags' %>
 <%= form.text_area :content, :class => 'rich_text' %>
-<%= form.check_box :is_published %>
 
-<%= form.submit 'Save' %>
+<% if defined?(ComfortableMexicanSofa) %>
+  <% content_for :right_column do %>
+    <%= render :partial => 'cms_admin/files/index' %>
+  <% end %>
+
+  <%= form.simple_field nil, nil, :class => 'submit_element' do %>
+    <%= form.check_box :is_published, :disable_builder => true %>
+    <%= form.label_for :is_published %>
+    <%= form.submit (@post.new_record? ? 'Create post' : 'Update post'), :disable_builder => true %>
+  <% end %>
   
+<% else %>
+  <%= form.check_box :is_published %>
+  <%= form.submit (@post.new_record? ? 'Create post' : 'Update post') %>
+<% end %>
+

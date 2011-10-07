@@ -1,1 +1,0 @@
-page <<  "$('##{dom_id(@blog_comment, :status)}').html('#{escape_javascript(render(:partial => 'status', :locals => {:blog_comment => @blog_comment}))}')"

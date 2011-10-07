@@ -1,0 +1,1 @@
+$("#<%=dom_id(@comment, :status)%>").html("<%=escape_javascript(render(:partial => 'status', :locals => {:comment => @comment}))%>")

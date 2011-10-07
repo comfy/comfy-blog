@@ -1,5 +1,5 @@
 <h1>New Blog Post</h1>
 
-<%= sofa_blog_form_for @post, :url => {:action => :create} do |form| %>
+<%= sofa_blog_form_for @post, :as => :post, :url => {:action => :create} do |form| %>
   <%= render :partial => form %>
 <% end %>

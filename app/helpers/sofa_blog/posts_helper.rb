@@ -1,0 +1,2 @@
+module SofaBlog::PostsHelper
+end

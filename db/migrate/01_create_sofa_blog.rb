@@ -24,10 +24,28 @@ class CreateSofaBlog < ActiveRecord::Migration
     add_index :sofa_blog_comments, [:post_id, :created_at]
     add_index :sofa_blog_comments, [:post_id, :is_approved, :created_at],
       :name => 'index_sofa_blog_comments_on_post_and_approved_and_created_at'
+      
+    create_table :sofa_blog_tags do |t|
+      t.string :name
+      t.integer :taggings_count
+    end
+    add_index :sofa_blog_tags, [:name, :taggings_count], :unique => true
+    add_index :sofa_blog_tags, :taggings_count
+
+
+    create_table :sofa_blog_taggings do |t|
+      t.integer :post_id
+      t.integer :tag_id
+      t.datetime :created_at
+    end
+    add_index :sofa_blog_taggings, [:post_id, :tag_id, :created_at], :unique => true, :name => 'index_sofa_blog_taggings_on_post_id_tag_id_created_at'
+  
   end
   
   def self.down
     drop_table :sofa_blog_posts
     drop_table :sofa_blog_comments
+    drop_table :sofa_blog_tags
+    drop_table :sofa_blog_taggings
   end
 end

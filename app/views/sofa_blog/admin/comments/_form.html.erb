@@ -13,12 +13,15 @@
 </div>
 
 
-<%= form.simple_field nil, nil, :class => 'submit_element' do %>
-  <%= form.check_box :approved, :disable_builder => true %>
-  <%= form.label_for :approved, :label => 'Approved' %>
-  <%= form.submit @blog_post.new_record?? 'Create comment' : 'Update comment', :disable_builder => true %>
-  or
-  <%= link_to 'cancel', :back%>
+<% if defined?(ComfortableMexicanSofa) %>
+  <%= form.simple_field nil, nil, :class => 'submit_element' do %>
+    <%= form.check_box :is_approved, :disable_builder => true %>
+    <%= form.label_for :is_approved, :label => 'Approved' %>
+    <%= form.submit @comment.new_record? ? 'Create comment' : 'Update comment', :disable_builder => true %>
+  <% end %>
+<% else %>
+  <%= form.check_box :is_approved %>
+  <%= form.submit (@post.new_record? ? 'Create comment' : 'Update comment') %>
 <% end %>
 
   

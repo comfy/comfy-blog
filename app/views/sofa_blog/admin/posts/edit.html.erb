@@ -1,5 +1,5 @@
 <h1>Editing <%= @post.title.titleize %></h1>
 
-<%= sofa_blog_form_for @post, :url => {:action => :update} do |form| %>
+<%= sofa_blog_form_for @post, :as => :post, :url => {:action => :update} do |form| %>
   <%= render :partial => form %>
 <% end %>
