@@ -19,6 +19,8 @@ Gem::Specification.new do |s|
   s.files = [
     "Gemfile",
     "Gemfile.lock",
+    "LICENSE",
+    "README.md",
     "Rakefile",
     "VERSION",
     "app/assets/images/rails.png",
@@ -67,6 +69,7 @@ Gem::Specification.new do |s|
     "config/environments/production.rb",
     "config/environments/test.rb",
     "config/initializers/secret_token.rb",
+    "config/initializers/sofa_blog.rb",
     "config/initializers/wrap_parameters.rb",
     "config/locales/en.yml",
     "config/routes.rb",
