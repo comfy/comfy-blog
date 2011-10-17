@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sofa_blog}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jack Neto", "The Working Group Inc."]
-  s.date = %q{2011-10-07}
+  s.date = %q{2011-10-17}
   s.description = %q{}
   s.email = %q{jack@theworkinggroup.ca}
   s.extra_rdoc_files = [
@@ -76,6 +76,8 @@ Gem::Specification.new do |s|
     "db/migrate/01_create_sofa_blog.rb",
     "db/schema.rb",
     "db/seeds.rb",
+    "lib/generators/README",
+    "lib/generators/blog_generator.rb",
     "lib/sofa_blog.rb",
     "lib/sofa_blog/configuration.rb",
     "lib/sofa_blog/engine.rb",
@@ -107,20 +109,20 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<rails>, [">= 3.1.0.rc8"])
+      s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
       s.add_runtime_dependency(%q<rinku>, [">= 1.2.2"])
       s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
-      s.add_dependency(%q<rails>, [">= 3.1.0.rc8"])
+      s.add_dependency(%q<rails>, [">= 3.1.0"])
       s.add_dependency(%q<rinku>, [">= 1.2.2"])
       s.add_dependency(%q<jquery-rails>, [">= 0"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rails>, [">= 3.1.0.rc8"])
+    s.add_dependency(%q<rails>, [">= 3.1.0"])
     s.add_dependency(%q<rinku>, [">= 1.2.2"])
     s.add_dependency(%q<jquery-rails>, [">= 0"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
