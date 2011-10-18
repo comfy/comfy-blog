@@ -3,7 +3,7 @@
     <div class='action_links'>
       <%= link_to pluralize(post.comments_count, 'comment'), sofa_blog_admin_post_comments_path(post) %>
       <%= link_to 'Edit', edit_sofa_blog_admin_post_path(post) %>
-      <%= link_to 'Delete', '', :method => :delete, :confirm => 'Are you sure?' %>
+      <%= link_to 'Delete', sofa_blog_admin_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <%= link_to post.title.titleize, edit_sofa_blog_admin_post_path(post) %>
