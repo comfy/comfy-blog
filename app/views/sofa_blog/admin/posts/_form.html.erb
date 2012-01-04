@@ -21,7 +21,9 @@
   <% content_for :right_column do %>
     <%= render :partial => 'cms_admin/files/index' %>
   <% end %>
-
+  
+  <%= cms_hook :blog_post, :locals => { :form => form } %>
+  
   <%= form.simple_field nil, nil, :class => 'submit_element' do %>
     <%= form.check_box :is_published, :disable_builder => true %>
     <%= form.label_for :is_published %>
