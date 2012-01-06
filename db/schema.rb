@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "sofa_blog_posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "excerpt"
     t.string   "author"
     t.boolean  "is_published",            :default => false, :null => false
     t.integer  "comments_count",          :default => 0,     :null => false
