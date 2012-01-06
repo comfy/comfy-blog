@@ -4,6 +4,7 @@ class CreateSofaBlog < ActiveRecord::Migration
     create_table :sofa_blog_posts do |t|
       t.string  :title
       t.text    :content
+      t.string  :excerpt
       t.string  :author
       t.boolean :is_published,    :null => false, :default => false
       t.integer :comments_count,  :null => false, :default => 0

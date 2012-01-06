@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   namespace :sofa_blog, :path => '' do
 
-    resources :posts, :only => [:show, :index]
+    resources :posts, :only => [:show, :index], :path => 'blog'
     
     namespace :admin, :path => SofaBlog.config.admin_route_prefix do
       resources :posts do
