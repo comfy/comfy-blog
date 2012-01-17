@@ -10,8 +10,6 @@ class CreateSofaBlog < ActiveRecord::Migration
       t.integer :year,            :null => false, :limit => 4
       t.integer :month,           :null => false, :limit => 2
       t.boolean :is_published,    :null => false, :default => false
-      t.integer :comments_count,  :null => false, :default => 0
-      t.integer :approved_comments_count, :null => false, :default => 0
       t.timestamps
     end
     add_index :blog_posts, [:is_published, :year, :month, :slug],
@@ -21,15 +19,15 @@ class CreateSofaBlog < ActiveRecord::Migration
     
     create_table :blog_comments do |t|
       t.integer :post_id
-      t.string  :name
+      t.string  :author
       t.string  :email
       t.text    :content
-      t.boolean :is_approved, :null => false, :default => false
+      t.boolean :is_published, :null => false, :default => false
       t.timestamps
     end
     add_index :blog_comments, [:post_id, :created_at]
-    add_index :blog_comments, [:post_id, :is_approved, :created_at],
-      :name => 'index_blog_comments_on_post_approved_created'
+    add_index :blog_comments, [:post_id, :is_published, :created_at],
+      :name => 'index_blog_comments_on_post_published_created'
       
     create_table :blog_tags do |t|
       t.string  :name

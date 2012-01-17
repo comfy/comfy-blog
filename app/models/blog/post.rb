@@ -3,7 +3,7 @@ class Blog::Post < ActiveRecord::Base
   set_table_name :blog_posts
 
   # -- Attributes -----------------------------------------------------------
-  attr_accessor   :tag_names
+  attr_accessor :tag_names
   
   # -- Relationships --------------------------------------------------------
   has_many :comments, :dependent => :destroy

@@ -1,6 +1,6 @@
 default:
   post: default
-  name: Default Name
+  author: Default Name
   email: default@test.test
   content: Default Content
-  is_approved: true
+  is_published: true
