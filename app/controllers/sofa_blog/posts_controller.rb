@@ -1,5 +1,7 @@
 class SofaBlog::PostsController < ApplicationController
   
+  layout SofaBlog.config.public_layout
+  
   def index
     @posts = SofaBlog::Post.published.paginate(
       :page     => params[:page],
