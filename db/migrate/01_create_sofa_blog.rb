@@ -1,20 +1,25 @@
 class CreateSofaBlog < ActiveRecord::Migration
   
   def self.up
-    create_table :sofa_blog_posts do |t|
-      t.string  :title
+    create_table :blog_posts do |t|
+      t.string  :title,           :null => false
+      t.string  :slug,            :null => false
       t.text    :content
-      t.string  :excerpt
+      t.string  :excerpt,         :limit => 1024
       t.string  :author
+      t.integer :year,            :null => false, :limit => 4
+      t.integer :month,           :null => false, :limit => 2
       t.boolean :is_published,    :null => false, :default => false
       t.integer :comments_count,  :null => false, :default => 0
       t.integer :approved_comments_count, :null => false, :default => 0
       t.timestamps
     end
-    add_index :sofa_blog_posts, :created_at
-    add_index :sofa_blog_posts, [:is_published, :created_at]
+    add_index :blog_posts, [:is_published, :year, :month, :slug],
+      :name => 'index_blog_posts_on_published_year_month_slug'
+    add_index :blog_posts, [:is_published, :created_at]
+    add_index :blog_posts, :created_at
     
-    create_table :sofa_blog_comments do |t|
+    create_table :blog_comments do |t|
       t.integer :post_id
       t.string  :name
       t.string  :email
@@ -22,24 +27,24 @@ class CreateSofaBlog < ActiveRecord::Migration
       t.boolean :is_approved, :null => false, :default => false
       t.timestamps
     end
-    add_index :sofa_blog_comments, [:post_id, :created_at]
-    add_index :sofa_blog_comments, [:post_id, :is_approved, :created_at],
-      :name => 'index_sofa_blog_comments_on_post_and_approved_and_created_at'
+    add_index :blog_comments, [:post_id, :created_at]
+    add_index :blog_comments, [:post_id, :is_approved, :created_at],
+      :name => 'index_blog_comments_on_post_approved_created'
       
-    create_table :sofa_blog_tags do |t|
-      t.string :name
+    create_table :blog_tags do |t|
+      t.string  :name
       t.integer :taggings_count
     end
-    add_index :sofa_blog_tags, [:name, :taggings_count], :unique => true
-    add_index :sofa_blog_tags, :taggings_count
-
-    create_table :sofa_blog_taggings do |t|
-      t.integer :post_id
-      t.integer :tag_id
-      t.datetime :created_at
+    add_index :blog_tags, [:name, :taggings_count], :unique => true
+    add_index :blog_tags, :taggings_count
+    
+    create_table :blog_taggings do |t|
+      t.integer   :post_id
+      t.integer   :tag_id
+      t.datetime  :created_at
     end
-    add_index :sofa_blog_taggings, [:post_id, :tag_id, :created_at], :unique => true, :name => 'index_sofa_blog_taggings_on_post_id_tag_id_created_at'
-  
+    add_index :blog_taggings, [:post_id, :tag_id, :created_at], :unique => true,
+      :name => 'index_blog_taggings_on_post_tag_created'
   end
   
   def self.down

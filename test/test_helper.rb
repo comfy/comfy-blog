@@ -14,11 +14,12 @@ class ActiveSupport::TestCase
   # resetting default configuration
   def reset_config
     SofaBlog.configure do |config|
-      config.admin_route_prefix = 'admin'
-      config.admin_controller   = 'ApplicationController'
-      config.form_builder       = 'ActionView::Helpers::FormBuilder'
-      config.public_layout      = 'application'
-      config.posts_per_page     = 10
+      config.admin_route_prefix   = 'admin'
+      config.public_route_prefix  = ''
+      config.admin_controller     = 'ApplicationController'
+      config.form_builder         = 'ActionView::Helpers::FormBuilder'
+      config.public_layout        = 'application'
+      config.posts_per_page       = 10
     end
   end
   

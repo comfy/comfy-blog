@@ -3,8 +3,12 @@ unless defined? SofaBlog::Application
   require File.expand_path('sofa_blog/engine', File.dirname(__FILE__))
 end
 
-require File.expand_path('sofa_blog/configuration', File.dirname(__FILE__))
-require File.expand_path('sofa_blog/form_builder', File.dirname(__FILE__))
+[ 'sofa_blog/core_ext/string',
+  'sofa_blog/configuration',
+  'sofa_blog/form_builder'
+].each do |path|
+  require File.expand_path(path, File.dirname(__FILE__))
+end
 
 module SofaBlog
   class << self

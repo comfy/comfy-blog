@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 1) do
 
-  create_table "sofa_blog_comments", :force => true do |t|
+  create_table "blog_comments", :force => true do |t|
     t.integer  "post_id"
     t.string   "name"
     t.string   "email"
@@ -23,38 +23,42 @@ ActiveRecord::Schema.define(:version => 1) do
     t.datetime "updated_at"
   end
 
-  add_index "sofa_blog_comments", ["post_id", "created_at"], :name => "index_sofa_blog_comments_on_post_id_and_created_at"
-  add_index "sofa_blog_comments", ["post_id", "is_approved", "created_at"], :name => "index_sofa_blog_comments_on_post_and_approved_and_created_at"
+  add_index "blog_comments", ["post_id", "created_at"], :name => "index_blog_comments_on_post_id_and_created_at"
+  add_index "blog_comments", ["post_id", "is_approved", "created_at"], :name => "index_blog_comments_on_post_approved_created"
 
-  create_table "sofa_blog_posts", :force => true do |t|
-    t.string   "title"
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title",                                                      :null => false
+    t.string   "slug",                                                       :null => false
     t.text     "content"
-    t.string   "excerpt"
+    t.string   "excerpt",                 :limit => 1024
     t.string   "author"
-    t.boolean  "is_published",            :default => false, :null => false
-    t.integer  "comments_count",          :default => 0,     :null => false
-    t.integer  "approved_comments_count", :default => 0,     :null => false
+    t.integer  "year",                    :limit => 4,                       :null => false
+    t.integer  "month",                   :limit => 2,                       :null => false
+    t.boolean  "is_published",                            :default => false, :null => false
+    t.integer  "comments_count",                          :default => 0,     :null => false
+    t.integer  "approved_comments_count",                 :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "sofa_blog_posts", ["created_at"], :name => "index_sofa_blog_posts_on_created_at"
-  add_index "sofa_blog_posts", ["is_published", "created_at"], :name => "index_sofa_blog_posts_on_is_published_and_created_at"
+  add_index "blog_posts", ["created_at"], :name => "index_blog_posts_on_created_at"
+  add_index "blog_posts", ["is_published", "created_at"], :name => "index_blog_posts_on_is_published_and_created_at"
+  add_index "blog_posts", ["is_published", "year", "month", "slug"], :name => "index_blog_posts_on_published_year_month_slug"
 
-  create_table "sofa_blog_taggings", :force => true do |t|
+  create_table "blog_taggings", :force => true do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
     t.datetime "created_at"
   end
 
-  add_index "sofa_blog_taggings", ["post_id", "tag_id", "created_at"], :name => "index_sofa_blog_taggings_on_post_id_tag_id_created_at", :unique => true
+  add_index "blog_taggings", ["post_id", "tag_id", "created_at"], :name => "index_blog_taggings_on_post_tag_created", :unique => true
 
-  create_table "sofa_blog_tags", :force => true do |t|
+  create_table "blog_tags", :force => true do |t|
     t.string  "name"
     t.integer "taggings_count"
   end
 
-  add_index "sofa_blog_tags", ["name", "taggings_count"], :name => "index_sofa_blog_tags_on_name_and_taggings_count", :unique => true
-  add_index "sofa_blog_tags", ["taggings_count"], :name => "index_sofa_blog_tags_on_taggings_count"
+  add_index "blog_tags", ["name", "taggings_count"], :name => "index_blog_tags_on_name_and_taggings_count", :unique => true
+  add_index "blog_tags", ["taggings_count"], :name => "index_blog_tags_on_taggings_count"
 
 end

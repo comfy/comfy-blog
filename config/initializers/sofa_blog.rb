@@ -9,6 +9,9 @@ SofaBlog.configure do |config|
   # Form builder
   #   config.form_builder = 'SofaBlog::FormBuilder'
   
+  # Layout used for public posts/comments
+  #   config.public_layout = 'application'
+  
   # Number of posts per page. Default is 10
   #   config.posts_per_page = 10
   

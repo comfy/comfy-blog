@@ -1,6 +1,6 @@
-class SofaBlog::Comment < ActiveRecord::Base
+class Blog::Comment < ActiveRecord::Base
   
-  set_table_name :sofa_blog_comments
+  set_table_name :blog_comments
   
   # -- Relationships --------------------------------------------------------
   belongs_to :post,
@@ -36,7 +36,7 @@ class SofaBlog::Comment < ActiveRecord::Base
 protected
   def update_approved_comments_counter
     self.connection.execute("
-      UPDATE sofa_blog_posts 
+      UPDATE blog_posts 
       SET approved_comments_count = #{post.comments.approved.count} 
       WHERE id = #{post.id}
     ")
@@ -44,7 +44,7 @@ protected
   
   def update_comments_counter
     self.connection.execute("
-      UPDATE sofa_blog_posts
+      UPDATE blog_posts
       SET comments_count = #{post.comments.count}
       WHERE id = #{post.id}
     ")

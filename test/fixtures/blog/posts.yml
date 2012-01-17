@@ -1,7 +1,10 @@
 default:
   title: Default Title
+  slug: default-title
   content: Default Content
   author: Default Author
   is_published: true
   comments_count: 1
   approved_comments_count: 1
+  year: 2012
+  month: 1

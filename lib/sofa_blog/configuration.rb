@@ -4,6 +4,10 @@ module SofaBlog
     # You can change 'cms-admin' to 'admin', for example.
     attr_accessor :admin_route_prefix
     
+    # Prefix of the url where blog posts are served from. If you wish to
+    # serve posts from /blog change this setting to 'blog'. Default is blank.
+    attr_accessor :public_route_prefix
+    
     # Controller that should be used for admin area
     attr_accessor :admin_controller
     
@@ -18,11 +22,12 @@ module SofaBlog
     
     # Configuration defaults
     def initialize
-      @admin_route_prefix = 'admin'
-      @admin_controller   = 'ApplicationController'
-      @form_builder       = 'SofaBlog::FormBuilder'
-      @public_layout      = 'application'
-      @posts_per_page     = 10
+      @admin_route_prefix   = 'admin'
+      @public_route_prefix  = ''
+      @admin_controller     = 'ApplicationController'
+      @form_builder         = 'SofaBlog::FormBuilder'
+      @public_layout        = 'application'
+      @posts_per_page       = 10
     end
   end
 end
