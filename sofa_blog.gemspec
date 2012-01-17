@@ -4,26 +4,26 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{sofa_blog}
+  s.name = "sofa_blog"
   s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jack Neto", "The Working Group Inc."]
-  s.date = %q{2011-10-18}
-  s.description = %q{}
-  s.email = %q{jack@theworkinggroup.ca}
+  s.date = "2012-01-17"
+  s.description = ""
+  s.email = "jack@theworkinggroup.ca"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
   ]
   s.files = [
     "Gemfile",
-    "Gemfile.lock",
     "LICENSE",
     "README.md",
     "Rakefile",
     "VERSION",
     "app/assets/images/rails.png",
+    "app/assets/javascripts/sofa_blog/admin/post_form.js",
     "app/assets/javascripts/sofa_blog/application.js",
     "app/assets/javascripts/sofa_blog/jquery.autocomplete.js",
     "app/assets/javascripts/sofa_blog/posts.js",
@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
     "app/views/sofa_blog/admin/posts/new.html.erb",
     "app/views/sofa_blog/posts/_post.html.erb",
     "app/views/sofa_blog/posts/index.html.erb",
+    "app/views/sofa_blog/posts/show.html.erb",
     "config.ru",
     "config/application.rb",
     "config/boot.rb",
@@ -94,39 +95,36 @@ Gem::Specification.new do |s|
     "test/test_helper.rb",
     "test/unit/.gitkeep",
     "test/unit/comment_test.rb",
-    "test/unit/helpers/sofa_blog/posts_helper_test.rb",
+    "test/unit/configuration_test.rb",
     "test/unit/post_test.rb",
     "test/unit/tag_test.rb",
     "test/unit/tagging_test.rb"
   ]
-  s.homepage = %q{http://github.com/twg/sofa-blog}
+  s.homepage = "http://github.com/twg/sofa-blog"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{SofaBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)}
+  s.rubygems_version = "1.8.10"
+  s.summary = "SofaBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rails>, [">= 3.1.0"])
-      s.add_runtime_dependency(%q<rinku>, [">= 1.2.2"])
-      s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
-      s.add_development_dependency(%q<sqlite3>, [">= 0"])
-      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_runtime_dependency(%q<will_paginate>, ["~> 3.0.2"])
+      s.add_runtime_dependency(%q<rails_autolink>, ["~> 1.0.4"])
+      s.add_runtime_dependency(%q<jquery-rails>, [">= 1.0.0"])
     else
       s.add_dependency(%q<rails>, [">= 3.1.0"])
-      s.add_dependency(%q<rinku>, [">= 1.2.2"])
-      s.add_dependency(%q<jquery-rails>, [">= 0"])
-      s.add_dependency(%q<sqlite3>, [">= 0"])
-      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<will_paginate>, ["~> 3.0.2"])
+      s.add_dependency(%q<rails_autolink>, ["~> 1.0.4"])
+      s.add_dependency(%q<jquery-rails>, [">= 1.0.0"])
     end
   else
     s.add_dependency(%q<rails>, [">= 3.1.0"])
-    s.add_dependency(%q<rinku>, [">= 1.2.2"])
-    s.add_dependency(%q<jquery-rails>, [">= 0"])
-    s.add_dependency(%q<sqlite3>, [">= 0"])
-    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<will_paginate>, ["~> 3.0.2"])
+    s.add_dependency(%q<rails_autolink>, ["~> 1.0.4"])
+    s.add_dependency(%q<jquery-rails>, [">= 1.0.0"])
   end
 end
 
