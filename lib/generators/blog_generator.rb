@@ -15,7 +15,11 @@ class BlogGenerator < Rails::Generators::Base
     else
       migration_template 'db/migrate/01_create_sofa_blog.rb', 'db/migrate/create_sofa_blog.rb'
     end
-  end  
+  end
+  
+  def generate_initialization
+    copy_file 'config/initializers/sofa_blog.rb', 'config/initializers/sofa_blog.rb'
+  end
   
   def show_readme
     readme 'lib/generators/README'
