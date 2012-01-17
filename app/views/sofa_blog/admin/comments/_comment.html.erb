@@ -9,13 +9,13 @@
     <div class='label'>
       <div class='sublabel'>
         <em>
-          <%= time_ago_in_words(comment.updated_at) %> ago 
+          <%= time_ago_in_words(comment.updated_at) %> ago
           <strong><%= mail_to(comment.email, comment.name) %></strong> wrote
         </em>
       </div>
     </div>
     <div class='content'>
-      <%= simple_format(Rinku::auto_link(comment.content)) %>
+      <%= simple_format(comment.content) %>
     </div>
   </div>
 </li>
