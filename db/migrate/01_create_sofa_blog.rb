@@ -33,7 +33,6 @@ class CreateSofaBlog < ActiveRecord::Migration
     add_index :sofa_blog_tags, [:name, :taggings_count], :unique => true
     add_index :sofa_blog_tags, :taggings_count
 
-
     create_table :sofa_blog_taggings do |t|
       t.integer :post_id
       t.integer :tag_id
