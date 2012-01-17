@@ -1,21 +1,18 @@
-<li>
-  <div class='item'>
-    <div class='action_links'>
-      <%= link_to pluralize(post.comments_count, 'comment'), sofa_blog_admin_post_comments_path(post) %>
-      <%= link_to 'Edit', edit_sofa_blog_admin_post_path(post) %>
-      <%= link_to 'Delete', sofa_blog_admin_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
-    </div>
-    <div class='label'>
-      <%= link_to post.title.titleize, edit_sofa_blog_admin_post_path(post) %>
-      <div class='sublabel'>
-        Published <%= time_ago_in_words(post.updated_at) %> ago
-        by <strong><%= post.author %></strong>
-        <%= '[DRAFT]' if !post.is_published? %>
-        <% post.tags.each do |tag| %>
-          <span class="tag"><%= tag.name %></span>
-        <% end %>
-        
-      </div>  
-    </div>
+<div class='post'>
+  <h1><%= post.title %></h1>
+  <div class='author'><%= post.author %></div>
+  <div class='date'><%= post.created_at %></div>
+  <div class='content'>
+    <%= post.content.html_safe %>
   </div>
-</li>
+<div>
+  
+<% if @post %>
+  <div class='comments'>
+    <% @post.comments.each do |comment| %>
+      <div class='comment'>
+        <%= comment.content %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

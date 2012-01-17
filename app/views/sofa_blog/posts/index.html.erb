@@ -1,5 +1,5 @@
-<h1>Blog Posts</h1>
+<% @posts.each do |post| %>
+  <%= render :partial => 'post', :object => post %>
+<% end %>
 
-<ul class='list posts'>
-  <%= render :partial => @posts %>
-</ul>
+<%= will_paginate @posts, :previous_label => '« Older Posts', :next_label => 'Newer Posts »', :page_links => false %>

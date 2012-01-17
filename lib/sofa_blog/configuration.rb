@@ -10,12 +10,15 @@ module SofaBlog
     # Form builder
     attr_accessor :form_builder
     
+    # Number of posts per page. Default is 10
+    attr_accessor :posts_per_page
+    
     # Configuration defaults
     def initialize
       @admin_route_prefix = 'admin'
       @admin_controller   = 'ApplicationController'
       @form_builder       = 'SofaBlog::FormBuilder'
+      @posts_per_page     = 10
     end
-    
   end
 end
