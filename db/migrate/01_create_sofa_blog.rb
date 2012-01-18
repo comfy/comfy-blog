@@ -18,11 +18,11 @@ class CreateSofaBlog < ActiveRecord::Migration
     add_index :blog_posts, :created_at
     
     create_table :blog_comments do |t|
-      t.integer :post_id
-      t.string  :author
-      t.string  :email
+      t.integer :post_id,       :null => false
+      t.string  :author,        :null => false
+      t.string  :email,         :null => false
       t.text    :content
-      t.boolean :is_published, :null => false, :default => false
+      t.boolean :is_published,  :null => false, :default => false
       t.timestamps
     end
     add_index :blog_comments, [:post_id, :created_at]
@@ -30,15 +30,16 @@ class CreateSofaBlog < ActiveRecord::Migration
       :name => 'index_blog_comments_on_post_published_created'
       
     create_table :blog_tags do |t|
-      t.string  :name
-      t.integer :taggings_count
+      t.string  :name,            :null => false
+      t.boolean :is_category,     :null => false, :default => false
+      t.integer :taggings_count,  :null => false, :default => 0
     end
     add_index :blog_tags, [:name, :taggings_count], :unique => true
     add_index :blog_tags, :taggings_count
     
     create_table :blog_taggings do |t|
-      t.integer   :post_id
-      t.integer   :tag_id
+      t.integer   :post_id,     :null => false
+      t.integer   :tag_id,      :null => false
       t.datetime  :created_at
     end
     add_index :blog_taggings, [:post_id, :tag_id, :created_at], :unique => true,

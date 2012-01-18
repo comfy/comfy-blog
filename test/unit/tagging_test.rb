@@ -8,10 +8,23 @@ class SofaBlog::TaggingTest < ActiveSupport::TestCase
     end
   end
   
-  def test_destroy
+  def test_destroy_for_tag
     assert_difference ['Blog::Tagging.count', 'Blog::Tag.count'], -1 do
-      blog_taggings(:default).destroy
+      blog_taggings(:tag).destroy
     end
+  end
+    
+  def test_destroy_for_category
+    assert_difference 'Blog::Tagging.count', -1 do
+      assert_no_difference 'Blog::Tag.count' do
+        blog_taggings(:category).destroy
+      end
+    end
+  end
+  
+  def test_scopes
+    assert_equal 1, Blog::Tagging.for_tags.count
+    assert_equal 1, Blog::Tagging.for_categories.count
   end
   
 end

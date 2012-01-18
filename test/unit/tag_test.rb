@@ -9,7 +9,7 @@ class SofaBlog::TagTest < ActiveSupport::TestCase
   end
   
   def test_validation
-    old_tag = blog_tags(:default)
+    old_tag = blog_tags(:tag)
     tag = Blog::Tag.new(:name => old_tag.name)
     assert tag.invalid?
     assert_has_errors_on tag, [:name]
@@ -29,8 +29,16 @@ class SofaBlog::TagTest < ActiveSupport::TestCase
   
   def test_destroy
     assert_difference ['Blog::Tag.count', 'Blog::Tagging.count'], -1 do
-      blog_tags(:default).destroy
+      blog_tags(:tag).destroy
     end
+  end
+  
+  def test_scopes
+    assert_equal 1, Blog::Tag.tags.count
+    assert_equal blog_tags(:tag), Blog::Tag.tags.first
+    
+    assert_equal 1, Blog::Tag.categories.count
+    assert_equal blog_tags(:category), Blog::Tag.categories.first
   end
   
 end

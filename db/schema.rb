@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(:version => 1) do
 
   create_table "blog_comments", :force => true do |t|
-    t.integer  "post_id"
-    t.string   "author"
-    t.string   "email"
+    t.integer  "post_id",                         :null => false
+    t.string   "author",                          :null => false
+    t.string   "email",                           :null => false
     t.text     "content"
     t.boolean  "is_published", :default => false, :null => false
     t.datetime "created_at"
@@ -44,16 +44,17 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "blog_posts", ["is_published", "year", "month", "slug"], :name => "index_blog_posts_on_published_year_month_slug"
 
   create_table "blog_taggings", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "tag_id"
+    t.integer  "post_id",    :null => false
+    t.integer  "tag_id",     :null => false
     t.datetime "created_at"
   end
 
   add_index "blog_taggings", ["post_id", "tag_id", "created_at"], :name => "index_blog_taggings_on_post_tag_created", :unique => true
 
   create_table "blog_tags", :force => true do |t|
-    t.string  "name"
-    t.integer "taggings_count"
+    t.string  "name",                              :null => false
+    t.boolean "is_category",    :default => false, :null => false
+    t.integer "taggings_count", :default => 0,     :null => false
   end
 
   add_index "blog_tags", ["name", "taggings_count"], :name => "index_blog_tags_on_name_and_taggings_count", :unique => true

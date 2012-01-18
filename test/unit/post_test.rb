@@ -52,7 +52,7 @@ class SofaBlog::PostTest < ActiveSupport::TestCase
   
   def test_sync_tags
     post = blog_posts(:default)
-    assert_equal 'Default Tag', post.tag_names
+    assert_equal 'tag', post.tag_names
     
     post.tag_names = 'one, two, three'
     assert_equal 'one, two, three', post.tag_names
@@ -61,6 +61,23 @@ class SofaBlog::PostTest < ActiveSupport::TestCase
       post.save!
       post.reload
       assert_equal 'one, two, three', post.tag_names
+    end
+  end
+  
+  def test_sync_categories
+    post = blog_posts(:default)
+    assert_equal 1, post.tags.categories.count
+    
+    assert_difference 'Blog::Tagging.count', -1 do
+      post.update_attribute(:category_ids, blog_tags(:category).id => 0)
+      post.reload
+      assert_equal 0, post.tags.categories.count
+    end
+    
+    assert_difference 'Blog::Tagging.count' do
+      post.update_attribute(:category_ids, blog_tags(:category).id => 1)
+      post.reload
+      assert_equal 1, post.tags.categories.count
     end
   end
   
@@ -90,7 +107,8 @@ class SofaBlog::PostTest < ActiveSupport::TestCase
   end
   
   def test_scope_tagged_with
-    assert_equal 1, Blog::Post.tagged_with('Default Tag').count
+    assert_equal 1, Blog::Post.tagged_with('tag').count
+    assert_equal 0, Blog::Post.tagged_with('category').count
     assert_equal 0, Blog::Post.tagged_with('invalid').count
   end
   
