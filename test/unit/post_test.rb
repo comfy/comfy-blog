@@ -112,4 +112,10 @@ class SofaBlog::PostTest < ActiveSupport::TestCase
     assert_equal 0, Blog::Post.tagged_with('invalid').count
   end
   
+  def test_scope_categorized_as
+    assert_equal 1, Blog::Post.categorized_as('category').count
+    assert_equal 0, Blog::Post.categorized_as('tag').count
+    assert_equal 0, Blog::Post.categorized_as('invalid').count
+  end
+  
 end

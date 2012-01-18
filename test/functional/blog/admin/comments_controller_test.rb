@@ -1,6 +1,6 @@
 require File.expand_path('../../../test_helper', File.dirname(__FILE__))
 
-class SofaBlog::Admin::CommentsControllerTest < ActionController::TestCase
+class Blog::Admin::CommentsControllerTest < ActionController::TestCase
   
   def test_get_index
     get :index, :post_id => sofa_blog_posts(:default).id

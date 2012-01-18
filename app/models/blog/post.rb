@@ -28,7 +28,10 @@ class Blog::Post < ActiveRecord::Base
     where(:month => month)
   }
   scope :tagged_with, lambda { |tag|
-    includes(:tags).where('blog_tags.name' => tag, 'blog_tags.is_category' => false)
+    joins(:tags).where('blog_tags.name' => tag, 'blog_tags.is_category' => false)
+  }
+  scope :categorized_as, lambda { |tag|
+    joins(:tags).where('blog_tags.name' => tag, 'blog_tags.is_category' => true)
   }
   
   # -- Callbacks ------------------------------------------------------------

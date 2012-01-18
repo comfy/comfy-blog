@@ -3,15 +3,26 @@ class Blog::PostsController < ApplicationController
   layout SofaBlog.config.public_layout
   
   def index
-    @posts = Blog::Post.published.paginate(
-      :page     => params[:page],
-      :per_page => SofaBlog.config.posts_per_page
-    )
+    scope = if params[:tag]
+      Blog::Post.published.tagged_with(params[:tag])
+    elsif params[:category]
+      Blog::Post.published.categorized_as(params[:category])
+    elsif params[:year]
+      scope = Blog::Post.published.for_year(params[:year])
+      params[:month] ? scope.for_month(params[:month]) : scope
+    else
+      Blog::Post.published
+    end
+    
+    @posts = scope.paginate :per_page => SofaBlog.config.posts_per_page, :page => params[:page]
   end
   
   def show
-    @post = Blog::Post.published.find(params[:id])
-    
+    @post = if params[:slug] && params[:year] && params[:month]
+      Blog::Post.published.find_by_year_and_year_and_slug!(params[:year], params[:month], params[:slug])
+    else
+      Blog::Post.published.find(params[:id])
+    end
   rescue ActiveRecord::RecordNotFound
     if defined? ComfortableMexicanSofa
       render :cms_page => '/404', :status => 404
