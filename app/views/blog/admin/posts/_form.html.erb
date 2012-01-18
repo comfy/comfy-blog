@@ -1,18 +1,3 @@
-<% content_for :head do %>
-  <%= javascript_include_tag 'sofa_blog/jquery.autocomplete.js' %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#post_title').focus();
-      $("#post_tag_names").autocomplete(<%= SofaBlog::Tag.all.collect(&:name).to_json.html_safe %>, {
-        multiple: true,
-        selectFirst: false
-      });
-    }) 
-  </script>
-  <%= javascript_include_tag 'sofa_blog/admin/post_form.js' %>
-<% end %>
-
-
 <%= form.text_field :title %>
 <%= form.text_field :author %>
 <%= form.text_field :tag_names, :label => 'Tags' %>

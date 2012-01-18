@@ -9,7 +9,7 @@ class CreateSofaBlog < ActiveRecord::Migration
       t.string  :author
       t.integer :year,            :null => false, :limit => 4
       t.integer :month,           :null => false, :limit => 2
-      t.boolean :is_published,    :null => false, :default => false
+      t.boolean :is_published,    :null => false, :default => true
       t.timestamps
     end
     add_index :blog_posts, [:is_published, :year, :month, :slug],

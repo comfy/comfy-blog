@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   
   scope :module => :blog do
     namespace :admin, :path => SofaBlog.config.admin_route_prefix do
-      resources :posts do
+      resources :posts, :except => [:show] do
         resources :comments, :only => [:index]
       end
       resources :comments, :only => [:index] do
         put :publish, :on => :member
       end
-      resources :tags
+      resources :tags, :except => [:show]
     end unless SofaBlog.config.admin_route_prefix.blank?
   end
   

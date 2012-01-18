@@ -1,7 +1,9 @@
-<%= link_to 'Add new blog post', new_sofa_blog_admin_post_path, :class => 'big button' %>
+<%= link_to 'Add new blog post', new_admin_post_path, :class => 'big button' %>
 
 <h1>Blog Posts</h1>
 
 <ul class='list posts'>
   <%= render :partial => @posts %>
 </ul>
+
+<%= will_paginate @posts %>

@@ -4,19 +4,20 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
   before_filter :load_post,  :only => [:edit, :update, :destroy]
   
   def index
-    @posts = SofaBlog::Post.order('created_at DESC')
+    @posts = Blog::Post.paginate :page => params[:page]
   end
   
   def new
-    @post.is_published ||= true
+    render
   end
   
   def create
     @post.save!
-    flash[:notice] = 'Blog post created'
-    redirect_to :action => :index
+    flash.now[:notice] = 'Blog Post created'
+    render :action => :new
+    
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to create BlogPost'
+    flash.now[:error] = 'Failed to create Blog Post'
     render :action => :new
   end
   
@@ -26,30 +27,31 @@ class Blog::Admin::PostsController < Blog::Admin::BaseController
   
   def update
     @post.update_attributes!(params[:post])
-    flash[:notice] = 'Blog post updated'
-    redirect_to :action => :index
+    flash.now[:notice] = 'Blog Post updated'
+    render :action => :edit
+    
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to update BlogPost'
+    flash.now[:error] = 'Failed to update Blog Post'
     render :action => :edit
   end
   
   def destroy
     @post.destroy
-    flash[:notice] = 'Blog post removed'
+    flash[:notice] = 'Blog Post removed'
     redirect_to :action => :index
   end
   
 protected
   
   def load_post
-    @post = SofaBlog::Post.find(params[:id])
+    @post = Blog::Post.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Blog post not found'
+    flash[:error] = 'Blog Post not found'
     redirect_to :action => :index
   end
   
   def build_post
-    @post = SofaBlog::Post.new(params[:post])
+    @post = Blog::Post.new(params[:post])
   end
   
 end
