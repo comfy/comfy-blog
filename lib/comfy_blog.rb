@@ -1,16 +1,16 @@
 # Loading engine only if this is not a standalone installation
-unless defined? SofaBlog::Application
+unless defined? ComfyBlog::Application
   require File.expand_path('sofa_blog/engine', File.dirname(__FILE__))
 end
 
-[ 'sofa_blog/core_ext/string',
-  'sofa_blog/configuration',
-  'sofa_blog/form_builder'
+[ 'comfy_blog/core_ext/string',
+  'comfy_blog/configuration',
+  'comfy_blog/form_builder'
 ].each do |path|
   require File.expand_path(path, File.dirname(__FILE__))
 end
 
-module SofaBlog
+module ComfyBlog
   class << self
     
     def configure

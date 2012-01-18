@@ -1,6 +1,6 @@
 class Blog::PostsController < ApplicationController
   
-  layout SofaBlog.config.public_layout
+  layout ComfyBlog.config.public_layout
   
   def index
     scope = if params[:tag]
@@ -14,7 +14,7 @@ class Blog::PostsController < ApplicationController
       Blog::Post.published
     end
     
-    @posts = scope.paginate :per_page => SofaBlog.config.posts_per_page, :page => params[:page]
+    @posts = scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
   end
   
   def show

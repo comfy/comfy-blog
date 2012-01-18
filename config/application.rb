@@ -9,10 +9,10 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module SofaBlog
+module ComfyBlog
   class Application < Rails::Application
     
-    require 'sofa_blog'
+    require 'comfy_blog'
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

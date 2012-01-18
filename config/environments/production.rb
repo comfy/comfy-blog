@@ -1,4 +1,4 @@
-defined?(SofaBlog::Application) && SofaBlog::Application.configure do
+defined?(ComfyBlog::Application) && ComfyBlog::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests

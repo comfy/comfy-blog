@@ -1,3 +1,3 @@
-class Blog::Admin::BaseController < SofaBlog.config.admin_controller.to_s.constantize
+class Blog::Admin::BaseController < ComfyBlog.config.admin_controller.to_s.constantize
   # ...
 end

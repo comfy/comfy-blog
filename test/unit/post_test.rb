@@ -1,6 +1,6 @@
 require File.expand_path('../test_helper', File.dirname(__FILE__))
 
-class SofaBlog::PostTest < ActiveSupport::TestCase
+class PostTest < ActiveSupport::TestCase
   
   def test_fixtures_validity
     Blog::Post.all.each do |post|

@@ -1,4 +1,4 @@
-module SofaBlog
+module ComfyBlog
   class Configuration
     # Default url to access admin area is http://yourhost/cms-admin/ 
     # You can change 'cms-admin' to 'admin', for example.
@@ -25,7 +25,7 @@ module SofaBlog
       @admin_route_prefix   = 'admin'
       @public_route_prefix  = ''
       @admin_controller     = 'ApplicationController'
-      @form_builder         = 'SofaBlog::FormBuilder'
+      @form_builder         = 'ComfyBlog::FormBuilder'
       @public_layout        = 'application'
       @posts_per_page       = 10
     end

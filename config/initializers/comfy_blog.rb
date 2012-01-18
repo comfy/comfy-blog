@@ -1,4 +1,4 @@
-SofaBlog.configure do |config|
+ComfyBlog.configure do |config|
   
   # set the cms admin path if you have changed it for CMS
   #   config.admin_route_prefix = 'admin'
@@ -7,7 +7,7 @@ SofaBlog.configure do |config|
   #   config.admin_controller = 'ApplicationController'
   
   # Form builder
-  #   config.form_builder = 'SofaBlog::FormBuilder'
+  #   config.form_builder = 'ComfyBlog::FormBuilder'
   
   # Layout used for public posts/comments
   #   config.public_layout = 'application'

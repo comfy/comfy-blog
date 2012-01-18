@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   scope :module => :blog do
-    namespace :admin, :path => SofaBlog.config.admin_route_prefix do
+    namespace :admin, :path => ComfyBlog.config.admin_route_prefix do
       resources :posts, :except => [:show] do
         resources :comments, :only => [:index]
       end
@@ -9,10 +9,10 @@ Rails.application.routes.draw do
         put :publish, :on => :member
       end
       resources :tags, :except => [:show]
-    end unless SofaBlog.config.admin_route_prefix.blank?
+    end unless ComfyBlog.config.admin_route_prefix.blank?
   end
   
-  scope SofaBlog.config.public_route_prefix, :module => :blog do
+  scope ComfyBlog.config.public_route_prefix, :module => :blog do
     get ''                   => 'posts#index', :as => :blog_posts
     get 'tag/:tag'           => 'posts#index', :as => :tagged_blog_posts
     get 'category/:category' => 'posts#index', :as => :categorized_blog_posts

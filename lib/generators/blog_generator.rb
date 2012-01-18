@@ -13,12 +13,12 @@ class BlogGenerator < Rails::Generators::Base
     if destination
       puts "\e[0m\e[31mFound existing create_sofa_blog.rb migration. Remove it if you want to regenerate.\e[0m"
     else
-      migration_template 'db/migrate/01_create_sofa_blog.rb', 'db/migrate/create_sofa_blog.rb'
+      migration_template 'db/migrate/01_create_comfy_blog.rb', 'db/migrate/create_comfy_blog.rb'
     end
   end
   
   def generate_initialization
-    copy_file 'config/initializers/sofa_blog.rb', 'config/initializers/sofa_blog.rb'
+    copy_file 'config/initializers/comfy_blog.rb', 'config/initializers/comfy_blog.rb'
   end
   
   def show_readme

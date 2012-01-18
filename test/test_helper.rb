@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
   
   # resetting default configuration
   def reset_config
-    SofaBlog.configure do |config|
+    ComfyBlog.configure do |config|
       config.admin_route_prefix   = 'admin'
       config.public_route_prefix  = ''
       config.admin_controller     = 'ApplicationController'
