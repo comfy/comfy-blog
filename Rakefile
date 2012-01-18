@@ -1,4 +1,6 @@
 require File.expand_path('../config/application', __FILE__)
+require 'rubygems'
+require 'rake'
 
 ComfyBlog::Application.load_tasks
 
@@ -12,7 +14,6 @@ begin
     gem.description = ''
     gem.email       = 'oleg@twg.ca'
     gem.authors     = ['Oleg Khabarov', 'The Working Group Inc.']
-    gem.version     = File.read('VERSION').chomp
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
