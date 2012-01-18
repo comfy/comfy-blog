@@ -1,7 +1,0 @@
-<span id="<%= dom_id(comment, :status) %>">
-  <% if comment.is_approved? %>
-    <%= link_to 'Disapprove', disapprove_sofa_blog_admin_post_comment_path(@post, comment), :remote => true, :method => :put %>
-  <% else %>
-    <%= link_to 'Approve', approve_sofa_blog_admin_post_comment_path(@post, comment), :remote => true, :method => :put %>
-  <% end %>
-</span>

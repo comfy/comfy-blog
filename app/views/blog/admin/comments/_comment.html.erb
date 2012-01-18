@@ -1,9 +1,11 @@
-<li>
+<li id='<%= dom_id(comment) %>'>
   <div class='item'>
     <div class='icon' style="background-image:url(http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(comment.email.downcase)%>?s=28&d=identicon)"></div>
     <div class='action_links'>
-      <%= render :partial => 'status', :locals => {:comment => comment} %>
-      <%= link_to 'Delete', sofa_blog_admin_post_comment_path(@post, comment), :method => 'delete', :confirm => 'Are you sure?' %>
+      <% unless comment.is_published? %>
+        <%= link_to 'Publish', publish_admin_comment_path(comment), :remote => true, :method => :put %>
+      <% end %>
+      <%= link_to 'Delete', admin_comment_path(comment), :method => 'delete', :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <div class='sublabel'>
