@@ -1,6 +1,9 @@
-<%= link_to 'Add new comment', new_sofa_blog_admin_post_comment_path(@post), :class => 'big button' %>
-
-<h1><%= truncate(@post.title) %></h1>
+<h1>
+  Comments 
+  <% if @post %>
+    for <%= @post.title %>
+  <% end %>
+</h1>
 
 <ul class='list comments'>
   <%= render @comments %>

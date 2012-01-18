@@ -3,14 +3,13 @@
     <div class='icon' style="background-image:url(http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(comment.email.downcase)%>?s=28&d=identicon)"></div>
     <div class='action_links'>
       <%= render :partial => 'status', :locals => {:comment => comment} %>
-      <%= link_to 'Edit', edit_sofa_blog_admin_post_comment_path(@post, comment) %>
       <%= link_to 'Delete', sofa_blog_admin_post_comment_path(@post, comment), :method => 'delete', :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <div class='sublabel'>
         <em>
-          <%= time_ago_in_words(comment.updated_at) %> ago 
-          <strong><%= mail_to(comment.email, comment.name) %></strong> wrote
+          <%= time_ago_in_words(comment.created_at) %> ago 
+          <strong><%= mail_to(comment.email, comment.author) %></strong> wrote
         </em>
       </div>
     </div>

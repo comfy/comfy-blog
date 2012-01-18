@@ -1,6 +1,0 @@
-<h1>Edit comment</h1>
-<h2><%= @post.title %></h2>
-
-<%= sofa_blog_form_for @comment, :as => :comment, :url => {:action => :update} do |form| %>
-  <%= render :partial => form %>
-<% end %>

@@ -1,74 +1,34 @@
 class Blog::Admin::CommentsController < Blog::Admin::BaseController
   
-  before_filter :load_post
-  before_filter :load_comment,        :only => [:show, :edit, :update, :destroy, :approve, :disapprove]
-  before_filter :build_comment,  :only => [:new, :create]
+  before_filter :load_post,     :only => [:index]
+  before_filter :load_comment,  :only => [:destroy, :publish]
   
   def index
-    @comments = SofaBlog::Comment.order('created_at DESC')
-  end
-  
-  def show
-    render
-  end
-  
-  def new
-    render
-  end
-  
-  def create
-    @comment.save!
-    flash[:notice] = 'Comment created'
-    redirect_to :action => :index
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to create Comment'
-    render :action => :new
-  end
-  
-  def edit
-    render
-  end
-  
-  def update
-    @comment.update_attributes(params[:comment])
-    flash[:notice] = 'Comment updated'
-    redirect_to :action => :index
-  rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to update Comment'
-    render :action => :edit
+    @comments = @post ? @post.comments : Blog::Comment.all
   end
   
   def destroy
     @comment.destroy
-    flash[:notice] = 'Comment removed'
-    redirect_to :action => :index
   end
   
-  def approve
-    @comment.approve!
-  end
-  
-  def disapprove
-    @comment.disapprove!
+  def publish
+    @comment.update_attribute(:is_published, true)
   end
   
 protected
   
   def load_post
-    @post = SofaBlog::Post.find(params[:post_id])
+    return unless params[:post_id]
+    @post = Blog::Post.find(params[:post_id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Blog post not found'
-    redirect_to sofa_blog_admin_posts_path
-  end
-
-  def load_comment
-    @comment = SofaBlog::Comment.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Comment not found'
+    flash[:error] = 'Blog Post not found'
     redirect_to :action => :index
   end
   
-  def build_comment
-    @comment = @post.comments.build(params[:comment])
+  def load_comment
+    @comment = Blog::Comment.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    # ... do nothing
   end
+  
 end
