@@ -1,16 +1,16 @@
-class SofaBlog::PostsController < ApplicationController
+class Blog::PostsController < ApplicationController
   
   layout SofaBlog.config.public_layout
   
   def index
-    @posts = SofaBlog::Post.published.paginate(
+    @posts = Blog::Post.published.paginate(
       :page     => params[:page],
       :per_page => SofaBlog.config.posts_per_page
     )
   end
   
   def show
-    @post = SofaBlog::Post.published.find(params[:id])
+    @post = Blog::Post.published.find(params[:id])
     
   rescue ActiveRecord::RecordNotFound
     if defined? ComfortableMexicanSofa

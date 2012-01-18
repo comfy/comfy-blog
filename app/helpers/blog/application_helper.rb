@@ -1,4 +1,4 @@
-module SofaBlog::ApplicationHelper
+module Blog::ApplicationHelper
   
   def sofa_blog_form_for(record_or_name_or_array, *args, &proc)
     options = args.extract_options!

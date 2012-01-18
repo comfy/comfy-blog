@@ -1,4 +1,4 @@
-class SofaBlog::Admin::CommentsController < SofaBlog::Admin::BaseController
+class Blog::Admin::CommentsController < Blog::Admin::BaseController
   
   before_filter :load_post
   before_filter :load_comment,        :only => [:show, :edit, :update, :destroy, :approve, :disapprove]

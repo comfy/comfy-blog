@@ -1,3 +1,0 @@
-class SofaBlog::Admin::BaseController < SofaBlog.config.admin_controller.to_s.constantize
-  # ...
-end
