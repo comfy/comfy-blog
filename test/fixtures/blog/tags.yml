@@ -3,7 +3,7 @@ tag:
   taggings_count: 1
   is_category: false
   
-duplicate_tag:
+duplicate:
   name: duplicate
   taggings_count: 0
   is_category: false

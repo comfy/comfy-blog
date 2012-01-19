@@ -34,8 +34,9 @@ class TagTest < ActiveSupport::TestCase
   end
   
   def test_scopes
-    assert_equal 1, Blog::Tag.tags.count
+    assert_equal 2, Blog::Tag.tags.count
     assert_equal blog_tags(:tag), Blog::Tag.tags.first
+    assert_equal blog_tags(:duplicate), Blog::Tag.tags.last
     
     assert_equal 1, Blog::Tag.categories.count
     assert_equal blog_tags(:category), Blog::Tag.categories.first
