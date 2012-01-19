@@ -6,6 +6,11 @@
     </div>
     <div class='label'>
       <%= link_to tag.name, :action => :edit, :id => tag %>
+      <div class='sublabel'>
+        <% if tag.is_category? %>
+          Category
+        <% end %>
+      </div>
     </div>
   </div>
 </li>

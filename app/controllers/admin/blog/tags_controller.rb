@@ -4,14 +4,15 @@ class Admin::Blog::TagsController < ApplicationController
   before_filter :load_tag,  :only => [:edit, :update, :destroy]
 
   def index
-    @tags = Blog::Tag.tags
-    @categories = Blog::Tag.categories
+    @tags = Blog::Tag.all
   end
   
   def edit
+    render
   end
   
   def new
+    render
   end
   
   def update
@@ -41,8 +42,7 @@ class Admin::Blog::TagsController < ApplicationController
   end
 
 protected
-
-  # --- Before Filters ----------------------------------------------
+  
   def build_tag
     @tag = Blog::Tag.new(params[:tag])
   end
