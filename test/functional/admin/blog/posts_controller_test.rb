@@ -30,9 +30,8 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
         :title    => 'Test',
         :content  => 'Content'
       }
-      assert_response :success
-      assert_template :new
-      assert assigns(:post)
+      assert_response :redirect
+      assert_redirected_to :action => :edit
       assert_equal 'Blog Post created', flash[:notice]
     end
   end

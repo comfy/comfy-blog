@@ -14,7 +14,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   def create
     @post.save!
     flash.now[:notice] = 'Blog Post created'
-    render :action => :new
+    redirect_to :action => :edit, :id => @post
     
   rescue ActiveRecord::RecordInvalid
     flash.now[:error] = 'Failed to create Blog Post'

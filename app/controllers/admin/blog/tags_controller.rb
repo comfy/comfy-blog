@@ -4,7 +4,7 @@ class Admin::Blog::TagsController < Admin::Blog::BaseController
   before_filter :load_tag,  :only => [:edit, :update, :destroy]
 
   def index
-    @tags = Blog::Tag.all
+    @tags = Blog::Tag.order('is_category DESC', :name)
   end
   
   def edit
