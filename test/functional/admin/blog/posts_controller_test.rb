@@ -31,7 +31,7 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
         :content  => 'Content'
       }
       assert_response :redirect
-      assert_redirected_to :action => :edit
+      assert_redirected_to :action => :edit, :id => assigns(:post)
       assert_equal 'Blog Post created', flash[:notice]
     end
   end
@@ -65,9 +65,8 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
     put :update, :id => post, :post => {
       :title => 'Updated Post'
     }
-    assert_response :success
-    assert_template :edit
-    assert assigns(:post)
+    assert_response :redirect
+    assert_redirected_to :action => :edit, :id => assigns(:post)
     assert_equal 'Blog Post updated', flash[:notice]
     
     post.reload
