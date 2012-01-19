@@ -16,12 +16,24 @@ class CommentTest < ActiveSupport::TestCase
   
   def test_creation
     assert_difference 'Blog::Comment.count' do
-      blog_posts(:default).comments.create(
+      comment = blog_posts(:default).comments.create(
         :content  => 'Test Content',
         :author   => 'Tester',
         :email    => 'test@test.test'
       )
+      assert !comment.is_published?
     end
+  end
+  
+  def test_creation_with_auto_publishing
+    ComfyBlog.config.auto_publish_comments = true
+    
+    comment = blog_posts(:default).comments.create(
+      :content  => 'Test Content',
+      :author   => 'Tester',
+      :email    => 'test@test.test'
+    )
+    assert comment.is_published?
   end
   
   def test_scope_published

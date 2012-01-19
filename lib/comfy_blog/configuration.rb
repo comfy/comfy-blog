@@ -20,14 +20,19 @@ module ComfyBlog
     # Number of posts per page. Default is 10
     attr_accessor :posts_per_page
     
+    # Comments can be automatically approved/published by changing this setting
+    # Default is false.
+    attr_accessor :auto_publish_comments
+    
     # Configuration defaults
     def initialize
-      @admin_route_prefix   = 'admin'
-      @public_route_prefix  = ''
-      @admin_controller     = 'ApplicationController'
-      @form_builder         = 'ComfyBlog::FormBuilder'
-      @public_layout        = 'application'
-      @posts_per_page       = 10
+      @admin_route_prefix     = 'admin'
+      @public_route_prefix    = ''
+      @admin_controller       = 'ApplicationController'
+      @form_builder           = 'ComfyBlog::FormBuilder'
+      @public_layout          = 'application'
+      @posts_per_page         = 10
+      @auto_publish_comments  = false
     end
   end
 end
