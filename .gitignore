@@ -6,3 +6,4 @@ tmp/
 .DS_Store
 pkg/
 Gemfile.lock
+.bash_profile

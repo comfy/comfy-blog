@@ -7,7 +7,7 @@ class Blog::Tag < ActiveRecord::Base
   has_many :posts, :through => :taggings
     
   # -- Validations ----------------------------------------------------------
-  validates_uniqueness_of :name
+  validates_uniqueness_of :name, :case_sensitive => false
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :strip_name
@@ -19,7 +19,7 @@ class Blog::Tag < ActiveRecord::Base
 protected
   
   def strip_name
-    self.name.strip!
+    self.name = self.name.strip if self.name
   end
   
 end

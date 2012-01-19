@@ -1,0 +1,18 @@
+<%= form.text_field :name %>
+<%= form.check_box :is_category %>
+
+<% if defined?(ComfortableMexicanSofa) %>
+  <% content_for :right_column do %>
+    <%= render :partial => 'cms_admin/files/index' %>
+  <% end %>
+  
+  <%= cms_hook :blog_tag, :locals => { :form => form } %>
+  
+  <%= form.simple_field nil, nil, :class => 'submit_element' do %>
+    <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag'), :disable_builder => true %>
+  <% end %>
+  
+<% else %>
+  <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag') %>
+<% end %>
+

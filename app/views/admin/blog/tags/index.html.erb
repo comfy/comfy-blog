@@ -1,0 +1,18 @@
+<%= link_to 'Add new blog tag', {:action => :new}, :class => 'big button' %>
+
+<h1>Blog Categories</h1>
+
+<ul class='list categories'>
+  <% @categories.each do |tag| %>
+    <%= render :partial => 'tag', :object => tag %>
+  <% end %>
+</ul>
+
+
+<h1>Blog Tags</h1>
+
+<ul class='list tags'>
+  <% @tags.each do |tag| %>
+    <%= render :partial => 'tag', :object => tag %>
+  <% end %>
+</ul>
