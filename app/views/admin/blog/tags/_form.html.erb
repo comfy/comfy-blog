@@ -3,10 +3,18 @@
 
 <% if defined?(ComfortableMexicanSofa) %>
   <%= form.simple_field nil, nil, :class => 'submit_element' do %>
-    <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag'), :disable_builder => true %>
+    <% if @tag.is_category %>
+      <%= form.submit (@tag.new_record? ? 'Create category' : 'Update category'), :disable_builder => true %>
+    <% else %>
+      <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag'), :disable_builder => true %>
+    <% end %>
   <% end %>
   
 <% else %>
-  <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag') %>
+  <% if @tag.is_category %>
+    <%= form.submit (@tag.new_record? ? 'Create category' : 'Update category') %>
+  <% else %>
+    <%= form.submit (@tag.new_record? ? 'Create tag' : 'Update tag') %>
+  <% end %>
 <% end %>
 
