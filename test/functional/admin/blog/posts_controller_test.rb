@@ -21,7 +21,7 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
     assert_response :success
     assert assigns(:post)
     assert_template :new
-    assert_select "form[action='/admin/posts']"
+    assert_select "form[action='/admin/blog/posts']"
   end
   
   def test_creation

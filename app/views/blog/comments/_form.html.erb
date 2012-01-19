@@ -1,0 +1,6 @@
+<%= comfy_blog_form_for :comment, :remote => true, :url => blog_post_comments_path(@post), :html => { :id => 'comment' } do |form| %>
+  <%= form.text_field :author %>
+  <%= form.text_field :email %>
+  <%= form.text_area :content %>
+  <%= form.submit 'Submit' %>
+<% end %>

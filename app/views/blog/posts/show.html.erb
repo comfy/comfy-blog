@@ -1,1 +1,9 @@
-<%= render :partial => 'post', :object => @post %>
+<%= render :partial => 'blog/posts/post', :object => @post %>
+
+<div id='comments'>
+  <% @post.comments.each do |comment| %>
+    <%= render :partial => 'blog/comments/comment', :object => comment %>
+  <% end %>
+</div>
+
+<%= render :partial => 'blog/comments/form' %>

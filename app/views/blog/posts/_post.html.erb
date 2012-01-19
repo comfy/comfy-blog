@@ -1,18 +1,8 @@
 <div class='post'>
-  <h1><%= post.title %></h1>
+  <h1><%= @post ? post.title : link_to(post.title, blog_post_path(post))%></h1>
   <div class='author'><%= post.author %></div>
   <div class='date'><%= post.created_at %></div>
   <div class='content'>
     <%= post.content.html_safe %>
   </div>
-<div>
-  
-<% if @post %>
-  <div class='comments'>
-    <% @post.comments.each do |comment| %>
-      <div class='comment'>
-        <%= comment.content %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+</div>

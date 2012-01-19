@@ -10,7 +10,7 @@ module Blog::ApplicationHelper
   end
   
   def blog_post_path(post)
-    
+    dated_blog_post_path(post.year, post.month, post.slug)
   end
   
 end
