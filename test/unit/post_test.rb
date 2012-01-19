@@ -127,4 +127,14 @@ class PostTest < ActiveSupport::TestCase
     assert_equal 0, Blog::Post.categorized_as('invalid').count
   end
   
+  def test_tag_names
+    assert_equal 'tag', blog_posts(:default).tag_names
+  end
+  
+  def test_category_ids
+    assert_equal ({
+      blog_tags(:category).id.to_s => '1'
+    }), blog_posts(:default).category_ids
+  end
+  
 end

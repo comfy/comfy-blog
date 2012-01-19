@@ -47,7 +47,7 @@ class Blog::Post < ActiveRecord::Base
   end
   
   def category_ids
-    @category_ids ||= { }
+    @category_ids ||= self.tags.categories.inject({}){|h, c| h[c.id.to_s] = '1'; h}
   end
   
 protected
@@ -74,7 +74,7 @@ protected
       case flag.to_i
       when 1
         if category = Blog::Tag.categories.find_by_id(category_id)
-          category.taggings.create(:post => self)
+          category.taggings.create(:post => self) rescue nil
         end
       when 0
         self.taggings.for_categories.where(:tag_id => category_id).destroy_all

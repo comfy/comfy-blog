@@ -17,7 +17,7 @@ class ActiveSupport::TestCase
       config.admin_route_prefix     = 'admin'
       config.public_route_prefix    = ''
       config.admin_controller       = 'ApplicationController'
-      config.form_builder           = 'ActionView::Helpers::FormBuilder'
+      config.form_builder           = 'ComfyBlog::FormBuilder'
       config.public_layout          = 'application'
       config.posts_per_page         = 10
       config.auto_publish_comments  =  false
