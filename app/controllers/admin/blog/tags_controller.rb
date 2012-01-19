@@ -1,4 +1,4 @@
-class Admin::Blog::TagsController < ApplicationController
+class Admin::Blog::TagsController < Admin::Blog::BaseController
   
   before_filter :build_tag, :only => [:new, :create]
   before_filter :load_tag,  :only => [:edit, :update, :destroy]
