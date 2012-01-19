@@ -6,5 +6,7 @@
 </h1>
 
 <ul class='list comments'>
-  <%= render @comments %>
+  <% @comments.each do |comment| %>
+    <%= render :partial => 'comment', :object => comment %>
+  <% end %>
 </ul>

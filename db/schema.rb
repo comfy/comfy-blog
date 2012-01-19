@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "blog_comments", ["post_id", "is_published", "created_at"], :name => "index_blog_comments_on_post_published_created"
 
   create_table "blog_posts", :force => true do |t|
-    t.string   "title",                                           :null => false
-    t.string   "slug",                                            :null => false
+    t.string   "title",                                          :null => false
+    t.string   "slug",                                           :null => false
     t.text     "content"
     t.string   "excerpt",      :limit => 1024
     t.string   "author"
-    t.integer  "year",         :limit => 4,                       :null => false
-    t.integer  "month",        :limit => 2,                       :null => false
-    t.boolean  "is_published",                 :default => false, :null => false
+    t.integer  "year",         :limit => 4,                      :null => false
+    t.integer  "month",        :limit => 2,                      :null => false
+    t.boolean  "is_published",                 :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
