@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "comfy_blog"
+  s.name = %q{comfy_blog}
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Oleg Khabarov", "The Working Group Inc."]
-  s.date = "2012-01-18"
-  s.description = ""
-  s.email = "oleg@twg.ca"
+  s.authors = [%q{Oleg Khabarov}, %q{The Working Group Inc.}]
+  s.date = %q{2012-01-19}
+  s.description = %q{}
+  s.email = %q{oleg@twg.ca}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -27,10 +27,12 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/comfy_blog/admin.css",
     "app/assets/stylesheets/comfy_blog/application.css",
     "app/assets/stylesheets/comfy_blog/reset.css",
+    "app/controllers/admin/blog/base_controller.rb",
+    "app/controllers/admin/blog/comments_controller.rb",
+    "app/controllers/admin/blog/posts_controller.rb",
+    "app/controllers/admin/blog/tags_controller.rb",
     "app/controllers/application_controller.rb",
-    "app/controllers/blog/admin/base_controller.rb",
-    "app/controllers/blog/admin/comments_controller.rb",
-    "app/controllers/blog/admin/posts_controller.rb",
+    "app/controllers/blog/comments_controller.rb",
     "app/controllers/blog/posts_controller.rb",
     "app/helpers/blog/application_helper.rb",
     "app/models/.gitkeep",
@@ -38,17 +40,25 @@ Gem::Specification.new do |s|
     "app/models/blog/post.rb",
     "app/models/blog/tag.rb",
     "app/models/blog/tagging.rb",
-    "app/views/blog/admin/_html_head.html.erb",
-    "app/views/blog/admin/_navigation.html.erb",
-    "app/views/blog/admin/comments/_comment.html.erb",
-    "app/views/blog/admin/comments/destroy.js.erb",
-    "app/views/blog/admin/comments/index.html.erb",
-    "app/views/blog/admin/comments/publish.js.erb",
-    "app/views/blog/admin/posts/_form.html.erb",
-    "app/views/blog/admin/posts/_post.html.erb",
-    "app/views/blog/admin/posts/edit.html.erb",
-    "app/views/blog/admin/posts/index.html.erb",
-    "app/views/blog/admin/posts/new.html.erb",
+    "app/views/admin/blog/_html_head.html.erb",
+    "app/views/admin/blog/_navigation.html.erb",
+    "app/views/admin/blog/comments/_comment.html.erb",
+    "app/views/admin/blog/comments/destroy.js.erb",
+    "app/views/admin/blog/comments/index.html.erb",
+    "app/views/admin/blog/comments/publish.js.erb",
+    "app/views/admin/blog/posts/_form.html.erb",
+    "app/views/admin/blog/posts/_post.html.erb",
+    "app/views/admin/blog/posts/edit.html.erb",
+    "app/views/admin/blog/posts/index.html.erb",
+    "app/views/admin/blog/posts/new.html.erb",
+    "app/views/admin/blog/tags/_form.html.erb",
+    "app/views/admin/blog/tags/_tag.html.erb",
+    "app/views/admin/blog/tags/edit.html.erb",
+    "app/views/admin/blog/tags/index.html.erb",
+    "app/views/admin/blog/tags/new.html.erb",
+    "app/views/blog/comments/_comment.html.erb",
+    "app/views/blog/comments/_form.html.erb",
+    "app/views/blog/comments/create.js.erb",
     "app/views/blog/posts/_post.html.erb",
     "app/views/blog/posts/index.html.erb",
     "app/views/blog/posts/show.html.erb",
@@ -84,8 +94,10 @@ Gem::Specification.new do |s|
     "test/fixtures/blog/taggings.yml",
     "test/fixtures/blog/tags.yml",
     "test/functional/.gitkeep",
-    "test/functional/blog/admin/comments_controller_test.rb",
-    "test/functional/blog/admin/posts_controller_test.rb",
+    "test/functional/admin/blog/comments_controller_test.rb",
+    "test/functional/admin/blog/posts_controller_test.rb",
+    "test/functional/admin/blog/tags_controller_test.rb",
+    "test/functional/blog/comments_controller_test.rb",
     "test/functional/blog/posts_controller_test.rb",
     "test/test_helper.rb",
     "test/unit/.gitkeep",
@@ -95,11 +107,11 @@ Gem::Specification.new do |s|
     "test/unit/tag_test.rb",
     "test/unit/tagging_test.rb"
   ]
-  s.homepage = "http://github.com/comfy/comfy-blog"
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "ComfyBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)"
+  s.homepage = %q{http://github.com/comfy/comfy-blog}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.9}
+  s.summary = %q{ComfyBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

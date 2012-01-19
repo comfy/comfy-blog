@@ -6,12 +6,12 @@ class BlogGenerator < Rails::Generators::Base
   source_root File.expand_path('../../..', __FILE__) 
   
   def generate_migration
-    destination   = File.expand_path('db/migrate/01_create_sofa_blog.rb', self.destination_root)
+    destination   = File.expand_path('db/migrate/01_create_comfy_blog.rb', self.destination_root)
     migration_dir = File.dirname(destination)
-    destination   = self.class.migration_exists?(migration_dir, 'create_sofa_blog')
+    destination   = self.class.migration_exists?(migration_dir, 'create_comfy_blog')
   
     if destination
-      puts "\e[0m\e[31mFound existing create_sofa_blog.rb migration. Remove it if you want to regenerate.\e[0m"
+      puts "\e[0m\e[31mFound existing create_comfy_blog.rb migration. Remove it if you want to regenerate.\e[0m"
     else
       migration_template 'db/migrate/01_create_comfy_blog.rb', 'db/migrate/create_comfy_blog.rb'
     end

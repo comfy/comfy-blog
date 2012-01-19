@@ -1,6 +1,6 @@
 # Loading engine only if this is not a standalone installation
 unless defined? ComfyBlog::Application
-  require File.expand_path('sofa_blog/engine', File.dirname(__FILE__))
+  require File.expand_path('comfy_blog/engine', File.dirname(__FILE__))
 end
 
 [ 'comfy_blog/core_ext/string',
