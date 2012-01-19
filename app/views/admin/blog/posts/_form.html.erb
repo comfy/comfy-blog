@@ -1,5 +1,16 @@
 <%= form.text_field :title %>
 <%= form.text_field :author %>
+<% if Blog::Tag.categories.present? %>
+  <%= form.simple_field 'Categories' do %>
+    <% Blog::Tag.categories.each do |category| %>
+      <%= hidden_field_tag "post[category_ids][#{category.id}]", 0, :id => nil %>
+      <label>
+        <%= check_box_tag "post[category_ids][#{category.id}]", 1, @post.category_ids[category.id.to_s].to_i == 1, :id => nil %>
+        <%= category.name %>
+      </label>
+    <% end %>
+  <% end %>
+<% end %>
 <%= form.text_field :tag_names, :label => 'Tags' %>
 <%= form.text_area :content, :class => 'rich_text' %>
 <%= form.text_field :excerpt %>

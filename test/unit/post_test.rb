@@ -64,6 +64,15 @@ class PostTest < ActiveSupport::TestCase
     end
   end
   
+  def test_sync_tags_duplicate
+    post = blog_posts(:default)
+    
+    post.tag_names = 'tag, category'
+    assert_no_difference ['Blog::Tagging.count'] do
+      post.save!
+    end
+  end
+  
   def test_sync_categories
     post = blog_posts(:default)
     assert_equal 1, post.tags.categories.count

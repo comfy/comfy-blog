@@ -38,12 +38,11 @@ class CreateComfyBlog < ActiveRecord::Migration
     add_index :blog_tags, :taggings_count
     
     create_table :blog_taggings do |t|
-      t.integer   :post_id,     :null => false
-      t.integer   :tag_id,      :null => false
-      t.datetime  :created_at
+      t.integer   :post_id, :null => false
+      t.integer   :tag_id,  :null => false
     end
-    add_index :blog_taggings, [:post_id, :tag_id, :created_at], :unique => true,
-      :name => 'index_blog_taggings_on_post_tag_created'
+    add_index :blog_taggings, [:post_id, :tag_id], :unique => true,
+      :name => 'index_blog_taggings_on_post_tag'
   end
   
   def self.down

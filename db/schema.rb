@@ -44,12 +44,11 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "blog_posts", ["is_published", "year", "month", "slug"], :name => "index_blog_posts_on_published_year_month_slug"
 
   create_table "blog_taggings", :force => true do |t|
-    t.integer  "post_id",    :null => false
-    t.integer  "tag_id",     :null => false
-    t.datetime "created_at"
+    t.integer "post_id", :null => false
+    t.integer "tag_id",  :null => false
   end
 
-  add_index "blog_taggings", ["post_id", "tag_id", "created_at"], :name => "index_blog_taggings_on_post_tag_created", :unique => true
+  add_index "blog_taggings", ["post_id", "tag_id"], :name => "index_blog_taggings_on_post_tag", :unique => true
 
   create_table "blog_tags", :force => true do |t|
     t.string  "name",                              :null => false

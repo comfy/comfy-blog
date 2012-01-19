@@ -46,6 +46,10 @@ class Blog::Post < ActiveRecord::Base
     @tag_names ||= self.tags.tags.collect(&:name).join(', ')
   end
   
+  def category_ids
+    @category_ids ||= { }
+  end
+  
 protected
   
   def set_slug
@@ -61,12 +65,12 @@ protected
     return unless tag_names
     self.taggings.for_tags.destroy_all
     self.tag_names.split(',').map{ |t| t.strip }.uniq.each do |tag_name|
-      self.tags << Blog::Tag.find_or_create_by_name(tag_name)
+      self.tags << Blog::Tag.find_or_create_by_name(tag_name) rescue nil
     end
   end
   
   def sync_categories
-    (self.category_ids || {}).each do |category_id, flag|
+    self.category_ids.each do |category_id, flag|
       case flag.to_i
       when 1
         if category = Blog::Tag.categories.find_by_id(category_id)
