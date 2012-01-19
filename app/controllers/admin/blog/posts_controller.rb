@@ -1,4 +1,4 @@
-class Blog::Admin::PostsController < Blog::Admin::BaseController
+class Admin::Blog::PostsController < Admin::Blog::BaseController
   
   before_filter :build_post, :only => [:new, :create]
   before_filter :load_post,  :only => [:edit, :update, :destroy]

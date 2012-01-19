@@ -1,3 +1,0 @@
-class Blog::Admin::BaseController < ComfyBlog.config.admin_controller.to_s.constantize
-  # ...
-end

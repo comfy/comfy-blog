@@ -1,6 +1,6 @@
 require File.expand_path('../../../test_helper', File.dirname(__FILE__))
 
-class Blog::Admin::PostsControllerTest < ActionController::TestCase
+class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_get_index
     get :index

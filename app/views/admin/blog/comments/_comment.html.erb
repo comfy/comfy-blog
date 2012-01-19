@@ -3,9 +3,9 @@
     <div class='icon' style="background-image:url(http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(comment.email.downcase)%>?s=28&d=identicon)"></div>
     <div class='action_links'>
       <% unless comment.is_published? %>
-        <%= link_to 'Publish', publish_admin_comment_path(comment), :remote => true, :method => :put %>
+        <%= link_to 'Publish', publish_admin_blog_comment_path(comment), :remote => true, :method => :put %>
       <% end %>
-      <%= link_to 'Delete', admin_comment_path(comment), :method => 'delete', :confirm => 'Are you sure?' %>
+      <%= link_to 'Delete', admin_blog_comment_path(comment), :method => 'delete', :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <div class='sublabel'>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  scope :module => :blog do
-    namespace :admin, :path => ComfyBlog.config.admin_route_prefix do
+  namespace :admin, :path => ComfyBlog.config.admin_route_prefix do
+    namespace :blog do
       resources :posts, :except => [:show] do
         resources :comments, :only => [:index]
       end
@@ -9,8 +9,8 @@ Rails.application.routes.draw do
         put :publish, :on => :member
       end
       resources :tags, :except => [:show]
-    end unless ComfyBlog.config.admin_route_prefix.blank?
-  end
+    end
+  end unless ComfyBlog.config.admin_route_prefix.blank?
   
   scope ComfyBlog.config.public_route_prefix, :module => :blog do
     get ''                   => 'posts#index', :as => :blog_posts
@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       o.get ':year/:month'        => 'posts#index', :as => :month_blog_posts
       o.get ':year/:month/:slug'  => 'posts#show',  :as => :dated_blog_post
     end
+    
+    post ':post_id/comments' => 'comments#create', :as => :blog_post_comments
     
     get ':id' => 'posts#show', :as => :blog_post
   end

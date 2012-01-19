@@ -1,12 +1,12 @@
 <li>
   <div class='item'>
     <div class='action_links'>
-      <%= link_to pluralize(post.comments.count, 'comment'), admin_post_comments_path(post) %>
-      <%= link_to 'Edit', edit_admin_post_path(post) %>
-      <%= link_to 'Delete', admin_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
+      <%= link_to pluralize(post.comments.count, 'comment'), admin_blog_post_comments_path(post) %>
+      <%= link_to 'Edit', edit_admin_blog_post_path(post) %>
+      <%= link_to 'Delete', admin_blog_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
-      <%= link_to post.title.titleize, edit_admin_post_path(post) %>
+      <%= link_to post.title.titleize, edit_admin_blog_post_path(post) %>
       <div class='sublabel'>
         Published <%= time_ago_in_words(post.updated_at) %> ago
         by <strong><%= post.author %></strong>
