@@ -1,0 +1,5 @@
+<h1>New Blog Post</h1>
+
+<%= comfy_blog_form_for @tag, :as => :tag, :url => {:action => :create} do |form| %>
+  <%= render :partial => form %>
+<% end %>

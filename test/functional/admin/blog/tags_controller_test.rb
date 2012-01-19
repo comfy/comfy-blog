@@ -7,6 +7,7 @@ class Admin::Blog::TagsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :index
     assert assigns(:tags)
+    assert assigns(:categories)
   end
 
   def test_get_edit
@@ -16,11 +17,40 @@ class Admin::Blog::TagsControllerTest < ActionController::TestCase
     assert assigns(:tag)
   end
   
-  def test_get_create
-    get :create
+  def test_get_new
+    get :new
     assert_response :success
-    assert_template :create
+    assert_template :new
     assert assigns(:tag)
+  end
+
+  def test_update
+    tag = blog_tags(:tag)
+    assert_no_difference 'Blog::Tag.count' do
+      put :update, :id => tag, :tag => {
+        :name => 'Updated'
+      }
+      assert_response :redirect
+      assert_redirected_to :action => :index
+      
+      tag.reload
+      assert_equal 'Updated', tag.name 
+    end
+  end
+  
+  def test_update_failure
+    tag = blog_tags(:tag)
+    assert_no_difference 'Blog::Tag.count' do
+      put :update, :id => tag, :tag => {
+        :name => 'Duplicate' # Notice case
+      }
+      assert_response :success
+      assert_template :edit
+      assert_equal 'Failed to update Blog Tag', flash[:error]
+      
+      tag.reload
+      assert_equal 'tag', tag.name 
+    end
   end
 
   def test_creation
@@ -28,22 +58,31 @@ class Admin::Blog::TagsControllerTest < ActionController::TestCase
       post :create, :tag => {
         :name => 'test'
       }
-      assert_response :success
-      assert_template :new
+      assert_response :redirect
+      assert_redirected_to :action => :index
       assert assigns(:tag).valid?
-      assert_equals 'Blog Tag created', flash[:notice]
+      assert_equal 'Blog Tag created', flash[:notice]
     end
   end
   
   def test_creation_failure
     assert_no_difference 'Blog::Tag.count' do
       post :create, :tag => {
-        :name => 'tag'
+        :name => 'Duplicate'  # Notice case
       }
       assert_response :success
       assert_template :new
       assert assigns(:tag).invalid?
-      assert_equals 'Failed to create Blog Tag', flash[:notice]
+      assert_equal 'Failed to create Blog Tag', flash[:error]
+    end
+  end
+  
+  def test_destroy
+    assert_difference 'Blog::Tag.count', -1 do
+      delete :destroy, :id => blog_tags(:tag)
+      assert_response :redirect
+      assert_redirected_to :action => :index
+      assert_equal 'Blog Tag removed', flash[:notice]
     end
   end
   
