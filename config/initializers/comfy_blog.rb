@@ -10,7 +10,7 @@ ComfyBlog.configure do |config|
   #   config.form_builder = 'ComfyBlog::FormBuilder'
   
   # Set the public path if you have changed it
-  #   config.public_route_prefix = 'blog'
+  #   config.public_route_prefix = ''
 
   # Layout used for public posts/comments
   #   config.public_layout = 'application'
