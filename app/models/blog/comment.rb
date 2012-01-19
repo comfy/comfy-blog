@@ -8,6 +8,9 @@ class Blog::Comment < ActiveRecord::Base
   
   # -- Relationships --------------------------------------------------------
   belongs_to :post
+  
+  # -- Callbacks ------------------------------------------------------------
+  before_create :set_publish
     
   # -- Validations ----------------------------------------------------------
   validates :post_id, :content, :author, :email, 
@@ -17,5 +20,12 @@ class Blog::Comment < ActiveRecord::Base
     
   # -- Scopes ---------------------------------------------------------------
   scope :published, where(:is_published => true)
+  
+protected
+  
+  def set_publish
+    self.is_published = ComfyBlog.config.auto_publish_comments
+    return
+  end
   
 end

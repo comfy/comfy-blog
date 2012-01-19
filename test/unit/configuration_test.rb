@@ -9,6 +9,7 @@ class ConfigurationTest < ActiveSupport::TestCase
     assert_equal 'ApplicationController',             config.admin_controller
     assert_equal 'ActionView::Helpers::FormBuilder',  config.form_builder
     assert_equal 10,                                  config.posts_per_page
+    assert_equal false,                               config.auto_publish_comments
   end
   
   def test_initialization_overrides
