@@ -7,7 +7,6 @@ class Admin::Blog::TagsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :index
     assert assigns(:tags)
-    assert assigns(:categories)
   end
 
   def test_get_edit
