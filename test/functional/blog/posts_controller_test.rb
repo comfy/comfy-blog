@@ -10,6 +10,14 @@ class Blog::PostsControllerTest < ActionController::TestCase
     assert_equal 1, assigns(:posts).size
   end
   
+  def test_get_index_as_rss
+    get :index, :format => :rss
+    assert_response :success
+    assert_template :index
+    assert assigns(:posts)
+    assert_equal 1, assigns(:posts).size
+  end
+  
   def test_get_index_with_unpublished
     blog_posts(:default).update_attribute(:is_published, false)
     get :index

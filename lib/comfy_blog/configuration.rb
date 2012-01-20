@@ -1,5 +1,12 @@
 module ComfyBlog
   class Configuration
+    
+    # Title of your Blog
+    attr_accessor :title
+    
+    # What is your blog all about
+    attr_accessor :description
+    
     # Default url to access admin area is http://yourhost/cms-admin/ 
     # You can change 'cms-admin' to 'admin', for example.
     attr_accessor :admin_route_prefix
@@ -26,6 +33,8 @@ module ComfyBlog
     
     # Configuration defaults
     def initialize
+      @title                  = 'ComfyBlog'
+      @description            = 'A Simple Blog'
       @admin_route_prefix     = 'admin'
       @public_route_prefix    = ''
       @admin_controller       = 'ApplicationController'

@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{comfy_blog}
+  s.name = "comfy_blog"
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Oleg Khabarov}, %q{The Working Group Inc.}]
-  s.date = %q{2012-01-19}
-  s.description = %q{}
-  s.email = %q{oleg@twg.ca}
+  s.authors = ["Oleg Khabarov", "The Working Group Inc."]
+  s.date = "2012-01-20"
+  s.description = ""
+  s.email = "oleg@twg.ca"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -61,6 +61,7 @@ Gem::Specification.new do |s|
     "app/views/blog/comments/create.js.erb",
     "app/views/blog/posts/_post.html.erb",
     "app/views/blog/posts/index.html.erb",
+    "app/views/blog/posts/index.rss.builder",
     "app/views/blog/posts/show.html.erb",
     "app/views/layouts/application.html.erb",
     "comfy_blog.gemspec",
@@ -99,6 +100,7 @@ Gem::Specification.new do |s|
     "test/functional/admin/blog/tags_controller_test.rb",
     "test/functional/blog/comments_controller_test.rb",
     "test/functional/blog/posts_controller_test.rb",
+    "test/integration/routing_test.rb",
     "test/test_helper.rb",
     "test/unit/.gitkeep",
     "test/unit/comment_test.rb",
@@ -107,11 +109,11 @@ Gem::Specification.new do |s|
     "test/unit/tag_test.rb",
     "test/unit/tagging_test.rb"
   ]
-  s.homepage = %q{http://github.com/comfy/comfy-blog}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.9}
-  s.summary = %q{ComfyBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)}
+  s.homepage = "http://github.com/comfy/comfy-blog"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.10"
+  s.summary = "ComfyBlog is a blog engine for Rails 3.1 apps (and ComfortableMexicanSofa)"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

@@ -18,10 +18,16 @@ Now you should be able to go to `/admin/blog/posts` and add new blog posts.
 
 ## Configuration
 
+First thing you want to do is change title and description of the blog.
+For that you need to adjust `comfy_blog` initializer.
+
+    config.title        = 'ComfyBlog'
+    config.description  = 'A Simple Blog'
+
 You'll notice that you can access blog's admin area without any type of authentication.
 This is because ComfyBlog doesn't deal with users, it only knows how to save and show 
 blog posts. You probably want to put blog's admin controllers behind your controller
-that handles authentication. For that you need to adjust `comfy_blog` initializer.
+that handles authentication. 
     
     config.admin_controller = 'YourAdminBaseController'
     

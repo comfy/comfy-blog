@@ -4,6 +4,8 @@ class ConfigurationTest < ActiveSupport::TestCase
   
   def test_configuration
     assert config = ComfyBlog.configuration
+    assert_equal 'ComfyBlog',               config.title
+    assert_equal 'A Simple Blog',           config.description
     assert_equal 'admin',                   config.admin_route_prefix
     assert_equal '',                        config.public_route_prefix
     assert_equal 'ApplicationController',   config.admin_controller

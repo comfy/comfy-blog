@@ -14,6 +14,8 @@ class ActiveSupport::TestCase
   # resetting default configuration
   def reset_config
     ComfyBlog.configure do |config|
+      config.title                  = 'ComfyBlog'
+      config.description            = 'A Simple Blog'
       config.admin_route_prefix     = 'admin'
       config.public_route_prefix    = ''
       config.admin_controller       = 'ApplicationController'

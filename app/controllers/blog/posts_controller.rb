@@ -14,7 +14,14 @@ class Blog::PostsController < ApplicationController
       Blog::Post.published
     end
     
-    @posts = scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+    respond_to do |f|
+      f.html do
+        @posts = scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+      end
+      f.rss do
+        @posts = scope.limit(ComfyBlog.config.posts_per_page)
+      end
+    end
   end
   
   def show
