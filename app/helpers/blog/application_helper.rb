@@ -9,8 +9,11 @@ module Blog::ApplicationHelper
     )
   end
   
-  def blog_post_path(post)
-    dated_blog_post_path(post.year, post.month, post.slug)
+  # URL helpers for blog_post_(path/url)
+  %w(path url).each do |type|
+    define_method "blog_post_#{type}" do |post|
+      send("dated_blog_post_#{type}", post.year, post.month, post.slug)
+    end
   end
   
 end
