@@ -1,6 +1,6 @@
 class Blog::Comment < ActiveRecord::Base
   
-  set_table_name :blog_comments
+  self.table_name = :blog_comments
   
   attr_accessible :author,
                   :email,

@@ -1,6 +1,6 @@
 class Blog::Tag < ActiveRecord::Base
 
-  set_table_name :blog_tags
+  self.table_name = :blog_tags
 
   # -- Relationships --------------------------------------------------------
   has_many :taggings, :dependent => :destroy

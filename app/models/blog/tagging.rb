@@ -1,6 +1,6 @@
 class Blog::Tagging < ActiveRecord::Base
   
-  set_table_name :blog_taggings
+  self.table_name = :blog_taggings
   
   # -- Relationships --------------------------------------------------------
   belongs_to :post

@@ -1,6 +1,6 @@
 class Blog::Post < ActiveRecord::Base
   
-  set_table_name :blog_posts
+  self.table_name = :blog_posts
 
   # -- Attributes -----------------------------------------------------------
   attr_accessor :tag_names,
