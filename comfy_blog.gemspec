@@ -88,6 +88,7 @@ Gem::Specification.new do |s|
     "lib/comfy_blog/form_builder.rb",
     "lib/generators/README",
     "lib/generators/blog_generator.rb",
+    "lib/tasks/comfy_blog.rake",
     "script/rails",
     "test/fixtures/.gitkeep",
     "test/fixtures/blog/comments.yml",
