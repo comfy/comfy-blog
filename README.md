@@ -50,6 +50,7 @@ Since ComfyBlog is an engine, it allows you to completely overwrite views. It's 
 create `app/views/blog/posts/index.html.erb` (could be HAML or whatever you want) and structure
 it in any way you want. There's also `show.html.erb` and `_post.html.erb` available.
     
+Pagination is done using either [WillPaginate](https://github.com/mislav/will_paginate) or [Kaminari](https://github.com/amatsuda/kaminari). Add either in your Gemfile.
 You can control number of posts per page by adjusting this config:
     
     config.posts_per_page = 10

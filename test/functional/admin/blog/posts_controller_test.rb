@@ -10,7 +10,7 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_index_with_pagination
-    if defined? WillPaginate
+    if defined?(WillPaginate) || defined?(Kaminari)
       get :index, :page => 99
       assert_response :success
       assert assigns(:posts)

@@ -8,6 +8,8 @@
   <% end %>
 </ul>
 
-<% if defined? WillPaginate %>
+<% if defined?(WillPaginate) %>
   <%= will_paginate @posts %>
+<% elsif defined?(Kaminari)%>
+  <%= paginate @posts %>
 <% end %>

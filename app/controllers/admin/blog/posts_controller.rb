@@ -6,6 +6,8 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   def index
     @posts = if defined? WillPaginate
       Blog::Post.paginate :page => params[:page]
+    elsif defined? Kaminari
+      Blog::Post.page params[:page]
     else
       Blog::Post.all
     end

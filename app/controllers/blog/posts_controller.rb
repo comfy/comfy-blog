@@ -18,6 +18,8 @@ class Blog::PostsController < ApplicationController
       f.html do
         @posts = if defined? WillPaginate
           scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+        elsif defined? Kaminari
+          scope.page(params[:page]).per(ComfyBlog.config.posts_per_page)
         else
           scope
         end
