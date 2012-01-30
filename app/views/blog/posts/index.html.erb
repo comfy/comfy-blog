@@ -2,4 +2,6 @@
   <%= render :partial => 'post', :object => post %>
 <% end %>
 
-<%= will_paginate @posts, :previous_label => '« Older Posts', :next_label => 'Newer Posts »', :page_links => false %>
+<% if defined? WillPaginate %>
+  <%= will_paginate @posts, :previous_label => '« Older Posts', :next_label => 'Newer Posts »', :page_links => false %>
+<% end %>

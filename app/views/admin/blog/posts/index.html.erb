@@ -8,4 +8,6 @@
   <% end %>
 </ul>
 
-<%= will_paginate @posts %>
+<% if defined? WillPaginate %>
+  <%= will_paginate @posts %>
+<% end %>

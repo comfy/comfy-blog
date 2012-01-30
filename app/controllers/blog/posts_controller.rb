@@ -16,7 +16,11 @@ class Blog::PostsController < ApplicationController
     
     respond_to do |f|
       f.html do
-        @posts = scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+        @posts = if defined? WillPaginate
+          scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+        else
+          scope
+        end
       end
       f.rss do
         @posts = scope.limit(ComfyBlog.config.posts_per_page)

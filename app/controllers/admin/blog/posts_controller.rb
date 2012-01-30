@@ -4,7 +4,11 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   before_filter :load_post,  :only => [:edit, :update, :destroy]
   
   def index
-    @posts = Blog::Post.paginate :page => params[:page]
+    @posts = if defined? WillPaginate
+      Blog::Post.paginate :page => params[:page]
+    else
+      Blog::Post.all
+    end
   end
   
   def new

@@ -10,10 +10,12 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_index_with_pagination
-    get :index, :page => 99
-    assert_response :success
-    assert assigns(:posts)
-    assert_equal 0, assigns(:posts).size
+    if defined? WillPaginate
+      get :index, :page => 99
+      assert_response :success
+      assert assigns(:posts)
+      assert_equal 0, assigns(:posts).size
+    end
   end
   
   def test_get_new
