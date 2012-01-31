@@ -59,6 +59,10 @@ Posted comments will be sitting in the queue waiting to be published. You can au
 by setting this to `true`:
 
     config.auto_publish_comments = true
+    
+You can use Disqus to manage comments by setting the following config:
+
+    config.disqus_shortname = 'forum_shortname'
 
 
 ComfyBlog is released under the [MIT license](https://github.com/comfy/comfy-blog/raw/master/LICENSE) 

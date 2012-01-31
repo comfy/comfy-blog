@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   namespace :admin, :path => ComfyBlog.config.admin_route_prefix do
     namespace :blog do
       resources :posts, :except => [:show] do
-        resources :comments, :only => [:index]
+        unless ComfyBlog.disqus_enabled?
+          resources :comments, :only => [:index]
+        end
       end
-      resources :comments, :only => [:index, :destroy] do
-        put :publish, :on => :member
+      unless ComfyBlog.disqus_enabled?
+        resources :comments, :only => [:index, :destroy] do
+          put :publish, :on => :member
+        end
       end
       resources :tags, :except => [:show]
     end
@@ -23,7 +27,9 @@ Rails.application.routes.draw do
       o.get ':year/:month/:slug'  => 'posts#show',  :as => :dated_blog_post
     end
     
-    post ':post_id/comments' => 'comments#create', :as => :blog_post_comments
+    unless ComfyBlog.disqus_enabled?
+      post ':post_id/comments' => 'comments#create', :as => :blog_post_comments
+    end
     
     get ':id' => 'posts#show', :as => :blog_post
   end

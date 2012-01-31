@@ -31,6 +31,9 @@ module ComfyBlog
     # Default is false.
     attr_accessor :auto_publish_comments
     
+    # Comments can be fully handled by Disqus. Set this config to use it.
+    attr_accessor :disqus_shortname
+    
     # Configuration defaults
     def initialize
       @title                  = 'ComfyBlog'
@@ -42,6 +45,8 @@ module ComfyBlog
       @public_layout          = 'application'
       @posts_per_page         = 10
       @auto_publish_comments  = false
+      @disqus_shortname       = nil
     end
+    
   end
 end

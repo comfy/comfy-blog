@@ -22,7 +22,8 @@ class ActiveSupport::TestCase
       config.form_builder           = 'ComfyBlog::FormBuilder'
       config.public_layout          = 'application'
       config.posts_per_page         = 10
-      config.auto_publish_comments  =  false
+      config.auto_publish_comments  = false
+      config.disqus_shortname       = nil
     end
   end
   

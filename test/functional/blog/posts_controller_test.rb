@@ -100,4 +100,11 @@ class Blog::PostsControllerTest < ActionController::TestCase
     assert_response 404
   end
   
+  def test_get_show_with_disqus
+    ComfyBlog.config.disqus_shortname = 'test'
+    post = blog_posts(:default)
+    get :show, :year => post.year, :month => post.month, :slug => blog_posts(:default).slug
+    assert_response :success
+  end
+  
 end

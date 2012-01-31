@@ -1,7 +1,9 @@
 <li>
   <div class='item'>
     <div class='action_links'>
-      <%= link_to pluralize(post.comments.count, 'comment'), admin_blog_post_comments_path(post) %>
+      <% unless ComfyBlog.disqus_enabled? %>
+        <%= link_to pluralize(post.comments.count, 'comment'), admin_blog_post_comments_path(post) %>
+      <% end %>
       <%= link_to 'Edit', edit_admin_blog_post_path(post) %>
       <%= link_to 'Delete', admin_blog_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
     </div>
@@ -14,8 +16,7 @@
         <% post.tags.each do |tag| %>
           <span class="tag"><%= tag.name %></span>
         <% end %>
-        
-      </div>  
+      </div>
     </div>
   </div>
 </li>
