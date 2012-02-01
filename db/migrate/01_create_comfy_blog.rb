@@ -46,9 +46,9 @@ class CreateComfyBlog < ActiveRecord::Migration
   end
   
   def self.down
-    drop_table :sofa_blog_posts
-    drop_table :sofa_blog_comments
-    drop_table :sofa_blog_tags
-    drop_table :sofa_blog_taggings
+    drop_table :blog_posts
+    drop_table :blog_comments
+    drop_table :blog_tags
+    drop_table :blog_taggings
   end
 end
