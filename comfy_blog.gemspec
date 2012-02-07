@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "comfy_blog"
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Oleg Khabarov", "The Working Group Inc."]
-  s.date = "2012-01-31"
+  s.date = "2012-02-07"
   s.description = ""
   s.email = "oleg@twg.ca"
   s.extra_rdoc_files = [
@@ -24,9 +24,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "app/assets/images/rails.png",
     "app/assets/javascripts/application.js",
-    "app/assets/stylesheets/comfy_blog/admin.css",
-    "app/assets/stylesheets/comfy_blog/application.css",
-    "app/assets/stylesheets/comfy_blog/reset.css",
     "app/controllers/admin/blog/base_controller.rb",
     "app/controllers/admin/blog/comments_controller.rb",
     "app/controllers/admin/blog/posts_controller.rb",
@@ -40,7 +37,6 @@ Gem::Specification.new do |s|
     "app/models/blog/post.rb",
     "app/models/blog/tag.rb",
     "app/models/blog/tagging.rb",
-    "app/views/admin/blog/_html_head.html.erb",
     "app/views/admin/blog/_navigation.html.erb",
     "app/views/admin/blog/comments/_comment.html.erb",
     "app/views/admin/blog/comments/destroy.js.erb",
@@ -72,7 +68,6 @@ Gem::Specification.new do |s|
     "config/database.yml",
     "config/environment.rb",
     "config/environments/development.rb",
-    "config/environments/production.rb",
     "config/environments/test.rb",
     "config/initializers/comfy_blog.rb",
     "config/initializers/secret_token.rb",
@@ -87,8 +82,8 @@ Gem::Specification.new do |s|
     "lib/comfy_blog/core_ext/string.rb",
     "lib/comfy_blog/engine.rb",
     "lib/comfy_blog/form_builder.rb",
-    "lib/generators/README",
-    "lib/generators/blog_generator.rb",
+    "lib/generators/comfy/blog/README",
+    "lib/generators/comfy/blog/blog_generator.rb",
     "lib/tasks/comfy_blog.rake",
     "script/rails",
     "test/fixtures/.gitkeep",
