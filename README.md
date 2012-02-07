@@ -11,7 +11,7 @@ Add gem definition to your Gemfile:
 Then from the Rails project's root run:
     
     bundle install
-    rails g blog
+    rails g comfy:blog
     rake db:migrate
     
 Now you should be able to go to `/admin/blog/posts` and add new blog posts.
