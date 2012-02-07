@@ -21,7 +21,7 @@ class Admin::Blog::TagsController < Admin::Blog::BaseController
     redirect_to :action => :index
     
   rescue ActiveRecord::RecordInvalid
-    flash[:error] = 'Failed to update Blog Tag'
+    flash.now[:error] = 'Failed to update Blog Tag'
     render :action => :edit
   end
   
@@ -31,7 +31,7 @@ class Admin::Blog::TagsController < Admin::Blog::BaseController
     redirect_to :action => :index
     
   rescue ActiveRecord::RecordInvalid
-    flash[:error] = 'Failed to create Blog Tag'
+    flash.now[:error] = 'Failed to create Blog Tag'
     render :action => :new
   end
   

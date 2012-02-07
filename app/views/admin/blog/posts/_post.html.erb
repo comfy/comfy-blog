@@ -1,5 +1,6 @@
 <li>
   <div class='item'>
+    <div class='icon'></div>
     <div class='action_links'>
       <% unless ComfyBlog.disqus_enabled? %>
         <%= link_to pluralize(post.comments.count, 'comment'), admin_blog_post_comments_path(post) %>

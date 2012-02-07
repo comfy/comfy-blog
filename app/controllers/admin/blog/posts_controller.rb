@@ -23,7 +23,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
     redirect_to :action => :edit, :id => @post
     
   rescue ActiveRecord::RecordInvalid
-    flash[:error] = 'Failed to create Blog Post'
+    flash.now[:error] = 'Failed to create Blog Post'
     render :action => :new
   end
   
@@ -37,7 +37,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
     redirect_to :action => :edit, :id => @post
     
   rescue ActiveRecord::RecordInvalid
-    flash[:error] = 'Failed to update Blog Post'
+    flash.now[:error] = 'Failed to update Blog Post'
     render :action => :edit
   end
   

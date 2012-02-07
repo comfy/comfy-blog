@@ -13,7 +13,6 @@ module ComfyBlog
         end
         # Adding view hooks
         ComfortableMexicanSofa::ViewHooks.add(:navigation, '/admin/blog/navigation')
-        ComfortableMexicanSofa::ViewHooks.add(:html_head, '/admin/blog/html_head')
       end
     end
   end
