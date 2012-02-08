@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "comfy_blog"
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Oleg Khabarov", "The Working Group Inc."]
-  s.date = "2012-02-07"
+  s.date = "2012-02-08"
   s.description = ""
   s.email = "oleg@twg.ca"
   s.extra_rdoc_files = [
