@@ -1,4 +1,5 @@
-<%= form.text_field :title %>
+<%= form.text_field :title, :id => (@post.new_record?? 'slugify' : nil) %>
+<%= form.text_field :slug, :id => 'slug' %>
 <%= form.text_field :author %>
 <% if Blog::Tag.categories.present? %>
   <%= form.simple_field 'Categories' do %>
