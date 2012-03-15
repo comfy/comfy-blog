@@ -26,7 +26,7 @@
   <%= form.simple_field nil, nil, :class => 'submit_element' do %>
     <%= form.check_box :is_published, :disable_builder => true %>
     <%= form.label_for :is_published %>
-    <%= form.submit (@post.new_record? ? 'Create post' : 'Update post'), :disable_builder => true %>
+    <%= form.submit @post.new_record?? 'Create post' : 'Update post', :disable_builder => true %>
   <% end %>
   
 <% else %>
