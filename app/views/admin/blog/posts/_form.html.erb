@@ -31,6 +31,6 @@
   
 <% else %>
   <%= form.check_box :is_published %>
-  <%= form.submit (@post.new_record? ? 'Create post' : 'Update post') %>
+  <%= form.submit @post.new_record?? 'Create post' : 'Update post' %>
 <% end %>
 
