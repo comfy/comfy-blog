@@ -32,7 +32,7 @@ class Blog::PostsController < ApplicationController
   
   def show
     @post = if params[:slug] && params[:year] && params[:month]
-      Blog::Post.published.find_by_year_and_year_and_slug!(params[:year], params[:month], params[:slug])
+      Blog::Post.published.find_by_year_and_month_and_slug!(params[:year], params[:month], params[:slug])
     else
       Blog::Post.published.find(params[:id])
     end
