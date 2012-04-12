@@ -50,6 +50,12 @@ class PostTest < ActiveSupport::TestCase
     assert_equal Time.now.month, post.month
   end
   
+  def test_set_published_at
+    post = Blog::Post.new
+    post.send(:set_published_at)
+    assert post.published_at.present?
+  end
+  
   def test_sync_tags
     post = blog_posts(:default)
     assert_equal 'tag', post.tag_names

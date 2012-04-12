@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "email",                           :null => false
     t.text     "content"
     t.boolean  "is_published", :default => false, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "blog_comments", ["post_id", "created_at"], :name => "index_blog_comments_on_post_id_and_created_at"
@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(:version => 1) do
     t.integer  "year",         :limit => 4,                      :null => false
     t.integer  "month",        :limit => 2,                      :null => false
     t.boolean  "is_published",                 :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "published_at",                                   :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "blog_posts", ["created_at"], :name => "index_blog_posts_on_created_at"

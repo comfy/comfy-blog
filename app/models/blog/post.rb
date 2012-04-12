@@ -18,7 +18,7 @@ class Blog::Post < ActiveRecord::Base
     :uniqueness => { :scope => [:year, :month] }
   
   # -- Scopes ---------------------------------------------------------------
-  default_scope order('created_at DESC')
+  default_scope order('published_at DESC')
   
   scope :published, where(:is_published => true)
   scope :for_year, lambda { |year| 
@@ -36,7 +36,8 @@ class Blog::Post < ActiveRecord::Base
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :set_slug,
-                    :set_date
+                    :set_date,
+                    :set_published_at
   after_save        :sync_tags,
                     :sync_categories
   
@@ -59,6 +60,10 @@ protected
   def set_date
     self.year   ||= Time.zone.now.year
     self.month  ||= Time.zone.now.month
+  end
+  
+  def set_published_at
+    self.published_at ||= Time.zone.now
   end
   
   def sync_tags
