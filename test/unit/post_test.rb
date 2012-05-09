@@ -16,12 +16,12 @@ class PostTest < ActiveSupport::TestCase
   
   def test_validation_of_slug_uniqueness
     old_post = blog_posts(:default)
-    old_post.update_attributes!(:year => Time.now.year, :month => Time.now.month)
+    old_post.update_attributes!(:published_at => Time.now)
     post = Blog::Post.new(:title => old_post.title, :content => 'Test Content')
     assert post.invalid?
     assert_has_errors_on post, [:slug]
     
-    old_post.update_attributes!(:year => 1.year.ago.year, :month => Time.now.month)
+    old_post.update_attributes!(:published_at => 1.year.ago)
     assert post.valid?
   end
   
@@ -45,9 +45,10 @@ class PostTest < ActiveSupport::TestCase
   
   def test_set_date
     post = Blog::Post.new
+    post.send(:set_published_at)
     post.send(:set_date)
-    assert_equal Time.now.year, post.year
-    assert_equal Time.now.month, post.month
+    assert_equal post.published_at.year, post.year
+    assert_equal post.published_at.month, post.month
   end
   
   def test_set_published_at
