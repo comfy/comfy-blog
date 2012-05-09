@@ -45,9 +45,10 @@ class PostTest < ActiveSupport::TestCase
   
   def test_set_date
     post = Blog::Post.new
+    post.send(:set_published_at)
     post.send(:set_date)
-    assert_equal Time.now.year, post.year
-    assert_equal Time.now.month, post.month
+    assert_equal post.published_at.year, post.year
+    assert_equal post.published_at.month, post.month
   end
   
   def test_set_published_at
