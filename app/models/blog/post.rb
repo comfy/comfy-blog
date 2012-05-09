@@ -36,8 +36,8 @@ class Blog::Post < ActiveRecord::Base
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :set_slug,
-                    :set_date,
-                    :set_published_at
+                    :set_published_at,
+                    :set_date
   after_save        :sync_tags,
                     :sync_categories
   
@@ -58,8 +58,8 @@ protected
   end
   
   def set_date
-    self.year   ||= Time.zone.now.year
-    self.month  ||= Time.zone.now.month
+    self.year   = self.published_at.year
+    self.month  = self.published_at.month
   end
   
   def set_published_at
