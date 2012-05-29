@@ -34,6 +34,9 @@ module ComfyBlog
     # Comments can be fully handled by Disqus. Set this config to use it.
     attr_accessor :disqus_shortname
     
+    # If you want to include the routes manually set this to false
+    attr_accessor :use_default_routes
+    
     # Configuration defaults
     def initialize
       @title                  = 'ComfyBlog'
@@ -46,6 +49,7 @@ module ComfyBlog
       @posts_per_page         = 10
       @auto_publish_comments  = false
       @disqus_shortname       = nil
+      @use_default_routes     = true
     end
     
   end
