@@ -34,4 +34,4 @@ Rails.application.routes.draw do
     get ':id' => 'posts#show', :as => :blog_post
   end
   
-end
+end if ComfyBlog.config.use_default_routes

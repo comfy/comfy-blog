@@ -22,4 +22,7 @@ ComfyBlog.configure do |config|
   # Default is false.
   #   config.auto_publish_comments = false
   
+  # Include the default routes
+  # If you want to include the routes manually set this to false
+  #   config.use_default_routes = true
 end
