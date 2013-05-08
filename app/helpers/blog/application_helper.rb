@@ -4,7 +4,7 @@ module Blog::ApplicationHelper
     options = args.extract_options!
     form_for(
       record_or_name_or_array,
-      *(args << options.merge(:builder => ComfyBlog.config.form_builder.to_s.constantize)),
+      *(args << options.merge(:builder => ComfyBlog::FormBuilder)), # .config.form_builder.to_s.constantize)),
       &proc
     )
   end
