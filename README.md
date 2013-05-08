@@ -12,6 +12,12 @@ Then from the Rails project's root run:
     
     bundle install
     rails g comfy:blog
+
+Add the blog routes.
+
+  ComfyBlog::Routing.admin
+  ComfyBlog::Routing.content
+
     rake db:migrate
     
 Now you should be able to go to `/admin/blog/posts` and add new blog posts.
