@@ -12,6 +12,9 @@ ComfyBlog.configure do |config|
   # Set the public path if you have changed it
   #   config.public_route_prefix = ''
 
+  # CMS Layout used for public posts/comments, if defined it takes precedence over public_layout
+  #   config.public_cms_layout = 'blog'
+
   # Layout used for public posts/comments
   #   config.public_layout = 'application'
   
