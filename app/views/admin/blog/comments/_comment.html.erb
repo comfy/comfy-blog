@@ -5,7 +5,7 @@
       <% unless comment.is_published? %>
         <%= link_to 'Publish', publish_admin_blog_comment_path(comment), :remote => true, :method => :put %>
       <% end %>
-      <%= link_to 'Delete', admin_blog_comment_path(comment), :method => 'delete', :confirm => 'Are you sure?' %>
+      <%= link_to 'Delete', admin_blog_comment_path(comment), :method => 'delete', :remote => true, :confirm => 'Are you sure?' %>
     </div>
     <div class='label'>
       <div class='sublabel'>
