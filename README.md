@@ -54,6 +54,18 @@ them right away. You can change the layout from the default `application` to som
 
     config.public_layout = 'blog'
 
+## Rendering the blog inside a CMS layout
+
+If you want to render blog views inside a CMS layout, you can define it like this. This configuration takes precedence over `public_layout`.
+
+    config.public_cms_layout = 'blog'
+
+the 'blog' cms layout must look like this for this to work.
+
+    {{ cms:page:content:rich_text }}
+
+## Override views
+
 Since ComfyBlog is an engine, it allows you to completely overwrite views. It's enough to
 create `app/views/blog/posts/index.html.erb` (could be HAML or whatever you want) and structure
 it in any way you want. There's also `show.html.erb` and `_post.html.erb` available.
