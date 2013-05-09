@@ -5,6 +5,7 @@ end
 
 [ 'comfy_blog/core_ext/string',
   'comfy_blog/configuration',
+  'comfy_blog/routing',
   'comfy_blog/form_builder'
 ].each do |path|
   require File.expand_path(path, File.dirname(__FILE__))
