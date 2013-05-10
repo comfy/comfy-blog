@@ -1,7 +1,9 @@
 class Blog::PostsController < ApplicationController
-  
-  layout ComfyBlog.config.public_layout
-  
+
+  unless ComfyBlog.config.public_cms_layout
+    layout ComfyBlog.config.public_layout
+  end
+
   def index
     scope = if params[:tag]
       Blog::Post.published.tagged_with(params[:tag])
@@ -23,6 +25,10 @@ class Blog::PostsController < ApplicationController
         else
           scope
         end
+
+        if ComfyBlog.config.public_cms_layout
+          render :cms_layout => ComfyBlog.config.public_cms_layout
+        end
       end
       f.rss do
         @posts = scope.limit(ComfyBlog.config.posts_per_page)
@@ -35,6 +41,10 @@ class Blog::PostsController < ApplicationController
       Blog::Post.published.find_by_year_and_month_and_slug!(params[:year], params[:month], params[:slug])
     else
       Blog::Post.published.find(params[:id])
+    end
+
+    if ComfyBlog.config.public_cms_layout
+      render :cms_layout => ComfyBlog.config.public_cms_layout
     end
   rescue ActiveRecord::RecordNotFound
     if defined? ComfortableMexicanSofa

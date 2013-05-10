@@ -20,7 +20,10 @@ module ComfyBlog
     
     # Form builder
     attr_accessor :form_builder
-    
+
+    # CMS Layout used for public posts/comments, if defined it takes precedence over public_layout
+    attr_accessor :public_cms_layout
+
     # Layout used for public posts/comments
     attr_accessor :public_layout
     
