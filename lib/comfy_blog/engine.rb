@@ -7,7 +7,7 @@ module ComfyBlog
       if defined?(ComfortableMexicanSofa)
         # Applying configuraion
         ComfyBlog.configure do |conf|
-          conf.admin_route_prefix = ComfortableMexicanSofa.config.admin_route_prefix
+          conf.admin_route_prefix = "cms-admin" # ComfortableMexicanSofa.config.admin_route_prefix
           conf.admin_controller = 'CmsAdmin::BaseController'
           conf.form_builder = 'ComfortableMexicanSofa::FormBuilder'
         end
