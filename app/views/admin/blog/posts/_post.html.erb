@@ -3,22 +3,22 @@
     <div class='icon <%= post.is_published?? 'published' : 'draft' %>'></div>
     <div class='action_links'>
       <% unless ComfyBlog.disqus_enabled? %>
-        <%= link_to pluralize(post.comments.count, 'comment'), admin_blog_post_comments_path(post) %>
+        <%= link_to pluralize(post.comments.count, t('comfy_blog.comment')), admin_blog_post_comments_path(post) %>
       <% end %>
-      <%= link_to 'Edit', edit_admin_blog_post_path(post) %>
-      <%= link_to 'Delete', admin_blog_post_path(post), :method => :delete, :confirm => 'Are you sure?' %>
+      <%= link_to t('comfy_blog.edit'), edit_admin_blog_post_path(post) %>
+      <%= link_to t('comfy_blog.delete'), admin_blog_post_path(post), :method => :delete, :confirm => I18n.t('comfy_blog.confirm_post_delete') %>
     </div>
     <div class='label'>
       <%= link_to post.title.titleize, edit_admin_blog_post_path(post) %>
       <div class='sublabel'>
-        Published <%= time_ago_in_words(post.created_at) %> ago
-        
+        <%= t('comfy_blog.published') %> <%= time_ago_in_words(post.created_at) %> <%= t('comfy_blog.ago') %>
+
         <% if post.author.present? %>
-          by <strong><%= post.author %></strong>
+          <%= t('comfy_blog.by') %> <strong><%= post.author %></strong>
         <% end %>
         
         <% if post.tags.count > 0 %>
-          Tagged with:
+          <%= t('comfy_blog.tagged_with') %>
           <% post.tags.each do |tag| %>
             <span class="tag"><%= tag.name %></span>
           <% end %>

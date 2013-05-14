@@ -1,0 +1,38 @@
+es:
+  comfy_blog:
+    menu_item: Blog
+
+    edit: Editar
+    publish: Publicar
+    delete: Eliminar
+    published: Publicado
+    ago: 'atrás'
+    by: por
+    wrote: 'escribió'
+    for: en
+    submit: Enviar
+
+    blog_posts: Entradas del Blog
+    add_new_post: Crear nueva entrada
+    new_post: Nueva entrada en Blog
+    create_post: Crear entrada
+    edit_post: "Actualizando entrada %{post}"
+    update_post: Actualizar entrada
+    confirm_post_delete: 'Está seguro de que quiere eliminar esta entrada?'
+
+    tagged_with: 'Etiquetas:'
+    new_tag: Crear nueva etiqueta
+    tags: Etiquetas
+    create_tag: Crear etiqueta
+    update_tag: Actualizar etiqueta
+    edit_tag: "Editando etiqueta %{tag}"
+    confirm_tag_delete: 'Está seguro de que quiere eliminar esta etiqueta?'
+
+    category: 'Categoría'
+    categories: 'Categorías'
+    create_category: 'Crear categoría'
+    update_category: 'Actualizar categoría'
+
+    comment: comentario
+    comments: Comentarios
+    confirm_comment_delete: 'Está seguro de que quiere eliminar este comentario?'
