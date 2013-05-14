@@ -36,3 +36,16 @@ es:
     comment: comentario
     comments: Comentarios
     confirm_comment_delete: 'Está seguro de que quiere eliminar este comentario?'
+
+    attributes:
+      "blog/post":
+        title: "Título"
+        slug: URL
+        author: Autor
+        excerpt: Extracto
+        content: Contenido
+        published_at: "Fecha de publicación"
+        is_published: Publicado
+      "blog/tag":
+        name: Etiqueta
+        is_category: 'Es una categoría'

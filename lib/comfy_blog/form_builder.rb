@@ -33,7 +33,12 @@ class ComfyBlog::FormBuilder < ActionView::Helpers::FormBuilder
   end
   
   def label_for(field, options)
-    label = options.delete(:label) || field.to_s.titleize.capitalize
+    label = options.delete(:label)
+    label ||= if object.respond_to?(:to_model)
+                object_name = object.class.model_name.i18n_key
+                I18n.t("activerecord.attributes.#{object_name}.#{field}")
+              end
+
     "<label for=\"#{object_name}_#{field}\">#{label}</label>".html_safe
   end
   
