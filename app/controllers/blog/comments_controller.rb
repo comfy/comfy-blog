@@ -6,8 +6,8 @@ class Blog::CommentsController < ApplicationController
     @comment.save!
     
     respond_to do |f|
-      f.html do 
-        flash[:notice] = 'Comment created'
+      f.html do
+        flash[:notice] = I18n.t('comfy_blog.comment_created')
         redirect_to dated_blog_post_path(@post.year, @post.month, @post.slug)
       end
       f.js
@@ -16,7 +16,7 @@ class Blog::CommentsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     respond_to do |f|
       f.html do
-        flash[:error] = 'Blog Post not found'
+        flash[:error] = I18n.t('comfy_blog.post_not_found')
         redirect_to blog_posts_path
       end
       f.js do

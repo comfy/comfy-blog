@@ -20,6 +20,13 @@ es:
     update_post: Actualizar entrada
     confirm_post_delete: 'Está seguro de que quiere eliminar esta entrada?'
 
+    post_created: Entrada en Blog creada
+    post_create_failed: Error al crear Entrada en Blog
+    post_updated: Entrada en Blog actualizada
+    post_update_failed: Error al actualizar Entrada en Blog
+    post_removed: Entrada en Blog eliminada
+    post_not_found: Entrada en Blog no encontrada
+
     tagged_with: 'Etiquetas:'
     new_tag: Crear nueva etiqueta
     tags: Etiquetas
@@ -33,9 +40,18 @@ es:
     create_category: 'Crear categoría'
     update_category: 'Actualizar categoría'
 
+    tag_created: Etiqueta creada
+    tag_create_failed: Error al intentar crear la etiqueta
+    tag_updated: Etiqueta actualizada
+    tag_update_failed: Error al intentar actualizar la etiqueta
+    tag_removed: Etiqueta eliminada
+    tag_not_found: Etiqueta no encontrada
+
     comment: comentario
     comments: Comentarios
     confirm_comment_delete: 'Está seguro de que quiere eliminar este comentario?'
+
+    comment_created: Comentario creado
 
     attributes:
       "blog/post":

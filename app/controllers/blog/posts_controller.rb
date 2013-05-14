@@ -40,7 +40,7 @@ class Blog::PostsController < ApplicationController
     if defined? ComfortableMexicanSofa
       render :cms_page => '/404', :status => 404
     else
-      render :text => 'Post not found', :status => 404
+      render :text => I18n.t('comfy_blog.post_not_found'), :status => 404
     end
   end
 end

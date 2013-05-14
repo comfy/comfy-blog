@@ -19,11 +19,11 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   
   def create
     @post.save!
-    flash[:notice] = 'Blog Post created'
+    flash[:notice] = I18n.t('comfy_blog.post_created')
     redirect_to :action => :edit, :id => @post
     
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to create Blog Post'
+    flash.now[:error] = I18n.t('comfy_blog.post_create_failed')
     render :action => :new
   end
   
@@ -33,17 +33,17 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   
   def update
     @post.update_attributes!(params[:post])
-    flash[:notice] = 'Blog Post updated'
+    flash[:notice] = I18n.t('comfy_blog.post_updated')
     redirect_to :action => :edit, :id => @post
     
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to update Blog Post'
+    flash.now[:error] = I18n.t('comfy_blog.post_update_failed')
     render :action => :edit
   end
   
   def destroy
     @post.destroy
-    flash[:notice] = 'Blog Post removed'
+    flash[:notice] = I18n.t('comfy_blog.post_removed')
     redirect_to :action => :index
   end
   
@@ -52,7 +52,7 @@ protected
   def load_post
     @post = Blog::Post.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Blog Post not found'
+    flash[:error] = I18n.t('comfy_blog.post_not_found')
     redirect_to :action => :index
   end
   
