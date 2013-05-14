@@ -44,7 +44,7 @@ en:
     update_category: Update category
 
     tag_created: Blog Tag created
-    tag_create_failed: failed to create Blog Tag
+    tag_create_failed: Failed to create Blog Tag
     tag_updated: Blog Tag updated
     tag_update_failed: Failed to update Blog Tag
     tag_removed: Blog Tag removed
