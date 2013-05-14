@@ -53,6 +53,7 @@ es:
 
     comment_created: Comentario creado
 
+  activerecord:
     attributes:
       "blog/post":
         title: "Título"
