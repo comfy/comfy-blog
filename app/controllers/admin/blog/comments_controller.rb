@@ -21,7 +21,7 @@ protected
     return unless params[:post_id]
     @post = Blog::Post.find(params[:post_id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Blog Post not found'
+    flash[:error] = I18n.t('comfy_blog.post_not_found')
     redirect_to :action => :index
   end
   

@@ -1,6 +1,6 @@
-<%= link_to 'Add new blog post', new_admin_blog_post_path, :class => 'big button' %>
+<%= link_to t('comfy_blog.add_new_post'), new_admin_blog_post_path, :class => 'big button' %>
 
-<h1>Blog Posts</h1>
+<h1><%= t('comfy_blog.blog_posts') %></h1>
 
 <ul class='list posts'>
   <% @posts.each do |post| %>

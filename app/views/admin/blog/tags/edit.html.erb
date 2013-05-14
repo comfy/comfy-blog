@@ -1,4 +1,4 @@
-<h1>Editing <%= @tag.name %></h1>
+<h1><%= t('comfy_blog.edit_tag', :tag => @tag.name) %></h1>
 
 <%= comfy_blog_form_for @tag, :as => :tag, :url => {:action => :update} do |form| %>
   <%= render :partial => form %>

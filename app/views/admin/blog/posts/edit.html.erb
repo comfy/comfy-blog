@@ -1,4 +1,4 @@
-<h1>Editing <%= @post.title.titleize %></h1>
+<h1><%= t('comfy_blog.edit_post', :post => @post.title.titleize) %></h1>
 
 <%= comfy_blog_form_for @post, :as => :post, :url => {:action => :update} do |form| %>
   <%= render :partial => form %>

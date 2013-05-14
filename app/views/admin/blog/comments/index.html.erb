@@ -1,7 +1,7 @@
 <h1>
-  Comments 
+  <%= t('comfy_blog.comments') %>
   <% if @post %>
-    for <%= @post.title %>
+    <%= t('comfy_blog.for') %> <%= @post.title %>
   <% end %>
 </h1>
 

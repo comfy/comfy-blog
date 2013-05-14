@@ -2,4 +2,70 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  comfy_blog:
+    menu_item: Blog posts
+
+    edit: Edit
+    publish: Publish
+    delete: Delete
+    published: Published
+    ago: ago
+    by: by
+    wrote: wrote
+    for: for
+    submit: Submit
+
+    blog_posts: Blog Posts
+    add_new_post: Add new blog post
+    new_post: New Blog Post
+    create_post: Create post
+    edit_post: "Editing %{post}"
+    update_post: Update post
+    confirm_post_delete: 'Are you sure you want to delete this post?'
+
+    post_created: Blog Post created
+    post_create_failed: Failed to create Blog Post
+    post_updated: Blog Post updated
+    post_update_failed: Failed to update Blog Post
+    post_removed: Blog Post removed
+    post_not_found: Blog Post not found
+
+    tagged_with: 'Tagged with:'
+    new_tag: Add new blog tag
+    tags: Blog Tags
+    create_tag: Create tag
+    update_tag: Update tag
+    edit_tag: "Editing tag %{tag}"
+    confirm_tag_delete: 'Are you sure you want to delete this tag?'
+
+    category: Category
+    categories: Categories
+    create_category: Create category
+    update_category: Update category
+
+    tag_created: Blog Tag created
+    tag_create_failed: Failed to create Blog Tag
+    tag_updated: Blog Tag updated
+    tag_update_failed: Failed to update Blog Tag
+    tag_removed: Blog Tag removed
+    tag_not_found: Blog Tag not found
+
+    comment: comment
+    comments: Comments
+    confirm_comment_delete: 'Are you sure you want to delete this comment?'
+
+    comment_created: Comment created
+
+  activerecord:
+    attributes:
+      "blog/post":
+        title: Title
+        slug: Slug
+        author: Author
+        excerpt: Excerpt
+        content: Content
+        published_at: Published at
+        is_published: Is published
+      "blog/tag":
+        name: Name
+        is_category: Is category

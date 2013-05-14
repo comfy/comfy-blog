@@ -3,15 +3,15 @@
     <div class='icon' style="background-image:url(http://www.gravatar.com/avatar/<%=Digest::MD5.hexdigest(comment.email.downcase)%>?s=28&d=identicon)"></div>
     <div class='action_links'>
       <% unless comment.is_published? %>
-        <%= link_to 'Publish', publish_admin_blog_comment_path(comment), :remote => true, :method => :put %>
+        <%= link_to t('comfy_blog.publish'), publish_admin_blog_comment_path(comment), :remote => true, :method => :put %>
       <% end %>
-      <%= link_to 'Delete', admin_blog_comment_path(comment), :method => 'delete', :confirm => 'Are you sure?' %>
+      <%= link_to t('comfy_blog.delete'), admin_blog_comment_path(comment), :method => 'delete', :remote => true, :confirm => t('comfy_blog.confirm_comment_delete') %>
     </div>
     <div class='label'>
       <div class='sublabel'>
         <em>
-          <%= time_ago_in_words(comment.created_at) %> ago 
-          <strong><%= mail_to(comment.email, comment.author) %></strong> wrote
+          <%= time_ago_in_words(comment.created_at) %> <%= t('comfy_blog.ago') %>
+          <strong><%= mail_to(comment.email, comment.author) %></strong> <%= t('comfy_blog.wrote') %>
         </em>
       </div>
     </div>

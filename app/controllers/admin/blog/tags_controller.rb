@@ -17,27 +17,27 @@ class Admin::Blog::TagsController < Admin::Blog::BaseController
   
   def update
     @tag.update_attributes!(params[:tag])
-    flash[:notice] = 'Blog Tag updated'
+    flash[:notice] = I18n.t('comfy_blog.tag_updated')
     redirect_to :action => :index
     
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to update Blog Tag'
+    flash.now[:error] = I18n.t('comfy_blog.tag_update_failed')
     render :action => :edit
   end
   
   def create
     @tag.save!
-    flash[:notice] = 'Blog Tag created'
+    flash[:notice] = I18n.t('comfy_blog.tag_created')
     redirect_to :action => :index
     
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = 'Failed to create Blog Tag'
+    flash.now[:error] = I18n.t('comfy_blog.tag_create_failed')
     render :action => :new
   end
   
   def destroy
     @tag.destroy
-    flash[:notice] = 'Blog Tag removed'
+    flash[:notice] = I18n.t('comfy_blog.tag_removed')
     redirect_to :action => :index
   end
 
@@ -50,7 +50,7 @@ protected
   def load_tag
     @tag = Blog::Tag.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Blog Tag not found'
-    redirect_to :action => :index  
+    flash[:error] = I18n.t('comfy_blog.tag_not_found')
+    redirect_to :action => :index
   end
 end

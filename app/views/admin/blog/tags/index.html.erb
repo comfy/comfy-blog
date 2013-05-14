@@ -1,6 +1,6 @@
-<%= link_to 'Add new blog tag', {:action => :new}, :class => 'big button' %>
+<%= link_to t('comfy_blog.new_tag'), {:action => :new}, :class => 'big button' %>
 
-<h1>Blog Tags</h1>
+<h1><%= t('comfy_blog.tags') %></h1>
 
 <ul class='list categories'>
   <% @tags.each do |tag| %>
