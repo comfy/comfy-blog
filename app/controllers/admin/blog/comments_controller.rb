@@ -1,5 +1,6 @@
 class Admin::Blog::CommentsController < Admin::Blog::BaseController
-  
+  require "rails_autolink/helpers"
+
   before_filter :load_post,     :only => [:index]
   before_filter :load_comment,  :only => [:destroy, :publish]
   

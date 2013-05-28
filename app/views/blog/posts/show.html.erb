@@ -5,7 +5,7 @@
   
 <% else %>
   <div id='comments'>
-    <% @post.comments.each do |comment| %>
+    <% @post.comments.published.each do |comment| %>
       <%= render :partial => 'blog/comments/comment', :object => comment %>
     <% end %>
   </div>

@@ -2,5 +2,7 @@
   $('form#comment').replaceWith('<%= escape_javascript(render(:partial => "form")) %>');
 <% else %>
   $('form#comment')[0].reset();
-  $('#comments').append('<%= escape_javascript(render(:partial => "comment", :object => @comment)) %>');
+  <% if @comment.is_published? %>
+    $('#comments').append('<%= escape_javascript(render(:partial => "comment", :object => @comment)) %>');
+  <% end %>
 <% end %>

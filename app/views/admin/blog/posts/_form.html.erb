@@ -13,8 +13,8 @@
   <% end %>
 <% end %>
 <%= form.text_field :tag_names, :label => link_to('Tags', admin_blog_tags_path) %>
-<%= form.text_area :excerpt, :class => 'short' %>
-<%= form.text_area :content, :class => 'rich_text' %>
+<%= form.text_area :excerpt, :data => { :rich_text => true }, :class => 'short' %>
+<%= form.text_area :content, :data => { :rich_text => true } %>
 <%= form.text_field :published_at, :class => 'datetime' %>
 
 <% if defined?(ComfortableMexicanSofa) %>
@@ -26,7 +26,7 @@
   
   <%= form.simple_field nil, nil, :class => 'submit_element' do %>
     <%= form.check_box :is_published, :disable_builder => true %>
-    <%= form.label_for :is_published %>
+    <%= form.label :is_published %>
     <%= form.submit @post.new_record?? 'Create post' : 'Update post', :disable_builder => true %>
   <% end %>
   
