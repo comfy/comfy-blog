@@ -1,22 +1,21 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-# Maintain your gem's version:
-require "comfy_blog/version"
+require 'comfy_blog/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "comfy_blog"
+  s.name        = 'comfy_blog'
   s.version     = ComfyBlog::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of ComfyBlog."
-  s.description = "TODO: Description of ComfyBlog."
+  s.authors     = ["Oleg Khabarov", "The Working Group Inc"]
+  s.email       = ["oleg@khabarov.ca"]
+  s.homepage    = "http://github.com/comfy/comfy-blog"
+  s.summary     = "Simple Blog Engine for ComfortableMexicanSofa"
+  s.description = "Simple Blog Engine for ComfortableMexicanSofa"
+  s.license     = 'MIT'
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files         = `git ls-files`.split("\n")
+  s.platform      = Gem::Platform::RUBY
+  s.require_paths = ['lib']
 
-  s.add_dependency "rails", "~> 4.0.0"
-
-  s.add_development_dependency "sqlite3"
+  s.add_dependency 'comfortable_mexican_sofa', '~> 1.9'
 end
