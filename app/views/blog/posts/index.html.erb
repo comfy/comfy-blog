@@ -1,9 +1,0 @@
-<% @posts.each do |post| %>
-  <%= render :partial => 'post', :object => post %>
-<% end %>
-
-<% if defined?(WillPaginate) %>
-  <%= will_paginate @posts, :previous_label => '« Older Posts', :next_label => 'Newer Posts »', :page_links => false %>
-<% elsif defined?(Kaminari) %>
-  <%= paginate @posts %>
-<% end %>
