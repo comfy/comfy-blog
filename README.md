@@ -1,3 +1,3 @@
-# ComfyBlog
+# ComfyBlog [![Build Status](https://secure.travis-ci.org/comfy/comfy-blog.png)](http://travis-ci.org/comfy/comfy-blog) [![Dependency Status](https://gemnasium.com/comfy/comfy-blog.png)](https://gemnasium.com/comfy/comfy-blog)
 
-This project rocks and uses MIT-LICENSE.
+ComfyBlog is an simple blog management engine for Rails 4 apps. It also integrates with [ComfortableMexicanSofa](https://github.com/comfy/comfortable-mexican-sofa) CMS Engine

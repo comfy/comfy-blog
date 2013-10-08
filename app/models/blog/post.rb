@@ -31,7 +31,7 @@ class Blog::Post < ActiveRecord::Base
     where(:is_published => true)
   }
   scope :for_year, -> year {
-    where(:year => year) 
+    where(:year => year)
   }
   scope :for_month, -> month {
     where(:month => month)
