@@ -1,0 +1,10 @@
+default:
+  site: default
+  title: Default Title
+  slug: default-title
+  content: Default Content
+  author: Default Author
+  is_published: true
+  year: 2012
+  month: 1
+  published_at: <%= 2.days.ago %>

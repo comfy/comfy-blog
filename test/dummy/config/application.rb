@@ -3,7 +3,8 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require "comfy_blog"
+require 'comfortable_mexican_sofa'
+require 'comfy_blog'
 
 module Dummy
   class Application < Rails::Application

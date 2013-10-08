@@ -1,0 +1,6 @@
+default:
+  post: default
+  author: Default Name
+  email: default@test.test
+  content: Default Content
+  is_published: true

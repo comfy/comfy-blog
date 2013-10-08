@@ -1,0 +1,4 @@
+default:
+  label: Default Site
+  identifier: default-site
+  hostname: test.host
