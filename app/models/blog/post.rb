@@ -45,7 +45,7 @@ class Blog::Post < ActiveRecord::Base
 protected
   
   def set_slug
-    self.slug ||= self.title.to_s.slugify
+    self.slug ||= self.title.to_s.downcase.slugify
   end
   
   def set_date
