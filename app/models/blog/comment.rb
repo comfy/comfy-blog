@@ -1,6 +1,6 @@
 class Blog::Comment < ActiveRecord::Base
   
-  self.table_name = :blog_comments
+  self.table_name = 'blog_comments'
   
   # -- Relationships --------------------------------------------------------
   belongs_to :post
@@ -22,7 +22,7 @@ class Blog::Comment < ActiveRecord::Base
 protected
   
   def set_is_published
-    self.is_published = true # ComfyBlog.config.auto_publish_comments
+    self.is_published = ComfyBlog.config.auto_publish_comments
     return
   end
   

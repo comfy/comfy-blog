@@ -1,6 +1,6 @@
 require_relative '../../test_helper'
 
-class BlogPostTest < ActiveSupport::TestCase
+class BlogPostsTest < ActiveSupport::TestCase
   
   def test_fixtures_validity
     Blog::Post.all.each do |post|
