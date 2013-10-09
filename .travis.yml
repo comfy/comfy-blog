@@ -3,4 +3,4 @@ rvm:
   - 1.9.3
   - 2.0.0
 before_script:
-  - "cd test/dummy && rake db:test:prepare && cd ../.."
+  - "rake db:test:prepare"
