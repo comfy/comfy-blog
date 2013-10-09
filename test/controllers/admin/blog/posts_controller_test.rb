@@ -23,19 +23,19 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_creation
     assert_difference 'Blog::Post.count' do
-      post :create, :post => {
+      post :create, :site_id => @site, :post => {
         :title    => 'Test',
         :content  => 'Content'
       }
       assert_response :redirect
       assert_redirected_to :action => :edit, :id => assigns(:post)
-      assert_equal 'Blog Post created', flash[:notice]
+      assert_equal 'Blog Post created', flash[:success]
     end
   end
   
   def test_creation_failure
     assert_no_difference 'Blog::Post.count' do
-      post :create, :post => { }
+      post :create, :site_id => @site, :post => { }
       assert_response :success
       assert_template :new
       assert assigns(:post)
@@ -44,14 +44,14 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_edit
-    get :edit, :id => blog_posts(:default)
+    get :edit, :site_id => @site, :id => blog_posts(:default)
     assert_response :success
     assert_template :edit
     assert assigns(:post)
   end
   
   def test_get_edit_failure
-    get :edit, :id => 'bogus'
+    get :edit, :site_id => @site, :id => 'bogus'
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Blog Post not found', flash[:error]
@@ -59,12 +59,12 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_update
     post = blog_posts(:default)
-    put :update, :id => post, :post => {
+    put :update, :site_id => @site, :id => post, :post => {
       :title => 'Updated Post'
     }
     assert_response :redirect
     assert_redirected_to :action => :edit, :id => assigns(:post)
-    assert_equal 'Blog Post updated', flash[:notice]
+    assert_equal 'Blog Post updated', flash[:success]
     
     post.reload
     assert_equal 'Updated Post', post.title
@@ -72,7 +72,7 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_update_failure
     post = blog_posts(:default)
-    put :update, :id => post, :post => {
+    put :update, :site_id => @site, :id => post, :post => {
       :title => ''
     }
     assert_response :success
@@ -85,10 +85,10 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_destroy
     assert_difference 'Blog::Post.count', -1 do
-      delete :destroy, :id => blog_posts(:default)
+      delete :destroy, :site_id => @site, :id => blog_posts(:default)
       assert_response :redirect
       assert_redirected_to :action => :index
-      assert_equal 'Blog Post removed', flash[:notice]
+      assert_equal 'Blog Post removed', flash[:success]
     end
   end
   

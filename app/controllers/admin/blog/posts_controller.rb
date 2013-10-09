@@ -4,7 +4,7 @@ class Admin::Blog::PostsController < Admin::Cms::BaseController
   before_filter :load_post,  :only => [:edit, :update, :destroy]
 
   def index
-    @posts = ::Blog::Post.page(params[:page])
+    @posts = @site.blog_posts.page(params[:page])
   end
 
   def new
@@ -44,14 +44,14 @@ class Admin::Blog::PostsController < Admin::Cms::BaseController
 protected
 
   def load_post
-    @post = ::Blog::Post.find(params[:id])
+    @post = @site.blog_posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'Blog Post not found'
     redirect_to :action => :index
   end
 
   def build_post
-    @post = ::Blog::Post.new(post_params.merge(:site => @site))
+    @post = @site.blog_posts.new(post_params)
   end
   
   def post_params
