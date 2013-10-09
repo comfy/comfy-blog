@@ -1,1 +1,0 @@
-../../../../db/migrate/01_create_blog.rb

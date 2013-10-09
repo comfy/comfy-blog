@@ -2,19 +2,23 @@ require_relative '../../../test_helper'
 
 class Admin::Blog::PostsControllerTest < ActionController::TestCase
   
+  def setup
+    @site = cms_sites(:default)
+  end
+  
   def test_get_index
-    get :index
+    get :index, :site_id => @site
     assert_response :success
     assert assigns(:posts)
     assert_template :index
   end
   
   def test_get_new
-    get :new
+    get :new, :site_id => @site
     assert_response :success
     assert assigns(:post)
     assert_template :new
-    assert_select "form[action='/admin/blog/posts']"
+    assert_select "form[action='/admin/sites/#{@site.id}/blog/posts']"
   end
   
   def test_creation

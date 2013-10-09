@@ -1,9 +1,9 @@
-require 'coveralls'
-Coveralls.wear!('rails')
+# require 'coveralls'
+# Coveralls.wear!('rails')
 
 ENV['RAILS_ENV'] = 'test'
 
-require File.expand_path('../dummy/config/environment.rb',  __FILE__)
+require_relative '../config/environment'
 require 'rails/test_help'
 
 Rails.backtrace_cleaner.remove_silencers!
@@ -43,13 +43,6 @@ class ActionController::TestCase
   # CMS by default is going to prompt with basic auth request
   def set_basic_auth
     @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64.encode64('username:password')}"
-  end
-  
-  # Need to pass :use_route with each call
-  %w(get post patch delete).each do |method|
-    define_method method, -> (action, params = {}) {
-      super action, params.merge(:use_route => :comfy_blog)
-    }
   end
   
 end
