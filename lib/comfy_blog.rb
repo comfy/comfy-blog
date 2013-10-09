@@ -1,6 +1,7 @@
 require_relative 'comfy_blog/version'
 require_relative 'comfy_blog/engine'
 require_relative 'comfy_blog/configuration'
+require_relative 'comfy_blog/routing'
 
 module ComfyBlog
   

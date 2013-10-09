@@ -8,9 +8,6 @@ require 'rails/test_help'
 
 Rails.backtrace_cleaner.remove_silencers!
 
-# Load support files
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
-
 # Load fixtures from the engine
 ActiveSupport::TestCase.fixture_path = File.expand_path('../fixtures', __FILE__)
 
@@ -19,6 +16,14 @@ class ActiveSupport::TestCase
   fixtures :all
   
   setup :reset_config
+  
+  def reset_config
+    ComfyBlog.configure do |config|
+      config.posts_per_page = 10
+      config.auto_publish_comments = false
+      config.disqus_shortname = nil
+    end
+  end
   
   # Example usage:
   #   assert_has_errors_on @record, :field_1, :field_2
@@ -29,12 +34,22 @@ class ActiveSupport::TestCase
     assert unmatched.blank?, "#{record.class} doesn't have errors on '#{unmatched.join(', ')}'"
   end
   
-  def reset_config
-    ComfyBlog.configure do |config|
-      config.posts_per_page = 10
-      config.auto_publish_comments = false
-      config.disqus_shortname = nil
-    end
+end
+
+class ActionController::TestCase
+  
+  setup :set_basic_auth
+  
+  # CMS by default is going to prompt with basic auth request
+  def set_basic_auth
+    @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64.encode64('username:password')}"
+  end
+  
+  # Need to pass :use_route with each call
+  %w(get post patch delete).each do |method|
+    define_method method, -> (action, params = {}) {
+      super action, params.merge(:use_route => :comfy_blog)
+    }
   end
   
 end
