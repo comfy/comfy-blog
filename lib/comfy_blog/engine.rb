@@ -1,9 +1,7 @@
 require 'rubygems'
+require 'rails'
 require 'comfortable_mexican_sofa'
 require 'comfy_blog'
-require 'rails'
-require 'kaminari'
-
 
 module ComfyBlog
   
