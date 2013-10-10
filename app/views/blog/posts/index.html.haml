@@ -1,0 +1,11 @@
+- @posts.each do |post|
+  
+  %h1= link_to post.title, blog_post_path(post)
+  .author
+    = post.author
+  .date
+    = post.published_at.to_s(:db)
+  .content
+    = post.content.html_safe
+  
+= paginate @posts

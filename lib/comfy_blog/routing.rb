@@ -16,10 +16,9 @@ module ComfyBlog::Routing
     end
   end
   
-  def self.content(options = {})
+  def self.content
     Rails.application.routes.draw do
-      
-      namespace :blog, :path => options[:path] do
+      namespace :blog, :path => '(:cms_path)' do
         resources :posts, :only => [:index, :show] do
           resources :comments, :only => [:create]
         end
@@ -31,5 +30,4 @@ module ComfyBlog::Routing
       end
     end
   end
-  
 end

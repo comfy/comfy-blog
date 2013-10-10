@@ -1,0 +1,7 @@
+%h1= @post.title
+.author
+  = @post.author
+.date
+  = @post.published_at.to_s(:db)
+.content
+  = @post.content.html_safe
