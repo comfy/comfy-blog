@@ -1,0 +1,16 @@
+%tr{:id => dom_id(comment)}
+  %td
+    = link_to comment.post.title.truncate(25), admin_blog_post_path(@site, comment.post)
+  %td.main
+    = comment.author
+    = mail_to comment.email
+    .item-meta
+      = comment.content
+  %td
+    = comment.created_at.to_s(:db)
+  %td
+    - label, css_class = comment.is_published?? ['Unpublish', 'btn-danger'] : ['Publish', 'btn-info']
+    = link_to label, toggle_publish_admin_blog_comment_path(@site, comment), :method => :patch, :remote => true, :class => "btn btn-small #{css_class}"
+  %td
+    .btn-group
+      = link_to 'Delete', admin_blog_comment_path(@site, comment), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-small btn-danger'

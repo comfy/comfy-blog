@@ -5,19 +5,25 @@ require 'comfy_blog'
 
 module ComfyBlog
   
-  module CmsSiteExtentions
+  module CmsSiteExtensions
     extend ActiveSupport::Concern
     included do 
       has_many :blog_posts,
         :class_name => 'Blog::Post',
         :dependent  => :destroy
+      has_many :blog_comments,
+        :class_name => 'Blog::Comment',
+        :through    => :blog_posts,
+        :source     => :comments
     end
   end
   
   class Engine < ::Rails::Engine
     initializer 'comfy_blog.configuration' do |app|
       ComfortableMexicanSofa::ViewHooks.add(:navigation, '/admin/blog/partials/navigation')
-      Cms::Site.send :include, ComfyBlog::CmsSiteExtentions
+      config.to_prepare do
+        Cms::Site.send :include, ComfyBlog::CmsSiteExtensions
+      end
     end
   end
 end

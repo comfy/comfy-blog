@@ -6,9 +6,11 @@ module ComfyBlog::Routing
     
     Rails.application.routes.draw do
       scope :module => :admin do
-        namespace :blog, :as => :blog_admin, :path => path, :except => :show do
+        namespace :blog, :as => :admin_blog, :path => path, :except => :show do
           resources :posts
-          resources :comments
+          resources :comments, :only => [:index, :destroy] do
+            patch :toggle_publish, :on => :member
+          end
         end
       end
     end

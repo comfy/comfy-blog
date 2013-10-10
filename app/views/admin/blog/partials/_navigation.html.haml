@@ -1,1 +1,3 @@
-%li= active_link_to 'Blog Posts', blog_admin_posts_path(@site) if @site.present?
+- if @site.present? && !@site.new_record?
+  %li= active_link_to 'Blog Posts', admin_blog_posts_path(@site) 
+  %li= active_link_to 'Blog Comments', admin_blog_comments_path(@site)

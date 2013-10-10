@@ -52,6 +52,7 @@ protected
 
   def build_post
     @post = @site.blog_posts.new(post_params)
+    @post.published_at ||= Time.zone.now
   end
   
   def post_params

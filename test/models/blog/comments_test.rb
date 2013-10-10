@@ -8,6 +8,10 @@ class BlogCommentsTest < ActiveSupport::TestCase
     end
   end
   
+  def test_site_association
+    assert_equal [blog_comments(:default)], cms_sites(:default).blog_comments
+  end
+  
   def test_validations
     comment = Blog::Comment.new
     assert comment.invalid?
@@ -38,7 +42,6 @@ class BlogCommentsTest < ActiveSupport::TestCase
   
   def test_scope_published
     assert_equal 1, Blog::Comment.published.count
-    
     blog_comments(:default).update_attribute(:is_published, false)
     assert_equal 0, Blog::Comment.published.count
   end

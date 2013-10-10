@@ -1,5 +1,5 @@
 .page-header
-  = link_to 'New Blog Post', new_blog_admin_post_path(@site), :class => 'btn pull-right'
+  = link_to 'New Blog Post', new_admin_blog_post_path(@site), :class => 'btn pull-right'
   %h2 Blog Posts
   
 = paginate @posts
@@ -9,21 +9,24 @@
     %th.main Title
     %th Author
     %th Published
+    %th Comments
     %th
     
   - @posts.each do |post|
     %tr
       %td.main
-        = link_to post.title, edit_blog_admin_post_path(@site, post)
+        = link_to post.title, edit_admin_blog_post_path(@site, post)
         .item-meta
           = post.excerpt
       %td
         = post.author
       %td
-        = post.published_at.to_s(:short)
+        = post.published_at.try(:to_s, :db)
+      %td
+        = link_to pluralize(post.comments.count, 'Comment'), admin_blog_comments_path(@site, :post_id => post.id), :class => 'btn btn-small btn-inverse'
       %td
         .btn-group
-          = link_to 'Edit', edit_blog_admin_post_path(@site, post), :class => 'btn btn-small'
-          = link_to 'Delete', blog_admin_post_path(@site, post), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-small btn-danger'
+          = link_to 'Edit', edit_admin_blog_post_path(@site, post), :class => 'btn btn-small'
+          = link_to 'Delete', admin_blog_post_path(@site, post), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-small btn-danger'
           
 = paginate @posts
