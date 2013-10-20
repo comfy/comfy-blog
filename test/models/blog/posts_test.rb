@@ -8,10 +8,6 @@ class BlogPostsTest < ActiveSupport::TestCase
     end
   end
   
-  def test_site_association
-    assert_equal [blog_posts(:default)], cms_sites(:default).blog_posts
-  end
-  
   def test_validations
     post = Blog::Post.new
     assert post.invalid?

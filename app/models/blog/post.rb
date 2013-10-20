@@ -1,26 +1,18 @@
 class Blog::Post < ActiveRecord::Base
   
-  cms_is_categorized
-  
   self.table_name = 'blog_posts'
-
-  # -- Attributes -----------------------------------------------------------
-  attr_accessor :tag_names,
-                :category_ids
   
   # -- Relationships --------------------------------------------------------
-  belongs_to :site, 
-    :class_name => 'Cms::Site'
+  belongs_to :blog
+  
   has_many :comments,
     :dependent => :destroy
   
   # -- Validations ----------------------------------------------------------
-  validates :site_id,
-    :presence   => true
-  validates :title, :slug, :year, :month, :content,
+  validates :blog_id, :title, :slug, :year, :month, :content,
     :presence   => true
   validates :slug,
-    :uniqueness => { :scope => [:site_id, :year, :month] },
+    :uniqueness => { :scope => [:blog_id, :year, :month] },
     :format     => { :with => /\A\w[a-z0-9_-]*\z/i }
   
   # -- Scopes ---------------------------------------------------------------

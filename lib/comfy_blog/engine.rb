@@ -8,13 +8,9 @@ module ComfyBlog
   module CmsSiteExtensions
     extend ActiveSupport::Concern
     included do 
-      has_many :blog_posts,
-        :class_name => 'Blog::Post',
+      has_many :blogs,
+        :class_name => 'Blog::Blog',
         :dependent  => :destroy
-      has_many :blog_comments,
-        :class_name => 'Blog::Comment',
-        :through    => :blog_posts,
-        :source     => :comments
     end
   end
   

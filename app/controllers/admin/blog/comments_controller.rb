@@ -1,5 +1,6 @@
-class Admin::Blog::CommentsController < Admin::Cms::BaseController
+class Admin::Blog::CommentsController < Admin::Blog::BaseController
   
+  before_action :load_blog
   before_action :load_comment, :only => [:destroy, :toggle_publish]
   
   def index

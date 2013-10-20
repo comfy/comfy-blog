@@ -1,7 +1,8 @@
-class Admin::Blog::PostsController < Admin::Cms::BaseController
+class Admin::Blog::PostsController < Admin::Blog::BaseController
   
-  before_filter :build_post, :only => [:new, :create]
-  before_filter :load_post,  :only => [:edit, :update, :destroy]
+  before_action :load_blog
+  before_action :build_post, :only => [:new, :create]
+  before_action :load_post,  :only => [:edit, :update, :destroy]
 
   def index
     @posts = @site.blog_posts.page(params[:page])

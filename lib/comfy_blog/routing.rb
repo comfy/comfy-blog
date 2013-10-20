@@ -2,14 +2,16 @@ module ComfyBlog::Routing
   
   def self.admin(options = {})
     options[:path] ||= 'admin'
-    path = [options[:path], 'sites', ':site_id', 'blog'].join('/')
+    path = [options[:path], 'sites', ':site_id'].join('/')
     
     Rails.application.routes.draw do
       scope :module => :admin do
-        namespace :blog, :as => :admin_blog, :path => path, :except => :show do
-          resources :posts
-          resources :comments, :only => [:index, :destroy] do
-            patch :toggle_publish, :on => :member
+        namespace :blog, :as => :admin, :path => path, :except => [:show] do
+          resources :blogs do
+            resources :posts
+            resources :comments, :only => [:index, :destroy] do
+              patch :toggle_publish, :on => :member
+            end
           end
         end
       end

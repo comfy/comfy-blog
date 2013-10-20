@@ -1,5 +1,5 @@
 default:
-  site: default
+  blog: default
   title: Default Title
   slug: default-title
   content: Default Content
