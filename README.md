@@ -11,6 +11,6 @@ gem 'comfy_blog', '~> 1.0.0'
 ```
 
 ```ruby
-ComfyBlog::Routing.admin   :path => '/admin'
-ComfyBlog::Routing.content :path => '/'
+ComfyBlog::Routing.admin   :path => 'admin'
+ComfyBlog::Routing.content :path => 'blog'
 ```
