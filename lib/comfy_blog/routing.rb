@@ -18,17 +18,20 @@ module ComfyBlog::Routing
     end
   end
   
-  def self.content
+  def self.content(options = {})
+    options[:path] ||= 'blog'
+    path = ['(:cms_path)', options[:path], '(:blog_path)'].join('/')
+    
     Rails.application.routes.draw do
-      namespace :blog, :path => '(:cms_path)' do
-        resources :posts, :only => [:index, :show] do
-          resources :comments, :only => [:create]
-        end
-        with_options :constraints => { :year => /\d{4}/, :month => /\d{1,2}/ } do |o|
+      namespace :blog, :path => path, :constraints => {:blog_path => /\w[a-z0-9_-]*/} do
+        with_options :constraints => {:year => /\d{4}/, :month => /\d{1,2}/} do |o|
           o.get ':year'               => 'posts#index', :as => :posts_of_year
           o.get ':year/:month'        => 'posts#index', :as => :posts_of_month
           o.get ':year/:month/:slug'  => 'posts#show',  :as => :posts_dated
         end
+        post ':slug/comments' => 'comments#create', :as => :comments
+        get  ':slug'          => 'posts#show',      :as => :post
+        get  '/'              => 'posts#index',     :as => :posts
       end
     end
   end

@@ -1,5 +1,10 @@
-= form_for :comment, :remote => true, :url => blog_post_comments_path(@post), :html => { :id => 'comment' } do |form|
+= formatted_form_for @comment, :url => blog_comments_path(@cms_site.path, @blog.path, @post.slug) do |form|
+  
+  -# don't need this when installed into your app
+  = form.hidden_field :authenticity_token, :value => form_authenticity_token
+  
   = form.text_field :author
   = form.text_field :email
   = form.text_area :content
+  
   = form.submit 'Submit'

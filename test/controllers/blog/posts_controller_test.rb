@@ -2,6 +2,11 @@ require_relative '../../test_helper'
 
 class Blog::PostsControllerTest < ActionController::TestCase
   
+  def setup
+    @blog = blog_blogs(:default)
+    @post = blog_posts(:default)
+  end
+  
   def test_get_index
     get :index
     assert_response :success
@@ -46,23 +51,21 @@ class Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_show
-    get :show, :id => blog_posts(:default)
+    get :show, :slug => @post.slug
     assert_response :success
     assert_template :show
     assert assigns(:post)
   end
   
   def test_get_show_unpublished
-    post = blog_posts(:default)
-    post.update_attribute(:is_published, false)
+    @post.update_attribute(:is_published, false)
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get :show, :id => post
+      get :show, :slug => @post.slug
     end
   end
   
   def test_get_show_with_date
-    post = blog_posts(:default)
-    get :show, :year => post.year, :month => post.month, :slug => blog_posts(:default).slug
+    get :show, :year => @post.year, :month => @post.month, :slug => @post.slug
     assert_response :success
     assert_template :show
     assert assigns(:post)
@@ -72,13 +75,6 @@ class Blog::PostsControllerTest < ActionController::TestCase
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
       get :show, :year => '1999', :month => '99', :slug => 'invalid'
     end
-  end
-  
-  def test_get_show_with_disqus
-    ComfyBlog.config.disqus_shortname = 'test'
-    post = blog_posts(:default)
-    get :show, :year => post.year, :month => post.month, :slug => blog_posts(:default).slug
-    assert_response :success
   end
   
 end

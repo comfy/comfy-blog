@@ -22,10 +22,6 @@ module ComfyBlog
     end
     alias :config :configuration
     
-    def disqus_enabled?
-      self.config.disqus_shortname.present?
-    end
-    
   end
   
 end

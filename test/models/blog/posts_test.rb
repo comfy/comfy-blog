@@ -11,14 +11,13 @@ class BlogPostsTest < ActiveSupport::TestCase
   def test_validations
     post = Blog::Post.new
     assert post.invalid?
-    assert_errors_on post, :site_id, :title, :slug, :content
+    assert_errors_on post, :blog_id, :title, :slug, :content
   end
   
   def test_validation_of_slug_uniqueness
     old_post = blog_posts(:default)
     old_post.update_attributes!(:published_at => Time.now)
-    post = Blog::Post.new(
-      :site     => cms_sites(:default),
+    post = blog_blogs(:default).posts.new(
       :title    => old_post.title,
       :content  => 'Test Content'
     )
@@ -31,8 +30,7 @@ class BlogPostsTest < ActiveSupport::TestCase
   
   def test_creation
     assert_difference 'Blog::Post.count' do
-      post = Blog::Post.create!(
-        :site     => cms_sites(:default),
+      post = blog_blogs(:default).posts.create!(
         :title    => 'Test Post',
         :content  => 'Test Content'
       )

@@ -1,16 +1,16 @@
 %h1= @post.title
+
 .author
   = @post.author
 .date
   = @post.published_at.to_s(:db)
 .content
   = @post.content.html_safe
-  
-- if ComfyBlog.disqus_enabled?
-  = render :partial => 'blog/comments/disqus'
 
-- else
-  #blog-comments
-    - @post.comments.each do |comment|
-      = render :partial => 'blog/comments/comment', :object => comment
+.comments
+  - @post.comments.published.each do |comment|
+    .comment
+      .author= comment.author
+      .content= comment.content
+  
   = render :partial => 'blog/comments/form'

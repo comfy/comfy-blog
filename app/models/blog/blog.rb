@@ -11,5 +11,10 @@ class Blog::Blog < ActiveRecord::Base
   # -- Validations ----------------------------------------------------------
   validates :site_id, :label, :identifier,
     :presence   => true
+  validates :identifier,
+    :format     => { :with => /\A\w[a-z0-9_-]*\z/i }
+  validates :path,
+    :format     => { :with => /\A\w[a-z0-9_-]*\z/i },
+    :if         => 'path.present?'
 
 end

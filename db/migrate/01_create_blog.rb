@@ -5,6 +5,7 @@ class CreateBlog < ActiveRecord::Migration
       t.integer :site_id,     :null => false
       t.string  :label,       :null => false
       t.string  :identifier,  :null => false
+      t.string  :app_layout,  :null => false, :default => 'application'
       t.string  :path
       t.text    :description
     end

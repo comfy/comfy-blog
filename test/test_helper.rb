@@ -21,7 +21,6 @@ class ActiveSupport::TestCase
     ComfyBlog.configure do |config|
       config.posts_per_page = 10
       config.auto_publish_comments = false
-      config.disqus_shortname = nil
     end
   end
   
