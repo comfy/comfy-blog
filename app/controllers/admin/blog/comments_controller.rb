@@ -4,10 +4,10 @@ class Admin::Blog::CommentsController < Admin::Blog::BaseController
   before_action :load_comment, :only => [:destroy, :toggle_publish]
   
   def index
-    @comments = if @post = @site.blog_posts.where(:id => params[:post_id]).first
+    @comments = if @post = @blog.posts.where(:id => params[:post_id]).first
       @post.comments.page(params[:page])
     else
-      @site.blog_comments.page(params[:page])
+      @blog.comments.page(params[:page])
     end
   end
 
@@ -24,7 +24,7 @@ class Admin::Blog::CommentsController < Admin::Blog::BaseController
 protected
   
   def load_comment
-    @comment = @site.blog_comments.find(params[:id])
+    @comment = @blog.comments.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'Comment not found'
     redirect_to :action => :index

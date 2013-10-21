@@ -1,0 +1,7 @@
+= form.text_field :label, :data => {:slugify => @blog.new_record?}
+= form.text_field :identifier, :data => {:slug => true}
+= form.text_field :path
+= form.text_area :description, :class => 'short'
+
+.form-actions
+  = form.submit :class => 'btn btn-primary'

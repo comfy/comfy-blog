@@ -1,0 +1,5 @@
+.page-header
+  %h2 New Blog
+
+= comfy_form_for @blog, :as => :blog, :url => {:action => :create} do |form|
+  = render form

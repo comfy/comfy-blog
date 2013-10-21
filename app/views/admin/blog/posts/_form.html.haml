@@ -1,8 +1,6 @@
 - content_for :right_column do
   = render :partial => 'admin/cms/files/index'
 
--# = render 'admin/cms/partials/snippet_form_before', :object => form
-
 = form.text_field :title, :data => {:slugify => @post.new_record?}
 = form.text_field :slug, :data => {:slug => true}
 = form.text_field :author
@@ -10,10 +8,6 @@
 = form.text_area :excerpt, :class => 'short'
 = form.text_field :published_at, :value => @post.published_at.try(:to_s, :db), :data => {:datetime => true}
 = form.check_box :is_published
-
--# = render :partial => 'admin/cms/categories/form', :object => form
-
--# = render 'admin/cms/partials/snippet_form_after', :object => form
 
 .form-actions
   = form.submit :class => 'btn btn-primary'

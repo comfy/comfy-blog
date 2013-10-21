@@ -3,11 +3,14 @@ require_relative '../../../test_helper'
 class Admin::Blog::CommentsControllerTest < ActionController::TestCase
   
   def setup
-    @site = cms_sites(:default)
+    @site     = cms_sites(:default)
+    @blog     = blog_blogs(:default)
+    @post     = blog_posts(:default)
+    @comment  = blog_comments(:default)
   end
   
   def test_get_index
-    get :index, :site_id => @site
+    get :index, :site_id => @site, :blog_id => @blog
     assert_response :success
     assert_template :index
     assert assigns(:comments)
@@ -15,7 +18,7 @@ class Admin::Blog::CommentsControllerTest < ActionController::TestCase
   end
   
   def test_get_index_for_post
-    get :index, :site_id => @site, :post_id => blog_posts(:default)
+    get :index, :site_id => @site, :blog_id => @blog, :post_id => @post
     assert_response :success
     assert_template :index
     assert assigns(:post)
@@ -23,22 +26,21 @@ class Admin::Blog::CommentsControllerTest < ActionController::TestCase
   end
   
   def test_publish
-    comment = blog_comments(:default)
-    assert comment.is_published?
-    xhr :patch, :toggle_publish, :site_id => @site, :id => comment
+    assert @comment.is_published?
+    xhr :patch, :toggle_publish, :site_id => @site, :blog_id => @blog, :id => @comment
     assert_response :success
-    comment.reload
-    assert !comment.is_published?
+    @comment.reload
+    assert !@comment.is_published?
     
-    xhr :patch, :toggle_publish, :site_id => @site, :id => comment
+    xhr :patch, :toggle_publish, :site_id => @site, :blog_id => @blog, :id => @comment
     assert_response :success
-    comment.reload
-    assert comment.is_published?
+    @comment.reload
+    assert @comment.is_published?
   end
   
   def test_destroy
     assert_difference 'Blog::Comment.count', -1 do
-      delete :destroy, :site_id => @site, :id => blog_comments(:default)
+      delete :destroy, :site_id => @site, :blog_id => @blog, :id => @comment
       assert_response :redirect
       assert_redirected_to :action => :index
       assert_equal 'Comment deleted', flash[:success]
@@ -46,7 +48,7 @@ class Admin::Blog::CommentsControllerTest < ActionController::TestCase
   end
   
   def test_destroy_failure
-    delete :destroy, :site_id => @site, :id => 'invalid'
+    delete :destroy, :site_id => @site, :blog_id => @blog, :id => 'invalid'
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Comment not found', flash[:error]

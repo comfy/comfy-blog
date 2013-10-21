@@ -5,7 +5,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   before_action :load_post,  :only => [:edit, :update, :destroy]
 
   def index
-    @posts = @site.blog_posts.page(params[:page])
+    @posts = @blog.posts.page(params[:page])
   end
 
   def new
@@ -45,14 +45,14 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
 protected
 
   def load_post
-    @post = @site.blog_posts.find(params[:id])
+    @post = @blog.posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:error] = 'Blog Post not found'
     redirect_to :action => :index
   end
 
   def build_post
-    @post = @site.blog_posts.new(post_params)
+    @post = @blog.posts.new(post_params)
     @post.published_at ||= Time.zone.now
   end
   
