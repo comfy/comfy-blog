@@ -36,6 +36,10 @@ module Comfy
         route route_string[2..-1]
       end
       
+      def generate_views
+        directory 'app/views/blog', 'app/views/blog'
+      end
+      
       def show_readme
         readme 'lib/generators/comfy/blog/README'
       end
