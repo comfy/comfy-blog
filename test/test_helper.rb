@@ -5,6 +5,7 @@ ENV['RAILS_ENV'] = 'test'
 
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'rails/generators'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -63,6 +64,34 @@ class ActionController::TestCase
   # CMS by default is going to prompt with basic auth request
   def set_basic_auth
     @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64.encode64('username:password')}"
+  end
+  
+end
+
+class Rails::Generators::TestCase
+  
+  destination File.expand_path('../tmp', File.dirname(__FILE__))
+  
+  setup :prepare_destination,
+        :prepare_files
+  
+  def prepare_files
+    config_path = File.join(self.destination_root, 'config')
+    routes_path = File.join(config_path, 'routes.rb')
+    FileUtils.mkdir_p(config_path)
+    FileUtils.touch(routes_path)
+    File.open(routes_path, 'w') do |f|
+      f.write("Test::Application.routes.draw do\n\nend")
+    end
+  end
+  
+  def read_file(filename)
+    File.read(
+      File.join(
+        File.expand_path('fixtures/generators', File.dirname(__FILE__)),
+        filename
+      )
+    )
   end
   
 end
