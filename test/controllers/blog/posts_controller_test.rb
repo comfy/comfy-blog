@@ -8,7 +8,7 @@ class Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_index
-    get :index
+    get :serve
     assert_response :success
     assert_template :index
     assert assigns(:posts)
@@ -16,7 +16,7 @@ class Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_index_as_rss
-    get :index, :format => :rss
+    get :serve, :format => :rss
     assert_response :success
     assert_template :index
     assert assigns(:posts)
@@ -25,7 +25,7 @@ class Blog::PostsControllerTest < ActionController::TestCase
   
   def test_get_index_with_unpublished
     blog_posts(:default).update_column(:is_published, false)
-    get :index
+    get :serve
     assert_response :success
     assert_equal 0, assigns(:posts).size
   end
@@ -51,7 +51,7 @@ class Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_show
-    get :show, :slug => @post.slug
+    get :serve, :slug => @post.slug
     assert_response :success
     assert_template :show
     assert assigns(:post)
@@ -60,7 +60,7 @@ class Blog::PostsControllerTest < ActionController::TestCase
   def test_get_show_unpublished
     @post.update_attribute(:is_published, false)
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get :show, :slug => @post.slug
+      get :serve, :slug => @post.slug
     end
   end
   

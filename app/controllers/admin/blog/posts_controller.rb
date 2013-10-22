@@ -5,7 +5,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   before_action :load_post,  :only => [:edit, :update, :destroy]
 
   def index
-    @posts = @blog.posts.page(params[:page])
+    @posts = @blog.posts.order(:published_at).page(params[:page])
   end
 
   def new

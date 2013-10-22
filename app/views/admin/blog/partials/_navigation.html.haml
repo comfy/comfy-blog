@@ -1,2 +1,6 @@
-- if @site.present? && !@site.new_record?
+- if @site.present? && @site.persisted?
   %li= active_link_to 'Blogs', admin_blogs_path(@site)
+  - if @blog.present? && @blog.persisted?
+    %ul
+      %li= active_link_to 'Posts', admin_blog_posts_path(@site, @blog)
+      %li= active_link_to 'Comments', admin_blog_comments_path(@site, @blog)

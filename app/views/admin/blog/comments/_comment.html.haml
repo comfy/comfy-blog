@@ -3,8 +3,9 @@
     = link_to comment.post.title.truncate(25), admin_blog_comments_path(@site, @blog, :post_id => comment.post)
   %td.main
     = comment.author
-    = mail_to comment.email
     .item-meta
+      = mail_to comment.email
+      %br
       = comment.content
   %td
     = comment.created_at.to_s(:db)
