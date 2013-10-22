@@ -1,7 +1,7 @@
 # ComfyBlog 
 [![Gem Version](https://badge.fury.io/rb/comfy_blog.png)](http://rubygems.org/gems/comfy_blog) [![Build Status](https://secure.travis-ci.org/comfy/comfy-blog.png)](http://travis-ci.org/comfy/comfy-blog) [![Dependency Status](https://gemnasium.com/comfy/comfy-blog.png)](https://gemnasium.com/comfy/comfy-blog) [![Code Climate](https://codeclimate.com/github/comfy/comfy-blog.png)](https://codeclimate.com/github/comfy/comfy-blog) [![Coverage Status](https://coveralls.io/repos/comfy/comfy-blog/badge.png?branch=master)](https://coveralls.io/r/comfy/comfy-blog)
 
-ComfyBlog is an simple blog management engine for [ComfortableMexicanSofa](https://github.com/comfy/comfortable-mexican-sofa) CMS Engine.
+ComfyBlog is an simple blog management engine for [ComfortableMexicanSofa](https://github.com/comfy/comfortable-mexican-sofa) (for version >= 1.10).
 
 ## Features
 
