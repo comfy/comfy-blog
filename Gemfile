@@ -2,10 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'comfortable_mexican_sofa',
-  :github => 'comfy/comfortable-mexican-sofa',
-  :branch => '1.10'
-
 group :development do
   gem 'awesome_print'
   gem 'better_errors'

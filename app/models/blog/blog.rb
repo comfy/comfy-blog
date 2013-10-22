@@ -14,7 +14,16 @@ class Blog::Blog < ActiveRecord::Base
   validates :identifier,
     :format     => { :with => /\A\w[a-z0-9_-]*\z/i }
   validates :path,
+    :uniqueness => { :scope => :site_id },
     :format     => { :with => /\A\w[a-z0-9_-]*\z/i },
-    :if         => 'path.present?'
+    :presence   => true,
+    :if         => 'restricted_path?'
+  
+protected
+
+  def restricted_path?
+    (self.class.count > 1 && self.persisted?) ||
+    (self.class.count >= 1 && self.new_record?)
+  end
 
 end
