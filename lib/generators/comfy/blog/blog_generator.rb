@@ -31,8 +31,8 @@ module Comfy
       end
       
       def generate_routing
-        route_string  = "  ComfyBlog::Routing.admin :path => '/admin'\n"
-        route_string << "  ComfyBlog::Routing.content :path => '/blog'\n"
+        route_string  = "  comfy_route :blog_admin, :path => '/admin'\n"
+        route_string << "  comfy_route :blog, :path => '/blog'\n"
         route route_string[2..-1]
       end
       

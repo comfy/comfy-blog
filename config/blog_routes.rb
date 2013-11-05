@@ -1,6 +1,6 @@
 ComfyBlog::Application.routes.draw do
-  ComfortableMexicanSofa::Routing.admin
-  ComfyBlog::Routing.admin
-  ComfyBlog::Routing.content
-  ComfortableMexicanSofa::Routing.content :sitemap => true
+  comfy_route :cms_admin
+  comfy_route :blog_admin
+  comfy_route :blog
+  comfy_route :cms, :sitemap => true
 end
