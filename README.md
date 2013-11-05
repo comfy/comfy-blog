@@ -34,3 +34,6 @@ You should also find view templates in `/app/views/blog` folder. Feel free to ad
 ---
 
 Copyright 2009-2013 Oleg Khabarov, [The Working Group Inc](http://www.twg.ca)
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/comfy/comfy-blog/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
