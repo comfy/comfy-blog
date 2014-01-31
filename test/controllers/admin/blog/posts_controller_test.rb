@@ -23,6 +23,14 @@ class Admin::Blog::PostsControllerTest < ActionController::TestCase
     assert_select "form[action='/admin/sites/#{@site.id}/blogs/#{@blog.id}/posts']"
   end
   
+  def test_get_new_with_default_author
+    ComfyBlog.config.default_author = 'Default Author'
+    get :new, :site_id => @site, :blog_id => @blog
+    assert_response :success
+    assert assigns(:post)
+    assert_equal 'Default Author', assigns(:post).author
+  end
+  
   def test_creation
     assert_difference 'Blog::Post.count' do
       post :create, :site_id => @site, :blog_id => @blog, :post => {

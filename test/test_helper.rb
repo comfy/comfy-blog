@@ -20,8 +20,9 @@ class ActiveSupport::TestCase
   
   def reset_config
     ComfyBlog.configure do |config|
-      config.posts_per_page = 10
-      config.auto_publish_comments = false
+      config.posts_per_page         = 10
+      config.auto_publish_comments  = false
+      config.default_author         = nil
     end
   end
   

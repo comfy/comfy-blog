@@ -7,7 +7,8 @@ module ComfyBlog
     # Comments can be automatically approved/published by changing this setting
     # Default is false.
     attr_accessor :auto_publish_comments
-
+    
+    # A default author can be specified for posts
     attr_accessor :default_author
 
     # Configuration defaults

@@ -9,6 +9,7 @@ class Admin::Blog::PostsController < Admin::Blog::BaseController
   end
 
   def new
+    @post.author = ComfyBlog.config.default_author
     render
   end
 
