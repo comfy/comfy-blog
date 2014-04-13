@@ -1,7 +1,0 @@
-default:
-  site: default
-  label: Default Blog
-  identifier: default-blog
-  path:
-  app_layout: blog/application
-  description: Default Description

@@ -16,9 +16,9 @@ module ComfyBlog
   
   class Engine < ::Rails::Engine
     initializer 'comfy_blog.configuration' do |app|
-      ComfortableMexicanSofa::ViewHooks.add(:navigation, '/admin/blog/partials/navigation')
+      ComfortableMexicanSofa::ViewHooks.add(:navigation, '/comfy/admin/blog/partials/navigation')
       config.to_prepare do
-        Cms::Site.send :include, ComfyBlog::CmsSiteExtensions
+        Comfy::Cms::Site.send :include, ComfyBlog::CmsSiteExtensions
       end
     end
   end

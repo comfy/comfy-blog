@@ -1,0 +1,13 @@
+- content_for :right_column do
+  = render :partial => 'comfy/admin/cms/files/index'
+
+= form.text_field :title, :data => {:slugify => @post.new_record?}
+= form.text_field :slug, :data => {:slug => true}
+= form.text_field :author
+= form.text_area :content, :data => {'cms-rich-text' => true}
+= form.text_area :excerpt, :class => 'short'
+= form.text_field :published_at, :value => @post.published_at.try(:to_s, :db), :data => {'cms-datetime' => true}
+= form.check_box :is_published
+
+.form-actions
+  = form.submit :class => 'btn btn-primary'

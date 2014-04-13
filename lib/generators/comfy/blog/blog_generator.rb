@@ -37,7 +37,7 @@ module Comfy
       end
       
       def generate_views
-        directory 'app/views/blog', 'app/views/blog'
+        directory 'app/views/comfy/blog', 'app/views/comfy/blog'
       end
       
       def show_readme

@@ -1,0 +1,18 @@
+%h1 Blog Post
+
+%h1= @post.title
+
+.author
+  = @post.author
+.date
+  = @post.published_at.to_s(:db)
+.content
+  = @post.content.html_safe
+
+.comments
+  - @post.comments.published.each do |comment|
+    .comment
+      .author= comment.author
+      .content= comment.content
+  
+  = render :partial => 'comfy/blog/comments/form'
