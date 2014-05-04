@@ -33,4 +33,4 @@ You should also find view templates in `/app/views/blog` folder. Feel free to ad
 
 ---
 
-Copyright 2009-2014 Oleg Khabarov, [The Working Group Inc](http://www.twg.ca)
+Copyright 2009-2014 Oleg Khabarov

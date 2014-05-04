@@ -6,7 +6,7 @@ require 'comfy_blog/version'
 Gem::Specification.new do |s|
   s.name        = 'comfy_blog'
   s.version     = ComfyBlog::VERSION
-  s.authors     = ["Oleg Khabarov", "The Working Group Inc"]
+  s.authors     = ["Oleg Khabarov"]
   s.email       = ["oleg@khabarov.ca"]
   s.homepage    = "http://github.com/comfy/comfy-blog"
   s.summary     = "Simple Blog Engine for ComfortableMexicanSofa"
