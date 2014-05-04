@@ -11,7 +11,7 @@
     = comment.created_at.to_s(:db)
   %td
     - label, css_class = comment.is_published?? ['Unpublish', 'btn-danger'] : ['Publish', 'btn-info']
-    = link_to label, toggle_publish_comfy_admin_blog_comment_path(@site, @blog, comment), :method => :patch, :remote => true, :class => "btn btn-small #{css_class}"
+    = link_to label, toggle_publish_comfy_admin_blog_comment_path(@site, @blog, comment), :method => :patch, :remote => true, :class => "btn btn-sm #{css_class}"
   %td
     .btn-group.btn-group-sm
       = link_to 'Delete', comfy_admin_blog_comment_path(@site, @blog, comment), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger'
