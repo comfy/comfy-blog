@@ -15,12 +15,12 @@
           - blog_path = comfy_blog_posts_url(@site.path, blog.path)
           = link_to blog_path, blog_path, :target => '_blank'
       %td
-        .btn-group
-          = link_to pluralize(blog.posts.count, 'Post'), comfy_admin_blog_posts_path(@site, blog), :class => 'btn btn-small btn-inverse'
-          = link_to pluralize(blog.comments.count, 'Comment'), comfy_admin_blog_comments_path(@site, blog), :class => 'btn btn-small btn-inverse'
+        .btn-group.btn-group-sm
+          = link_to pluralize(blog.posts.count, 'Post'), comfy_admin_blog_posts_path(@site, blog), :class => 'btn btn-info'
+          = link_to pluralize(blog.comments.count, 'Comment'), comfy_admin_blog_comments_path(@site, blog), :class => 'btn btn-info'
       %td
-        .btn-group
-          = link_to 'Edit', edit_comfy_admin_blog_path(@site, blog), :class => 'btn btn-small'
-          = link_to 'Delete', comfy_admin_blog_path(@site, blog), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-small btn-danger'
+        .btn-group.btn-group-sm
+          = link_to 'Edit', edit_comfy_admin_blog_path(@site, blog), :class => 'btn btn-default'
+          = link_to 'Delete', comfy_admin_blog_path(@site, blog), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger'
           
 = paginate @blogs
