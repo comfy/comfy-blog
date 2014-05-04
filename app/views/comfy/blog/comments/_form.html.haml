@@ -1,4 +1,4 @@
-= formatted_form_for @comment, :as => :comment, :url => comfy_blog_comments_path(@cms_site.path, @blog.path, @post.slug) do |form|
+= comfy_form_for @comment, :as => :comment, :url => comfy_blog_comments_path(@cms_site.path, @blog.path, @post.slug) do |form|
   
   -# don't need this when installed into your app
   = form.hidden_field :authenticity_token, :value => form_authenticity_token
