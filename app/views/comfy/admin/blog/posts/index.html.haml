@@ -1,10 +1,10 @@
 .page-header
-  = link_to 'New Blog Post', new_comfy_admin_blog_post_path(@site, @blog), :class => 'btn pull-right'
+  = link_to 'New Blog Post', new_comfy_admin_blog_post_path(@site, @blog), :class => 'btn btn-default pull-right'
   %h2 Blog Posts
   
 = paginate @posts
   
-%table.table.table-hover.table-bordered
+%table.table.table-hover
   %tr
     %th.main Title
     %th Author
@@ -23,10 +23,10 @@
       %td
         = post.published_at.try(:to_s, :db)
       %td
-        = link_to pluralize(post.comments.count, 'Comment'), comfy_admin_blog_comments_path(@site, @blog, :post_id => post.id), :class => 'btn btn-small btn-inverse'
+        = link_to pluralize(post.comments.count, 'Comment'), comfy_admin_blog_comments_path(@site, @blog, :post_id => post.id), :class => 'btn btn-sm btn-info'
       %td
-        .btn-group
-          = link_to 'Edit', edit_comfy_admin_blog_post_path(@site, @blog, post), :class => 'btn btn-small'
-          = link_to 'Delete', comfy_admin_blog_post_path(@site, @blog, post), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-small btn-danger'
+        .btn-group.btn-group-sm
+          = link_to 'Edit', edit_comfy_admin_blog_post_path(@site, @blog, post), :class => 'btn btn-default'
+          = link_to 'Delete', comfy_admin_blog_post_path(@site, @blog, post), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger'
           
 = paginate @posts
