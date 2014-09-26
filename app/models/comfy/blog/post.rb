@@ -13,7 +13,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
     :presence   => true
   validates :slug,
     :uniqueness => { :scope => [:blog_id, :year, :month] },
-    :format     => { :with => /\A\w[a-z0-9_-]*\z/i }
+    :format => { :with => /\A%*\w[a-z0-9_\-\%]*\z/i }
   
   # -- Scopes ---------------------------------------------------------------
   default_scope -> {
