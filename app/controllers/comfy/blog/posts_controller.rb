@@ -1,17 +1,17 @@
 class Comfy::Blog::PostsController < Comfy::Blog::BaseController
-  
+
   skip_before_action :load_blog, :only => [:serve]
-  
+
   # due to fancy routing it's hard to say if we need show or index
   # action. let's figure it out here.
   def serve
     # if there are more than one blog, blog_path is expected
-    if @cms_site.blogs.count >= 2 
+    if @cms_site.blogs.count >= 2
       params[:blog_path] = params.delete(:slug) if params[:blog_path].blank?
     end
-    
+
     load_blog
-    
+
     if params[:slug].present?
       show && render(:show)
     else
@@ -28,16 +28,22 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     end
 
     limit = ComfyBlog.config.posts_per_page
-    respond_to do |format|
-      format.html do
-        @posts = scope.page(params[:page]).per(limit)
+    respond_to do |f|
+      f.html do
+        @posts = if defined? WillPaginate
+          scope.paginate :per_page => ComfyBlog.config.posts_per_page, :page => params[:page]
+        elsif defined? Kaminari
+          scope.page(params[:page]).per(ComfyBlog.config.posts_per_page)
+        else
+          scope
+        end
       end
-      format.rss do
-        @posts = scope.limit(limit)
+      f.rss do
+        @posts = scope.limit(ComfyBlog.config.posts_per_page)
       end
     end
   end
-  
+
   def show
     @post = if params[:slug] && params[:year] && params[:month]
       @blog.posts.published.where(:year => params[:year], :month => params[:month], :slug => params[:slug]).first!
