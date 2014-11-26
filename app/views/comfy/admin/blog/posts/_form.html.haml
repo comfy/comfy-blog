@@ -1,6 +1,3 @@
-- content_for :right_column do
-  = render :partial => 'comfy/admin/cms/files/index'
-
 = form.text_field :title, :data => {:slugify => @post.new_record?}
 = form.text_field :slug, :data => {:slug => true}
 = form.text_field :author
