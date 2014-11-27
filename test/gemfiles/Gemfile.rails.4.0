@@ -1,0 +1,9 @@
+source 'http://rubygems.org'
+
+gem 'rails',                    '~> 4.0.0'
+gem 'comfortable_mexican_sofa', '~> 1.12.0'
+
+group :test do
+  gem 'sqlite3'
+  gem 'coveralls',  :require => false
+end
