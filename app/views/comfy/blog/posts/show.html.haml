@@ -9,10 +9,7 @@
 .content
   = @post.content.html_safe
 
-.comments
-  - @post.comments.published.each do |comment|
-    .comment
-      .author= comment.author
-      .content= comment.content
-  
-  = render :partial => 'comfy/blog/comments/form'
+- if ComfyBlog.config.allow_comments
+  .comments
+    = render :partial => 'comfy/blog/comments/index'
+    = render :partial => 'comfy/blog/comments/form'
