@@ -1,16 +1,16 @@
 class Comfy::Admin::Blog::BlogsController < Comfy::Admin::Blog::BaseController
-  
+
   before_action :build_blog,  :only => [:new, :create]
   before_action :load_blog,   :only => [:edit, :update, :destroy]
-  
+
   def index
-    @blogs = @site.blogs.page(params[:page])
+    @blogs = comfy_paginate(@site.blogs)
   end
-  
+
   def new
     render
   end
-  
+
   def edit
     render
   end
@@ -40,11 +40,11 @@ class Comfy::Admin::Blog::BlogsController < Comfy::Admin::Blog::BaseController
   end
 
 protected
-  
+
   def build_blog
     @blog = @site.blogs.new(blog_params)
   end
-  
+
   def blog_params
     params.fetch(:blog, {}).permit!
   end

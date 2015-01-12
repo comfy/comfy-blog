@@ -1,42 +1,42 @@
 require_relative '../../../../test_helper'
 
 class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
-  
+
   def setup
     @site = comfy_cms_sites(:default)
     @blog = comfy_blog_blogs(:default)
   end
-  
+
   def test_get_index
     get :index, :site_id => @site
     assert_response :success
     assert assigns(:blogs)
     assert_template :index
   end
-  
+
   def test_get_new
     get :new, :site_id => @site
     assert_response :success
     assert assigns(:blog)
     assert_template :new
-    assert_select "form[action=/admin/sites/#{@site.id}/blogs]"
+    assert_select "form[action='/admin/sites/#{@site.id}/blogs']"
   end
-  
+
   def test_get_edit
     get :edit, :site_id => @site, :id => @blog
     assert_response :success
     assert assigns(:blog)
     assert_template :edit
-    assert_select "form[action=/admin/sites/#{@site.id}/blogs/#{@blog.id}]"
+    assert_select "form[action='/admin/sites/#{@site.id}/blogs/#{@blog.id}']"
   end
-  
+
   def test_get_edit_failure
     get :edit, :site_id => @site, :id => 'invalid'
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Blog not found', flash[:error]
   end
-  
+
   def test_creation
     assert_difference 'Comfy::Blog::Blog.count' do
       post :create, :site_id => @site, :blog => {
@@ -51,7 +51,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
       assert_equal 'Blog created', flash[:success]
     end
   end
-  
+
   def test_creation_failure
     assert_no_difference 'Comfy::Blog::Blog.count' do
       post :create, :site_id => @site, :blog => { }
@@ -60,7 +60,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
       assert_equal 'Failed to create Blog', flash[:error]
     end
   end
-  
+
   def test_update
     put :update, :site_id => @site, :id => @blog, blog: {
       :label => 'Updated'
@@ -71,7 +71,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
     @blog.reload
     assert_equal 'Updated', @blog.label
   end
-  
+
   def test_update_failure
     put :update, :site_id => @site, :id => @blog, :blog => {
       :label => ''
@@ -82,7 +82,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
     @blog.reload
     refute_equal '', @blog.label
   end
-  
+
   def test_destroy
     assert_difference 'Comfy::Blog::Blog.count', -1 do
       delete :destroy, :site_id => @site, :id => @blog

@@ -1,7 +1,7 @@
 .page-header
   %h2 Blog Comments
-  
-= paginate @comments
+
+= comfy_paginate @comments
 
 %table.table.table-hover
   %tr
@@ -10,8 +10,8 @@
     %th Posted
     %th Status
     %th
-    
+
   - @comments.each do |comment|
     = render :partial => 'comment', :object => comment
-    
-= paginate @comments
+
+= comfy_paginate @comments

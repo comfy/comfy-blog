@@ -1,9 +1,9 @@
 .page-header
   = link_to 'New Blog', new_comfy_admin_blog_path(@site), :class => 'btn btn-default pull-right'
   %h2 Blogs
-  
-= paginate @blogs
-  
+
+= comfy_paginate @blogs
+
 %table.table.table-hover.table-bordered
   - @blogs.each do |blog|
     %tr
@@ -22,5 +22,5 @@
         .btn-group.btn-group-sm
           = link_to 'Edit', edit_comfy_admin_blog_path(@site, blog), :class => 'btn btn-default'
           = link_to 'Delete', comfy_admin_blog_path(@site, blog), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'btn btn-danger'
-          
-= paginate @blogs
+
+= comfy_paginate @blogs

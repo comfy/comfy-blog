@@ -1,11 +1,11 @@
 class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
-  
+
   before_action :load_blog
   before_action :build_post, :only => [:new, :create]
   before_action :load_post,  :only => [:edit, :update, :destroy]
 
   def index
-    @posts = @blog.posts.order(:published_at).page(params[:page])
+    @posts = comfy_paginate(@blog.posts.order(:published_at))
   end
 
   def new
@@ -56,7 +56,7 @@ protected
     @post = @blog.posts.new(post_params)
     @post.published_at ||= Time.zone.now
   end
-  
+
   def post_params
     params.fetch(:post, {}).permit!
   end
