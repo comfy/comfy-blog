@@ -5,7 +5,6 @@ class Comfy::Blog::CommentsController < Comfy::Blog::BaseController
 
   def create
     @comment.save!
-
     flash[:success] = 'Comment created'
     redirect_to comfy_blog_post_path(@cms_site.path, @blog.path, @post.slug)
 

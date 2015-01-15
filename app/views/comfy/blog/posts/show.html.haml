@@ -9,7 +9,7 @@
 .content
   = @post.content.html_safe
 
-- if ComfyBlog.config.allow_comments
+- unless @post.comments_disabled?
   .comments
     = render :partial => 'comfy/blog/comments/index'
     = render :partial => 'comfy/blog/comments/form'

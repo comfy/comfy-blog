@@ -14,7 +14,7 @@ class Comfy::Blog::Comment < ActiveRecord::Base
   validates :email,
     :format => { :with => /\A([\w.%-+]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 
-  validate :comments_allowed
+  validate :check_commentable
 
   # -- Scopes ---------------------------------------------------------------
   scope :published, -> {
@@ -28,7 +28,7 @@ protected
     return
   end
 
-  def comments_allowed
-    errors.add(:base, 'comments are not allowed') unless ComfyBlog.config.allow_comments
+  def check_commentable
+    errors.add(:base, 'comments are not allowed') if post.try(:comments_disabled?)
   end
 end

@@ -14,11 +14,30 @@ class BlogCommentsTest < ActiveSupport::TestCase
     assert_errors_on comment, [:post_id, :content, :author, :email]
   end
 
-  def test_validations_when_comments_not_allowed
+  def test_validations_when_comments_not_allowed_for_blog
     ComfyBlog.config.allow_comments = false
-    comment = Comfy::Blog::Comment.new
+    post = comfy_blog_posts(:default)
+    comment = Comfy::Blog::Comment.new(
+        :content  => 'Test Content',
+        :author   => 'Tester',
+        :email    => 'test@test.test',
+        :post_id  => post.id
+    )
     assert comment.invalid?
+    assert_errors_on comment, :base
     ComfyBlog.config.allow_comments = true
+  end
+
+  def test_validations_when_post_is_not_commentable
+    post = comfy_blog_posts(:not_commentable)
+    comment = Comfy::Blog::Comment.new(
+        :content  => 'Test Content',
+        :author   => 'Tester',
+        :email    => 'test@test.test',
+        :post_id  => post.id
+    )
+    assert comment.invalid?
+    assert_errors_on comment, :base
   end
 
   def test_creation
