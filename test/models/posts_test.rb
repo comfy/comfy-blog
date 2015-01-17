@@ -40,6 +40,12 @@ class BlogPostsTest < ActiveSupport::TestCase
     end
   end
 
+  def test_comments_disabled
+    post = comfy_blog_posts(:not_commentable)
+    assert ComfyBlog.configuration.allow_comments
+    assert post.comments_disabled?
+  end
+
   def test_set_slug
     post = Comfy::Blog::Post.new(:title => 'Test Title')
     post.send(:set_slug)
