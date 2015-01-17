@@ -5,6 +5,18 @@ default:
   content: Default Content
   author: Default Author
   is_published: true
+  is_commentable: true
+  year: 2012
+  month: 1
+  published_at: <%= 2.days.ago %>
+not_commentable:
+  blog: default
+  title: Another Title
+  slug: another-title
+  content: Another Content
+  author: Another Author
+  is_published: true
+  is_commentable: false
   year: 2012
   month: 1
   published_at: <%= 2.days.ago %>
