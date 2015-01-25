@@ -1,5 +1,5 @@
 class CreateBlog < ActiveRecord::Migration
-  
+
   def self.up
     create_table :comfy_blogs do |t|
       t.integer :site_id,     :null => false
@@ -11,7 +11,7 @@ class CreateBlog < ActiveRecord::Migration
     end
     add_index :comfy_blogs, [:site_id, :path]
     add_index :comfy_blogs, :identifier
-    
+
     create_table :comfy_blog_posts do |t|
       t.integer   :blog_id,       :null => false
       t.string    :title,         :null => false
@@ -29,7 +29,7 @@ class CreateBlog < ActiveRecord::Migration
       :name => 'index_blog_posts_on_published_year_month_slug'
     add_index :comfy_blog_posts, [:is_published, :created_at]
     add_index :comfy_blog_posts, :created_at
-    
+
     create_table :comfy_blog_comments do |t|
       t.integer :post_id,       :null => false
       t.string  :author,        :null => false
@@ -42,11 +42,11 @@ class CreateBlog < ActiveRecord::Migration
     add_index :comfy_blog_comments, [:post_id, :is_published, :created_at],
       :name => 'index_blog_comments_on_post_published_created'
   end
-  
+
   def self.down
     drop_table :comfy_blogs
-    drop_table :comfy_posts
-    drop_table :comfy_comments
+    drop_table :comfy_blog_posts
+    drop_table :comfy_blog_comments
   end
-  
+
 end
