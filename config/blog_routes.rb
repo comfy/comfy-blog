@@ -3,5 +3,5 @@ ComfyBlog::Application.routes.draw do
   comfy_route :blog_admin
   comfy_route :blog
   comfy_route :cms, :sitemap => true
-  comfy_route :tags, :path => 'articles#index', as: :tag
+  get 'tags/:tag', to: @blog.path, as: :tag
 end
