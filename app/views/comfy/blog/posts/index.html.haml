@@ -3,6 +3,8 @@
 - @posts.each do |post|
 
   %h1= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug)
+  .tags
+    = post.tags.map(&:name).map { |t| link_to t, tag_path(t) }
   .author
     = post.author
   .date

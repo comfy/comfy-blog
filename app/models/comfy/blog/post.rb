@@ -12,7 +12,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   # -- Validations ----------------------------------------------------------
-  validates :blog_id, :title, :slug, :year, :month, :content,
+  validates :blog_id, :title, :slug, :year, :month, :content, :tag_list
     :presence   => true
   validates :slug,
     :uniqueness => { :scope => [:blog_id, :year, :month] },
@@ -38,6 +38,20 @@ class Comfy::Blog::Post < ActiveRecord::Base
                     :set_date
 
 protected
+
+  def self.tagged_with(name)
+    Tag.find_by_name!(name).posts
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(", ").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 
   def set_slug
     self.slug ||= self.title.to_s.downcase.slugify
