@@ -37,14 +37,14 @@ class Comfy::Blog::Post < ActiveRecord::Base
                     :set_published_at,
                     :set_date
 
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
 protected
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).posts
-  end
-
-  def tag_list
-    tags.map(&:name).join(', ')
   end
 
   def tag_list=(names)
