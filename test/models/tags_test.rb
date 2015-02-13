@@ -10,7 +10,7 @@ class BlogTagsTest < ActiveSupport::TestCase
 
   def test_creation
     assert_difference ['Comfy::Blog::Tag.count', 'Comfy::Blog::Tagging.count'], +1 do
-      tag = comfy_blog_posts(:default).tags.create!(
+      comfy_blog_posts(:default).tags.create!(
         :name => 'Tag 1!'
       )
     end

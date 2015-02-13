@@ -94,4 +94,18 @@ class BlogPostsTest < ActiveSupport::TestCase
     assert_equal 0, Comfy::Blog::Post.for_month(2).count
   end
 
+  def test_tag_list
+    post = comfy_blog_posts(:default)
+    post.tags.create!(
+        :name => 'Tag 1!'
+      )
+    assert_equal 'Tag 1!', post.tag_list
+  end
+
+  def test_tag_list_create
+    post = comfy_blog_posts(:default)
+    assert_difference 'Comfy::Blog::Tag.count', +2 do
+      post.tag_list=('Posted Tag!, Twice!')
+    end
+  end
 end

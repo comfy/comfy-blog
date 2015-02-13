@@ -12,7 +12,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   # -- Validations ----------------------------------------------------------
-  validates :blog_id, :title, :slug, :year, :month, :content, :tag_list,
+  validates :blog_id, :title, :slug, :year, :month, :content,
     :presence   => true
   validates :slug,
     :uniqueness => { :scope => [:blog_id, :year, :month] },
@@ -44,7 +44,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
 
   def tag_list=(names)
     self.tags = names.split(", ").map do |n|
-      Tag.where(name: n.strip).first_or_create!
+      Comfy::Blog::Tag.where(name: n.strip).first_or_create!
     end
   end
 
