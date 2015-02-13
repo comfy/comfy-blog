@@ -12,7 +12,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   # -- Validations ----------------------------------------------------------
-  validates :blog_id, :title, :slug, :year, :month, :content, :tag_list
+  validates :blog_id, :title, :slug, :year, :month, :content, :tag_list,
     :presence   => true
   validates :slug,
     :uniqueness => { :scope => [:blog_id, :year, :month] },
