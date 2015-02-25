@@ -32,6 +32,10 @@ class Comfy::Blog::Post < ActiveRecord::Base
     where(:month => month)
   }
 
+  scope :for_tag, -> tag {
+    joins(:tags).where(comfy_blog_tags: {name: tag})
+  }
+
   # -- Callbacks ------------------------------------------------------------
   before_validation :set_slug,
                     :set_published_at,

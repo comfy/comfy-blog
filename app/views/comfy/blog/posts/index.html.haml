@@ -4,7 +4,9 @@
 
   %h1= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug)
   .tags
-    = post.tags
+    %ul
+      - post.tags.map(&:name).each do |t|
+        %li= link_to t, comfy_blog_posts_path(cms_path: @cms_site.path, blog_path: @blog.path, tag: t)
   .author
     = post.author
   .date

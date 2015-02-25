@@ -27,6 +27,10 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
       @blog.posts.published
     end
 
+    if params[:tag]
+      scope = scope.for_tag(params[:tag])
+    end
+
     limit = ComfyBlog.config.posts_per_page
     respond_to do |format|
       format.html do
