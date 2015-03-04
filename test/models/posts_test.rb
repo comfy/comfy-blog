@@ -94,4 +94,27 @@ class BlogPostsTest < ActiveSupport::TestCase
     assert_equal 0, Comfy::Blog::Post.for_month(2).count
   end
 
+  def test_scope_for_tag
+    post = comfy_blog_posts(:default)
+    post.tags.create!(
+      :name => 'Linky Tag!'
+    )
+    assert_equal 1, Comfy::Blog::Post.for_tag('Linky Tag!').count
+    assert_equal 0, Comfy::Blog::Post.for_tag('Not a tag').count
+  end
+
+  def test_tag_list
+    post = comfy_blog_posts(:default)
+    post.tags.create!(
+        :name => 'Tag 1!'
+      )
+    assert_equal 'Tag 1!', post.tag_list
+  end
+
+  def test_tag_list_create
+    post = comfy_blog_posts(:default)
+    assert_difference 'Comfy::Blog::Tag.count', +2 do
+      post.tag_list=('Posted Tag!, Twice!')
+    end
+  end
 end

@@ -1,7 +1,10 @@
 %h1 Blog Post
 
 %h1= @post.title
-
+.tags
+  %ul
+    - @post.tags.map(&:name).each do |t|
+      %li= link_to t, comfy_blog_posts_path(cms_path: @cms_site.path, blog_path: @blog.path, tag: t)
 .author
   = @post.author
 .date
@@ -14,5 +17,5 @@
     .comment
       .author= comment.author
       .content= comment.content
-  
+
   = render :partial => 'comfy/blog/comments/form'
