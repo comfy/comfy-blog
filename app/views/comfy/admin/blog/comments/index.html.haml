@@ -1,14 +1,14 @@
 .page-header
-  %h2 Blog Comments
+  %h2= t('.page_title')
 
 = comfy_paginate @comments
 
 %table.table.table-hover
   %tr
-    %th Post
-    %th.main Comment
-    %th Posted
-    %th Status
+    %th= t('.post')
+    %th.main= t('.comment')
+    %th= t('.posted')
+    %th= t('.status')
     %th
 
   - @comments.each do |comment|

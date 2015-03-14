@@ -1,0 +1,81 @@
+uk:
+  activerecord:
+    models:
+      comfy/blog/blog: Блог
+      comfy/blog/post: Запись блога
+    attributes:
+      comfy/blog/blog:
+        path: Путь
+        app_layout: Шаблон приложения
+        description: Описание
+      comfy/blog/post:
+        title: Название
+        author: Автор
+        excerpt: Excerpt
+        published_at: Опубликовано в
+        is_published: Опубликовано
+  comfy:
+    admin:
+      cms:
+        base:
+          blogs: Блоги
+          posts: Записи блога
+          comments: Комментарии
+      blog:
+        blogs:
+          not_found: Блог не найден
+          created: Блог создан
+          create_failure: Не удалось создать блог
+          updated: Блог обновлен
+          update_failure: Не удалось обновить блог
+          deleted: Блог удален
+          index:
+            page_title: Блоги
+            new_blog: Новый блог
+            post: Пост
+            comment: Комментарий
+            edit: Редактировать
+            delete: Удалить
+            confirm_message: Вы уверены?
+          edit:
+            page_title: Редактировать блог
+          new:
+            page_title: Новый блог
+        posts:
+          created: Запись блога создана
+          create_failure: Не удалось создать запись блога
+          updated: Запись блога обновлена
+          update_failure: Не удалось обновить запись блога
+          deleted: Запись блога удалена
+          not_found: Запись блога не найдена
+          index:
+            page_title: Записи блога
+            new_blog_post: Создать запись блога
+            title: Название
+            author: Автор
+            published: Опубликовано
+            comments: Комментарии
+            comment: Комментарий
+            edit: Редактировать
+            delete: Удалить
+            confirm_message: Вы уверены?
+          new:
+            page_title: Новая запись блога
+          edit:
+            page_title: Редактирование записи блога
+        comments:
+          created: Комментарий создан
+          create_failure: Не удалось создать комментарий
+          deleted: Комментарий удален
+          not_found: Комментарий не найден
+          index:
+            page_title: Комментарии к блогу
+            post: Запись блога
+            comment: Комметарий
+            posted: Опубликован
+            status: Статус
+          comment:
+            unpublish: Отменить публикацию
+            publish: Опубликовать
+            delete: Удалить
+            confirm_message: Вы уверены?

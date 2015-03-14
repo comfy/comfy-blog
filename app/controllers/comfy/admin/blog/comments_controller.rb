@@ -13,7 +13,7 @@ class Comfy::Admin::Blog::CommentsController < Comfy::Admin::Blog::BaseControlle
 
   def destroy
     @comment.destroy
-    flash[:success] = 'Comment deleted'
+    flash[:success] = t('comfy.admin.blog.comments.deleted')
     redirect_to :action => :index
   end
 
@@ -26,7 +26,7 @@ protected
   def load_comment
     @comment = @blog.comments.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = 'Comment not found'
+    flash[:error] = t('comfy.admin.blog.comments.not_found')
     redirect_to :action => :index
   end
 

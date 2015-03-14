@@ -1,0 +1,83 @@
+es:
+  activerecord:
+    models:
+      comfy/blog/blog: Blog
+      comfy/blog/post: Post
+    attributes:
+      comfy/blog/blog:
+        path: Path
+        app_layout: App layout
+        description: Description
+      comfy/blog/post:
+        title: Title
+        author: Author
+        excerpt: Excerpt
+        published_at: Published at
+        is_published: Is published
+
+  comfy:
+    admin:
+      cms:
+        base:
+          blogs: Blogs
+          posts: Posts
+          comments: Comments
+      blog:
+        blogs:
+          not_found: Blog not found
+          created: Blog created
+          create_failure: Failed to create Blog
+          updated: Blog updated
+          update_failure: Failed to update Blog
+          deleted: Blog deleted
+          index:
+            page_title: Blogs
+            new_blog: New Blog
+            post: Post
+            comment: Comment
+            edit: Edit
+            delete: Delete
+            confirm_message: Are you sure?
+          edit:
+            page_title: Edit blog
+          new:
+            page_title: New blog
+
+        posts:
+          created: Blog post created
+          create_failure: Failed to create blog post
+          updated: Blog post updated
+          update_failure: Failed to update blog post
+          deleted: Blog post removed
+          not_found: Blog post not found
+          index:
+            page_title: Blog posts
+            new_blog_post: New blog post
+            title: Title
+            author: Author
+            published: Published
+            comments: Comments
+            comment: Comment
+            edit: Edit
+            delete: Delete
+            confirm_message: Are you sure?
+          new:
+            page_title: New blog post
+          edit:
+            page_title: Edit blog post
+        comments:
+          created: Comment created
+          create_failure: Failed to create Comment
+          deleted: Comment removed
+          not_found: Comment not found
+          index:
+            page_title: Blog comments
+            post: Blog posts
+            comment: Comment
+            posted: Posted
+            status: Status
+          comment:
+            unpublish: Unpublish
+            publish: Publish
+            delete: Delete
+            confirm_message: Are you sure?
