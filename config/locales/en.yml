@@ -3,17 +3,27 @@ en:
     models:
       comfy/blog/blog: Blog
       comfy/blog/post: Post
+      comfy/blog/comment: Comment
     attributes:
       comfy/blog/blog:
+        identifier: Identifier
+        label: Label
         path: Path
         app_layout: App layout
         description: Description
       comfy/blog/post:
         title: Title
+        slug: Slug
         author: Author
         excerpt: Excerpt
         published_at: Published at
         is_published: Is published
+      comfy/blog/comment:
+        author: Author
+        email: Email
+        content: Content
+        is_published: Is published
+        created_at: Created at
 
   comfy:
     admin:
@@ -33,8 +43,18 @@ en:
           index:
             page_title: Blogs
             new_blog: New Blog
-            post: Post
-            comment: Comment
+            post_count:
+              zero: No Posts
+              one: '%{count} Post'
+              few: '%{count} Posts'
+              many: '%{count} Posts'
+              other: '%{count} Posts'
+            comment_count: &comment_count
+              zero: No Comments
+              one: '%{count} Comment'
+              few: '%{count} Comments'
+              many: '%{count} Comments'
+              other: '%{count} Comments'
             edit: Edit
             delete: Delete
             confirm_message: Are you sure?
@@ -42,7 +62,8 @@ en:
             page_title: Edit blog
           new:
             page_title: New blog
-
+          form:
+            cancel: Cancel
         posts:
           created: Blog Post created
           create_failure: Failed to create Blog Post
@@ -57,7 +78,8 @@ en:
             author: Author
             published: Published
             comments: Comments
-            comment: Comment
+            comment_count:
+              <<: *comment_count
             edit: Edit
             delete: Delete
             confirm_message: Are you sure?
@@ -65,6 +87,8 @@ en:
             page_title: New blog post
           edit:
             page_title: Edit blog post
+          form:
+            cancel: Cancel
         comments:
           created: Comment created
           create_failure: Failed to create Comment

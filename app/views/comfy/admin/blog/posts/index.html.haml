@@ -23,7 +23,7 @@
       %td
         = post.published_at.try(:to_s, :db)
       %td
-        = link_to pluralize(post.comments.count, t('.comment')), comfy_admin_blog_comments_path(@site, @blog, :post_id => post.id), :class => 'btn btn-sm btn-info'
+        = link_to t('.comment_count', :count => post.comments.count), comfy_admin_blog_comments_path(@site, @blog, :post_id => post.id), :class => 'btn btn-sm btn-info'
       %td
         .btn-group.btn-group-sm
           = link_to t('.edit'), edit_comfy_admin_blog_post_path(@site, @blog, post), :class => 'btn btn-default'

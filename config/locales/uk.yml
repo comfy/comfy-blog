@@ -3,17 +3,28 @@ uk:
     models:
       comfy/blog/blog: Блог
       comfy/blog/post: Запись блога
+      comfy/blog/comment: Comment
     attributes:
       comfy/blog/blog:
+        identifier: Identifier
+        label: Label
         path: Путь
         app_layout: Шаблон приложения
         description: Описание
       comfy/blog/post:
         title: Название
+        slug: Slug
         author: Автор
         excerpt: Excerpt
         published_at: Опубликовано в
         is_published: Опубликовано
+      comfy/blog/comment:
+        author: Author
+        email: Email
+        content: Content
+        is_published: Is published
+        created_at: Created at
+
   comfy:
     admin:
       cms:
@@ -32,8 +43,18 @@ uk:
           index:
             page_title: Блоги
             new_blog: Новый блог
-            post: Пост
-            comment: Комментарий
+            post_count:
+              zero: No Posts
+              one: '%{count} Post'
+              few: '%{count} Posts'
+              many: '%{count} Posts'
+              other: '%{count} Posts'
+            comment_count: &comment_count
+              zero: No Comments
+              one: '%{count} Comment'
+              few: '%{count} Comments'
+              many: '%{count} Comments'
+              other: '%{count} Comments'
             edit: Редактировать
             delete: Удалить
             confirm_message: Вы уверены?
@@ -41,6 +62,8 @@ uk:
             page_title: Редактировать блог
           new:
             page_title: Новый блог
+          form:
+            cancel: Cancel
         posts:
           created: Запись блога создана
           create_failure: Не удалось создать запись блога
@@ -55,7 +78,8 @@ uk:
             author: Автор
             published: Опубликовано
             comments: Комментарии
-            comment: Комментарий
+            comment_count:
+              <<: *comment_count
             edit: Редактировать
             delete: Удалить
             confirm_message: Вы уверены?
@@ -63,6 +87,8 @@ uk:
             page_title: Новая запись блога
           edit:
             page_title: Редактирование записи блога
+          form:
+            cancel: Cancel
         comments:
           created: Комментарий создан
           create_failure: Не удалось создать комментарий
