@@ -47,7 +47,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     @comment = @post.comments.new
 
   rescue ActiveRecord::RecordNotFound
-    render :cms_page => '/404', :status => 404
+    instance_eval(&ComfyBlog.config.post_not_found)
   end
 
 end
