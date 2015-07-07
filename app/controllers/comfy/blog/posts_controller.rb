@@ -48,6 +48,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
 
   rescue ActiveRecord::RecordNotFound
     render :cms_page => '/404', :status => 404
+    return
   end
 
 end
