@@ -1,5 +1,11 @@
 %h1 Blog Posts
 
+%ul
+  - @blog.archival_entries.each do |(year, month), count|
+    %li
+      = link_to comfy_blog_friendly_date(year, month), comfy_blog_posts_of_month_path(@cms_site.path, @blog.path, month: month, year: year)
+      %small (#{count})
+
 - @posts.each do |post|
 
   %h1= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug)

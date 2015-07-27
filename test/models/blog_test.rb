@@ -40,6 +40,10 @@ class BlogTest < ActiveSupport::TestCase
     blog_b.path = 'blog-b'
     assert blog_b.valid?
   end
+
+  def test_archival_entries
+    assert_equal({ [2012, 1] => 1 }, comfy_blog_blogs(:default).archival_entries)
+  end
   
   def test_creation
     assert_difference 'Comfy::Blog::Blog.count' do
