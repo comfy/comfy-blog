@@ -20,6 +20,15 @@ class Comfy::Blog::Blog < ActiveRecord::Base
     :format     => { :with => /\A\w[a-z0-9_-]*\z/i },
     :presence   => true,
     :if         => 'restricted_path?'
+
+  # Returns a hash where key is a tuple [year, month] and the value stands for number
+  # of posts published within that period.
+  #
+  # blog.archival_entries
+  # => { [2015, 7] => 3, [2015, 6] => 1 }
+  def archival_entries
+    posts.published.group([:year, :month]).reorder(year: :desc, month: :desc).count
+  end
   
 protected
 
