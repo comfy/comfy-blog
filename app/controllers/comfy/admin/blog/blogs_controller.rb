@@ -2,7 +2,8 @@ class Comfy::Admin::Blog::BlogsController < Comfy::Admin::Blog::BaseController
 
   before_action :build_blog,  :only => [:new, :create]
   before_action :load_blog,   :only => [:edit, :update, :destroy]
-
+  before_action :authorize
+  
   def index
     @blogs = comfy_paginate(@site.blogs)
   end

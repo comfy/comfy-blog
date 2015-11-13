@@ -2,7 +2,8 @@ class Comfy::Admin::Blog::CommentsController < Comfy::Admin::Blog::BaseControlle
 
   before_action :load_blog
   before_action :load_comment, :only => [:destroy, :toggle_publish]
-
+  before_action :authorize
+  
   def index
     @comments = if @post = @blog.posts.where(:id => params[:post_id]).first
       comfy_paginate(@post.comments)

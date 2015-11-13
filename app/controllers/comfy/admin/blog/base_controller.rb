@@ -1,5 +1,7 @@
 class Comfy::Admin::Blog::BaseController < Comfy::Admin::Cms::BaseController
-
+  # Authorization module must have `authorize` method
+  include ComfortableMexicanSofa.config.admin_authorization.to_s.constantize
+  
 protected
 
   def load_blog
