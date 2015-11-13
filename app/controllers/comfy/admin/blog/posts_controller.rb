@@ -3,7 +3,8 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
   before_action :load_blog
   before_action :build_post, :only => [:new, :create]
   before_action :load_post,  :only => [:edit, :update, :destroy]
-
+  before_action :authorize
+  
   def index
     @posts = comfy_paginate(@blog.posts.order(:published_at))
   end
