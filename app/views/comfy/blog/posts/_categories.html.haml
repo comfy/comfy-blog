@@ -1,0 +1,4 @@
+- if post.categories.present?
+  %ul
+    - post.categories.each do |category|
+      %li= link_to category.label, comfy_blog_posts_path(@cms_site.path, @blog.path, :category => category.label)

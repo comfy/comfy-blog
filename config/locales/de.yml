@@ -83,6 +83,7 @@ de:
             edit: Ändern
             delete: Löschen
             confirm_message: Sind Sie sicher?
+            categories: Kategorien
           new:
             page_title: Neuer Blogbeitrag
           edit:

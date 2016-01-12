@@ -83,6 +83,7 @@ ru:
             edit: Редактировать
             delete: Удалить
             confirm_message: Вы уверены?
+            categories: категории
           new:
             page_title: Новая запись блога
           edit:

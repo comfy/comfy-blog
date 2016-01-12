@@ -7,6 +7,7 @@ ComfyBlog is an simple blog management engine for [ComfortableMexicanSofa](https
 
 * Ability to set up multiple blogs per site
 * User defined layout per blog
+* Filter blog posts by category
 
 ## Installation
 
