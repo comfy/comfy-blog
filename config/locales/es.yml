@@ -83,6 +83,7 @@ es:
             edit: Edit
             delete: Delete
             confirm_message: Are you sure?
+            categories: Categories
           new:
             page_title: New blog post
           edit:
