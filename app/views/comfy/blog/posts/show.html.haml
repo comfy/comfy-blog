@@ -6,6 +6,8 @@
   = @post.author
 .date
   = @post.published_at.to_s(:db)
+.categories
+  = render 'comfy/blog/posts/categories', :post => @post
 .content
   = @post.content.html_safe
 

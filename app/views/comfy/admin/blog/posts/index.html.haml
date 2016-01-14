@@ -4,11 +4,14 @@
 
 = comfy_paginate @posts
 
+= render :partial => 'comfy/admin/cms/categories/index', :object => 'Comfy::Blog::Post'
+
 %table.table.table-hover
   %tr
     %th.main= t('.title')
     %th= t('.author')
     %th= t('.published')
+    %th= t('.categories')
     %th= t('.comments')
     %th
 
@@ -22,6 +25,8 @@
         = post.author
       %td
         = post.published_at.try(:to_s, :db)
+      %td
+        = render :partial => 'comfy/admin/cms/categories/categories', :object => post
       %td
         = link_to t('.comment_count', :count => post.comments.count), comfy_admin_blog_comments_path(@site, @blog, :post_id => post.id), :class => 'btn btn-sm btn-info'
       %td

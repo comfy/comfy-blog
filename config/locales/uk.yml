@@ -83,6 +83,7 @@ uk:
             edit: Редактировать
             delete: Удалить
             confirm_message: Вы уверены?
+            categories: категорії
           new:
             page_title: Новая запись блога
           edit:
