@@ -6,7 +6,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
   # action. let's figure it out here.
   def serve
     # if there are more than one blog, blog_path is expected
-    if @cms_site.blogs.count >= 2
+    if @cms_site.blogs.count >= 2 || @cms_site.blogs.first.path.present?
       params[:blog_path] = params.delete(:slug) if params[:blog_path].blank?
     end
 
