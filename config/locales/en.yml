@@ -18,12 +18,6 @@ en:
         excerpt: Excerpt
         published_at: Published at
         is_published: Is published
-      comfy/blog/comment:
-        author: Author
-        email: Email
-        content: Content
-        is_published: Is published
-        created_at: Created at
 
   comfy:
     admin:
@@ -31,7 +25,6 @@ en:
         base:
           blogs: Blogs
           posts: Posts
-          comments: Comments
       blog:
         blogs:
           not_found: Blog not found
@@ -49,20 +42,16 @@ en:
               few: '%{count} Posts'
               many: '%{count} Posts'
               other: '%{count} Posts'
-            comment_count: &comment_count
-              zero: No Comments
-              one: '%{count} Comment'
-              few: '%{count} Comments'
-              many: '%{count} Comments'
-              other: '%{count} Comments'
             edit: Edit
             delete: Delete
-            confirm_message: Are you sure?
+            confirm: Are you sure?
           edit:
             page_title: Edit blog
           new:
             page_title: New blog
           form:
+            create: Create Blog
+            update: Update Blog
             cancel: Cancel
         posts:
           created: Blog Post created
@@ -78,8 +67,6 @@ en:
             author: Author
             published: Published
             comments: Comments
-            comment_count:
-              <<: *comment_count
             edit: Edit
             delete: Delete
             confirm_message: Are you sure?
@@ -88,20 +75,6 @@ en:
           edit:
             page_title: Edit blog post
           form:
+            create: Create Post
+            update: Update Post
             cancel: Cancel
-        comments:
-          created: Comment created
-          create_failure: Failed to create Comment
-          deleted: Comment deleted
-          not_found: Comment not found
-          index:
-            page_title: Blog comments
-            post: Blog posts
-            comment: Comment
-            posted: Posted
-            status: Status
-          comment:
-            unpublish: Unpublish
-            publish: Publish
-            delete: Delete
-            confirm_message: Are you sure?

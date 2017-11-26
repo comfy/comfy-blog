@@ -13,19 +13,17 @@ Rails.backtrace_cleaner.remove_silencers!
 ActiveSupport::TestCase.fixture_path = File.expand_path('../fixtures', __FILE__)
 
 class ActiveSupport::TestCase
-  
+
   fixtures :all
-  
+
   setup :reset_config
-  
+
   def reset_config
     ComfyBlog.configure do |config|
-      config.posts_per_page         = 10
-      config.auto_publish_comments  = false
-      config.default_author         = nil
+      config.posts_per_page = 10
     end
   end
-  
+
   # Example usage:
   #   assert_has_errors_on @record, :field_1, :field_2
   def assert_errors_on(record, *fields)
@@ -34,7 +32,7 @@ class ActiveSupport::TestCase
     unmatched = fields.flatten - record.errors.keys
     assert unmatched.blank?, "#{record.class} doesn't have errors on '#{unmatched.join(', ')}'"
   end
-  
+
   # Example usage:
   #   assert_exception_raised                                 do ... end
   #   assert_exception_raised ActiveRecord::RecordInvalid     do ... end
@@ -55,27 +53,27 @@ class ActiveSupport::TestCase
       flunk 'Exception was not raised'
     end
   end
-  
+
 end
 
 class ActionController::TestCase
-  
+
   setup :set_basic_auth
-  
+
   # CMS by default is going to prompt with basic auth request
   def set_basic_auth
     @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64.encode64('username:password')}"
   end
-  
+
 end
 
 class Rails::Generators::TestCase
-  
+
   destination File.expand_path('../tmp', File.dirname(__FILE__))
-  
+
   setup :prepare_destination,
         :prepare_files
-  
+
   def prepare_files
     config_path = File.join(self.destination_root, 'config')
     routes_path = File.join(config_path, 'routes.rb')
@@ -85,7 +83,7 @@ class Rails::Generators::TestCase
       f.write("Test::Application.routes.draw do\n\nend")
     end
   end
-  
+
   def read_file(filename)
     File.read(
       File.join(
@@ -94,5 +92,5 @@ class Rails::Generators::TestCase
       )
     )
   end
-  
+
 end

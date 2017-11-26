@@ -1,31 +1,31 @@
 class Comfy::Blog::Blog < ActiveRecord::Base
-  
+
   self.table_name = 'comfy_blogs'
-  
-  # -- Relationhips ---------------------------------------------------------
-  belongs_to :site, :class_name => 'Comfy::Cms::Site'
-  
+
+  # -- Relationhips ------------------------------------------------------------
+  belongs_to :site,
+    class_name: 'Comfy::Cms::Site'
+
   has_many :posts,
-    :dependent  => :destroy
-  has_many :comments,
-    :through    => :posts
-    
-  # -- Validations ----------------------------------------------------------
-  validates :site_id, :label, :identifier,
-    :presence   => true
+    dependent: :destroy
+
+  # -- Callbacks ---------------------------------------------------------------
+  before_validation :clean_path
+
+  # -- Validations -------------------------------------------------------------
+  validates :label, :identifier,
+    presence: true
   validates :identifier,
-    :format     => { :with => /\A\w[a-z0-9_-]*\z/i }
+    format: {with: /\A\w[a-z0-9_-]*\z/i}
   validates :path,
-    :uniqueness => { :scope => :site_id },
-    :format     => { :with => /\A\w[a-z0-9_-]*\z/i },
-    :presence   => true,
-    :if         => 'restricted_path?'
-  
+    uniqueness: {scope: :site_id}
+  validates :path,
+    format:     {with: /\A\w[a-z0-9_-]*\z/i},
+    allow_blank: true
+
 protected
 
-  def restricted_path?
-    (self.class.count > 1 && self.persisted?) ||
-    (self.class.count >= 1 && self.new_record?)
+  def clean_path
+    self.path = nil if self.path.blank?
   end
-
 end

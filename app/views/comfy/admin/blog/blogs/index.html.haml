@@ -1,26 +1,23 @@
 .page-header
-  = link_to t('.new_blog'), new_comfy_admin_blog_path(@site), :class => 'btn btn-default pull-right'
+  = link_to t('.new_blog'), new_comfy_admin_blog_path(@site), class: 'btn btn-secondary pull-right'
   %h2= t('.page_title')
 
-= comfy_paginate @blogs
-
-%table.table.table-hover.table-bordered
+%ul.list
   - @blogs.each do |blog|
-    %tr
-      %td.main
-        = link_to blog.label, edit_comfy_admin_blog_path(@site, blog)
-        .item-meta
-          = blog.identifier
-          %br
-          - blog_path = comfy_blog_posts_url(@site.path, blog.path)
-          = link_to blog_path, blog_path, :target => '_blank'
-      %td
-        .btn-group.btn-group-sm
-          = link_to t('.post_count', :count => blog.posts.count), comfy_admin_blog_posts_path(@site, blog), :class => 'btn btn-info'
-          = link_to t('.comment_count', :count => blog.comments.count), comfy_admin_blog_comments_path(@site, blog), :class => 'btn btn-info'
-      %td
-        .btn-group.btn-group-sm
-          = link_to t('.edit'), edit_comfy_admin_blog_path(@site, blog), :class => 'btn btn-default'
-          = link_to t('.delete'), comfy_admin_blog_path(@site, blog), :method => :delete, :data => {:confirm => t('.confirm_message')}, :class => 'btn btn-danger'
+    %li
+      .row
+        .col-md-8.item
+          .item-content
+            .item-title
+              = link_to blog.label, edit_comfy_admin_blog_path(@site, blog)
+            .item-meta
+              = blog.identifier
+              %br
+              - blog_path = comfy_blog_posts_url(@site.path, blog.path)
+              = link_to blog_path, blog_path, target: '_blank'
 
-= comfy_paginate @blogs
+        .col-md-4.d-flex.align-items-center.justify-content-md-end
+          .btn-group.btn-group-sm
+            = link_to t('.post_count', count: blog.posts.count), comfy_admin_blog_posts_path(@site, blog), class: 'btn btn-info'
+            = link_to t('.edit'), edit_comfy_admin_blog_path(@site, blog), class: 'btn btn-outline-secondary'
+            = link_to t('.delete'), comfy_admin_blog_path(@site, blog), method: :delete, data: {confirm: t('.confirm')}, :class => 'btn btn-danger'

@@ -2,8 +2,6 @@ default:
   blog: default
   title: Default Title
   slug: default-title
-  content: Default Content
-  author: Default Author
   is_published: true
   year: 2012
   month: 1
