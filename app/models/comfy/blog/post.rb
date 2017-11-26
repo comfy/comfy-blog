@@ -2,32 +2,28 @@ class Comfy::Blog::Post < ActiveRecord::Base
 
   self.table_name = 'comfy_blog_posts'
 
-  # -- Relationships --------------------------------------------------------
+  # -- Relationships -----------------------------------------------------------
   belongs_to :blog
 
-
-  # -- Validations ----------------------------------------------------------
-  validates :blog_id, :title, :slug, :year, :month, :content,
-    :presence   => true
+  # -- Validations -------------------------------------------------------------
+  validates :title, :slug, :year, :month,
+    presence: true
   validates :slug,
-    :uniqueness => { :scope => [:blog_id, :year, :month] },
-    :format => { :with => /\A%*\w[a-z0-9_\-\%]*\z/i }
+    uniqueness: {scope: [:blog_id, :year, :month]},
+    format:     {with: /\A%*\w[a-z0-9_\-\%]*\z/i }
 
-  # -- Scopes ---------------------------------------------------------------
-  default_scope -> {
-    order('published_at DESC')
-  }
+  # -- Scopes ------------------------------------------------------------------
   scope :published, -> {
-    where(:is_published => true)
+    where(is_published: true)
   }
   scope :for_year, -> year {
-    where(:year => year)
+    where(year: year)
   }
   scope :for_month, -> month {
-    where(:month => month)
+    where(month: month)
   }
 
-  # -- Callbacks ------------------------------------------------------------
+  # -- Callbacks ---------------------------------------------------------------
   before_validation :set_slug,
                     :set_published_at,
                     :set_date
@@ -35,7 +31,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
 protected
 
   def set_slug
-    self.slug ||= self.title.to_s.downcase.slugify
+    self.slug ||= self.title.to_s.parameterize
   end
 
   def set_date
@@ -46,5 +42,4 @@ protected
   def set_published_at
     self.published_at ||= Time.zone.now
   end
-
 end
