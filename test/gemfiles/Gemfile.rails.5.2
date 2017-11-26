@@ -1,0 +1,22 @@
+source 'http://rubygems.org'
+
+gem "rails",
+  github: "rails"
+gem "arel",
+  github: "rails/arel"
+
+gem "bootstrap_form",
+  github: "bootstrap-ruby/rails-bootstrap-forms",
+  branch: "bootstrap-v4"
+
+gem "comfortable_mexican_sofa",
+  github: "comfy/comfortable-mexican-sofa"
+
+gem 'kaminari', '>= 0.14.0'
+
+group :test do
+  gem 'sqlite3'
+  gem 'coveralls',  require: false
+  gem 'mocha',      require: false
+  gem 'rails-controller-testing'
+end
