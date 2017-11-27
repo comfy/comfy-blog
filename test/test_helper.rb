@@ -1,16 +1,18 @@
-require 'coveralls'
-Coveralls.wear!('rails')
-
 ENV['RAILS_ENV'] = 'test'
 
+require 'simplecov'
+require 'coveralls'
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start do
+  add_filter 'lib/generators'
+  add_filter 'lib/comfy_blog/engine.rb '
+end
 require_relative '../config/environment'
+
 require 'rails/test_help'
 require 'rails/generators'
 
 Rails.backtrace_cleaner.remove_silencers!
-
-# Load fixtures from the engine
-ActiveSupport::TestCase.fixture_path = File.expand_path('../fixtures', __FILE__)
 
 class ActiveSupport::TestCase
 
@@ -102,5 +104,4 @@ class Rails::Generators::TestCase
       )
     )
   end
-
 end
