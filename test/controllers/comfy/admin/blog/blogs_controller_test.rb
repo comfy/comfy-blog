@@ -2,7 +2,7 @@ require_relative '../../../../test_helper'
 
 class Comfy::Admin::Blog::BlogsControllerTest < ActionDispatch::IntegrationTest
 
-  def setup
+  setup do
     @site = comfy_cms_sites(:default)
     @blog = comfy_blog_blogs(:default)
   end

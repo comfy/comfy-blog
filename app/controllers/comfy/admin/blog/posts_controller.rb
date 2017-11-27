@@ -22,7 +22,7 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
     redirect_to action: :edit, id: @post
 
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = t('.create_failure')
+    flash.now[:danger] = t('.create_failure')
     render action: :new
   end
 
