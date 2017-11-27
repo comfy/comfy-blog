@@ -1,26 +1,29 @@
 class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
 
   before_action :load_blog
-  before_action :build_post, :only => [:new, :create]
-  before_action :load_post,  :only => [:edit, :update, :destroy]
+  before_action :build_post, only: [:new, :create]
+  before_action :load_post,  only: [:edit, :update, :destroy]
 
   def index
-    @posts = comfy_paginate(@blog.posts.order(:published_at))
+    return redirect_to action: :new if @blog.posts.count == 0
+
+    posts_scope = @blog.posts.
+      includes(:categories).for_category(params[:categories]).order(:published_at)
+    @posts = comfy_paginate(posts_scope)
   end
 
   def new
-    @post.author = ComfyBlog.config.default_author
     render
   end
 
   def create
     @post.save!
-    flash[:success] = t('comfy.admin.blog.posts.created')
-    redirect_to :action => :edit, :id => @post
+    flash[:success] = t('.created')
+    redirect_to action: :edit, id: @post
 
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = t('comfy.admin.blog.posts.create_failure')
-    render :action => :new
+    flash.now[:error] = t('.create_failure')
+    render action: :new
   end
 
   def edit
@@ -29,18 +32,18 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
 
   def update
     @post.update_attributes!(post_params)
-    flash[:success] = t('comfy.admin.blog.posts.updated')
-    redirect_to :action => :edit, :id => @post
+    flash[:success] = t('.updated')
+    redirect_to action: :edit, id: @post
 
   rescue ActiveRecord::RecordInvalid
-    flash.now[:error] = t('comfy.admin.blog.posts.update_failure')
-    render :action => :edit
+    flash.now[:danger] = t('.update_failure')
+    render action: :edit
   end
 
   def destroy
     @post.destroy
-    flash[:success] = t('comfy.admin.blog.posts.deleted')
-    redirect_to :action => :index
+    flash[:success] = t('.deleted')
+    redirect_to action: :index
   end
 
 protected
@@ -48,8 +51,8 @@ protected
   def load_post
     @post = @blog.posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:error] = t('comfy.admin.blog.posts.not_found')
-    redirect_to :action => :index
+    flash[:danger] = t('.not_found')
+    redirect_to action: :index
   end
 
   def build_post
@@ -60,5 +63,4 @@ protected
   def post_params
     params.fetch(:post, {}).permit!
   end
-
 end

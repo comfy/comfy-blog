@@ -56,15 +56,25 @@ class ActiveSupport::TestCase
 
 end
 
-class ActionController::TestCase
+class ActionDispatch::IntegrationTest
 
-  setup :set_basic_auth
+  setup :setup_host
 
-  # CMS by default is going to prompt with basic auth request
-  def set_basic_auth
-    @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64.encode64('username:password')}"
+  def setup_host
+    host! 'test.host'
   end
 
+  # Attaching http_auth stuff with request. Example use:
+  #   r :get, '/cms-admin/pages'
+  def r(method, path, options = {})
+    headers = options[:headers] || {}
+    headers['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(
+      ComfortableMexicanSofa::AccessControl::AdminAuthentication.username,
+      ComfortableMexicanSofa::AccessControl::AdminAuthentication.password
+    )
+    options.merge!(headers: headers)
+    send(method, path, options)
+  end
 end
 
 class Rails::Generators::TestCase

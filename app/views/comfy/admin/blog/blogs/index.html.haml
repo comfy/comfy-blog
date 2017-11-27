@@ -1,6 +1,6 @@
 .page-header
-  = link_to t('.new_blog'), new_comfy_admin_blog_path(@site), class: 'btn btn-secondary pull-right'
-  %h2= t('.page_title')
+  = link_to t('.new_link'), new_comfy_admin_blog_path(@site), class: 'btn btn-secondary pull-right'
+  %h2= t('.title')
 
 %ul.list
   - @blogs.each do |blog|
@@ -20,4 +20,4 @@
           .btn-group.btn-group-sm
             = link_to t('.post_count', count: blog.posts.count), comfy_admin_blog_posts_path(@site, blog), class: 'btn btn-info'
             = link_to t('.edit'), edit_comfy_admin_blog_path(@site, blog), class: 'btn btn-outline-secondary'
-            = link_to t('.delete'), comfy_admin_blog_path(@site, blog), method: :delete, data: {confirm: t('.confirm')}, :class => 'btn btn-danger'
+            = link_to t('.delete'), comfy_admin_blog_path(@site, blog), method: :delete, data: {confirm: t('.are_you_sure')}, class: 'btn btn-danger'
