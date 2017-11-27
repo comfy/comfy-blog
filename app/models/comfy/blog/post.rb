@@ -2,6 +2,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
 
   self.table_name = 'comfy_blog_posts'
 
+  include Comfy::Cms::WithFragments
   include Comfy::Cms::WithCategories
 
   # -- Relationships -----------------------------------------------------------

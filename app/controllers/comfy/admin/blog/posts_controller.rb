@@ -58,6 +58,7 @@ protected
   def build_post
     @post = @blog.posts.new(post_params)
     @post.published_at ||= Time.zone.now
+    @post.layout ||= (@blog.posts.last.try(:layout) || @site.layouts.first)
   end
 
   def post_params

@@ -3,9 +3,10 @@ require_relative '../../../../test_helper'
 class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
-    @site = comfy_cms_sites(:default)
-    @blog = comfy_blog_blogs(:default)
-    @post = comfy_blog_posts(:default)
+    @site   = comfy_cms_sites(:default)
+    @layout = comfy_cms_layouts(:default)
+    @blog   = comfy_blog_blogs(:default)
+    @post   = comfy_blog_posts(:default)
   end
 
   def test_get_index
@@ -52,12 +53,19 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_creation
-    assert_difference -> {Comfy::Blog::Post.count} do
+    post_count = -> {Comfy::Blog::Post.count}
+    frag_count = -> {Comfy::Cms::Fragment.count}
+    assert_difference [post_count, frag_count] do
       r :post, comfy_admin_blog_posts_path(@site, @blog), params: {post: {
         title:        'Test Post',
         slug:         'test-post',
         published_at: 2.days.ago.to_s(:db),
-        is_published: '1'
+        is_published: '1',
+        layout_id:    @layout,
+        fragments_attributes: [
+          { identifier: 'content',
+            content:    'test text' }
+        ]
       }}
       assert_response :redirect
       assert_redirected_to action: :edit, id: assigns(:post)
