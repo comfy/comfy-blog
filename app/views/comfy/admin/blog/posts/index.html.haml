@@ -17,6 +17,9 @@
             .item-title
               = link_to post.title, edit_comfy_admin_blog_post_path(@site, @blog, post)
             .item-meta
+              - link = comfy_blog_post_path(slug: post.slug)
+              = link_to link, link, target: "_blank"
+              %br
               = post.published_at.try(:to_s, :db)
 
           .item-categories.ml-auto.d-flex.align-items-center

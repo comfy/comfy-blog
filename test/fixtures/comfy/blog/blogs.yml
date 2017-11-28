@@ -1,6 +1,0 @@
-default:
-  site: default
-  label: Default Blog
-  identifier: default-blog
-  path:
-  description: Default Description

@@ -3,8 +3,8 @@ require_relative '../test_helper'
 class BlogPostsTest < ActiveSupport::TestCase
 
   setup do
+    @site   = comfy_cms_sites(:default)
     @layout = comfy_cms_layouts(:default)
-    @blog   = comfy_blog_blogs(:default)
     @post   = comfy_blog_posts(:default)
   end
 
@@ -17,12 +17,12 @@ class BlogPostsTest < ActiveSupport::TestCase
   def test_validations
     post = Comfy::Blog::Post.new
     assert post.invalid?
-    assert_errors_on post, :blog, :title, :slug, :layout
+    assert_errors_on post, :site, :title, :slug, :layout
   end
 
   def test_validation_of_slug_uniqueness
     @post.update_attributes!(published_at: Time.now)
-    post = @blog.posts.new(
+    post = @site.blog_posts.new(
       title:  @post.title,
       layout: @layout
     )
@@ -34,7 +34,7 @@ class BlogPostsTest < ActiveSupport::TestCase
   end
 
   def test_validation_of_slug_format
-    post = @blog.posts.new(
+    post = @site.blog_posts.new(
       title: 'Test Title',
       slug:  'test%slug',
       layout: @layout
@@ -44,7 +44,7 @@ class BlogPostsTest < ActiveSupport::TestCase
 
   def test_creation
     assert_difference -> {Comfy::Blog::Post.count} do
-      post = @blog.posts.create!(
+      post = @site.blog_posts.create!(
         title: 'Test Post',
         layout: @layout
       )

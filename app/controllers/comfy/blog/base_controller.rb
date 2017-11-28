@@ -1,9 +1,5 @@
 class Comfy::Blog::BaseController < Comfy::Cms::BaseController
 
-  include Comfy::Paginate
-
-  layout :set_blog_layout
-
   before_action :load_blog
 
 protected
@@ -24,10 +20,6 @@ protected
 
   rescue ActiveRecord::RecordNotFound
     raise ActionController::RoutingError.new('Blog Not Found')
-  end
-
-  def set_blog_layout
-    @blog.app_layout
   end
 
 end

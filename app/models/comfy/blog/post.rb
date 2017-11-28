@@ -6,13 +6,14 @@ class Comfy::Blog::Post < ActiveRecord::Base
   include Comfy::Cms::WithCategories
 
   # -- Relationships -----------------------------------------------------------
-  belongs_to :blog
+  belongs_to :site,
+    class_name: 'Comfy::Cms::Site'
 
   # -- Validations -------------------------------------------------------------
   validates :title, :slug, :year, :month,
     presence: true
   validates :slug,
-    uniqueness: {scope: [:blog_id, :year, :month]},
+    uniqueness: {scope: [:site_id, :year, :month]},
     format:     {with: /\A%*\w[a-z0-9_\-\%]*\z/i }
 
   # -- Scopes ------------------------------------------------------------------

@@ -8,8 +8,8 @@ module ComfyBlog
   module CmsSiteExtensions
     extend ActiveSupport::Concern
     included do
-      has_many :blogs,
-        class_name: 'Blog::Blog',
+      has_many :blog_posts,
+        class_name: 'Blog::Post',
         dependent:  :destroy
     end
   end

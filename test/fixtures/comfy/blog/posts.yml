@@ -1,5 +1,5 @@
 default:
-  blog: default
+  site: default
   title: Default Title
   slug: default-title
   is_published: true

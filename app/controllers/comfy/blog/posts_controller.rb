@@ -1,6 +1,6 @@
 class Comfy::Blog::PostsController < Comfy::Blog::BaseController
 
-  skip_before_action :load_blog, :only => [:serve]
+  skip_before_action :load_blog, only: [:serve]
 
   # due to fancy routing it's hard to say if we need show or index
   # action. let's figure it out here.
@@ -13,7 +13,7 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
     load_blog
 
     if params[:slug].present?
-      show && render(:show)
+      show
     else
       index && render(:index)
     end
@@ -39,15 +39,30 @@ class Comfy::Blog::PostsController < Comfy::Blog::BaseController
   end
 
   def show
-    @post = if params[:slug] && params[:year] && params[:month]
-      @blog.posts.published.where(:year => params[:year], :month => params[:month], :slug => params[:slug]).first!
-    else
-      @blog.posts.published.where(:slug => params[:slug]).first!
-    end
-    @comment = @post.comments.new
+    load_post
+
+    render  inline: @post.content_cache,
+            layout: app_layout,
+            content_type: "text/html"
 
   rescue ActiveRecord::RecordNotFound
-    render :cms_page => '/404', :status => 404
+    render cms_page: '/404', status: 404
   end
 
+private
+
+  def load_post
+    post_scope = @blog.posts.published.where(slug: params[:slug])
+    @post = if params[:year] && params[:month]
+      post_scope = post_scope.where(year: params[:year], month: params[:month]).first!
+    else
+      post_scope.first!
+    end
+    @cms_layout = @post.layout
+  end
+
+  def app_layout
+    return false unless @cms_layout
+    @cms_layout.app_layout.present? ? @cms_layout.app_layout : false
+  end
 end
