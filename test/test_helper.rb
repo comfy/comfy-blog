@@ -22,7 +22,9 @@ class ActiveSupport::TestCase
 
   def reset_config
     ComfyBlog.configure do |config|
-      config.posts_per_page = 10
+      config.posts_per_page   = 10
+      config.app_layout       = 'comfy/blog/application'
+      config.public_blog_path = 'blog'
     end
   end
 

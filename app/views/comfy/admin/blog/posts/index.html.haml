@@ -15,12 +15,13 @@
         .col-md-8.item
           .item-content
             .item-title
-              = link_to post.title, edit_comfy_admin_blog_post_path(@site, post)
+              - published_css_class = post.is_published? ? "published" : "draft"
+              = link_to post.title, edit_comfy_admin_blog_post_path(@site, post), class: published_css_class
             .item-meta
-              = post.published_at.try(:to_s, :db)
-
-              - link = comfy_blog_post_path(@site.path, post.year, post.month, post.slug)
+              - link = post.url
               = link_to link, link, target: "_blank"
+              %br
+              = post.published_at.try(:to_s, :db)
 
           .item-categories.ml-auto.d-flex.align-items-center
             = render "comfy/admin/cms/categories/categories", object: post
@@ -32,4 +33,4 @@
 
 = comfy_paginate @posts
 
-= comfy_admin_partial "comfy/admin/blog/partials/posts_before"
+= comfy_admin_partial "comfy/admin/blog/partials/posts_after"

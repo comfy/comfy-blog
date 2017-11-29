@@ -26,6 +26,13 @@ class Comfy::Blog::Post < ActiveRecord::Base
                     :set_published_at,
                     :set_date
 
+  # -- Instance Mathods --------------------------------------------------------
+  def url(relative: false)
+    public_blog_path = ComfyBlog.config.public_blog_path
+    post_path = ['/', public_blog_path, self.year, self.month, self.slug].join('/').squeeze('/')
+    self.site.url(relative: relative) + post_path
+  end
+
 protected
 
   def set_slug

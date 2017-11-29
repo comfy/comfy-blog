@@ -91,4 +91,12 @@ class BlogPostsTest < ActiveSupport::TestCase
     assert_equal 1, Comfy::Blog::Post.for_month(1).count
     assert_equal 0, Comfy::Blog::Post.for_month(2).count
   end
+
+  def test_url
+    assert_equal '//test.host/blog/2012/1/default-title', @post.url
+    assert_equal '/blog/2012/1/default-title', @post.url(relative: true)
+
+    ComfyBlog.config.public_blog_path = "test-blog"
+    assert_equal '//test.host/test-blog/2012/1/default-title', @post.url
+  end
 end

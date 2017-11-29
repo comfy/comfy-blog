@@ -1,8 +1,9 @@
 class ActionDispatch::Routing::Mapper
 
   def comfy_route_blog(options = {})
-    options[:path] ||= 'blog'
-    path = ['(:cms_path)', options[:path]].join('/')
+
+    ComfyBlog.configuration.public_blog_path = options[:path] || 'blog'
+    path = ['(:cms_path)', ComfyBlog.configuration.public_blog_path].join('/')
 
     scope module: :comfy, as: :comfy do
       namespace :blog, path: path do
