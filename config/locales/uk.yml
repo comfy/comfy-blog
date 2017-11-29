@@ -1,107 +1,38 @@
 uk:
   activerecord:
     models:
-      comfy/blog/blog: Блог
-      comfy/blog/post: Запись блога
-      comfy/blog/comment: Comment
+      comfy/blog/post: Post
     attributes:
-      comfy/blog/blog:
-        identifier: Identifier
-        label: Label
-        path: Путь
-        app_layout: Шаблон приложения
-        description: Описание
       comfy/blog/post:
-        title: Название
+        title: Title
         slug: Slug
-        author: Автор
-        excerpt: Excerpt
-        published_at: Опубликовано в
-        is_published: Опубликовано
-      comfy/blog/comment:
-        author: Author
-        email: Email
-        content: Content
-        is_published: Is published
-        created_at: Created at
+        published_at: Published at
+        is_published: Is Published
 
   comfy:
     admin:
       cms:
         base:
-          blogs: Блоги
-          posts: Записи блога
-          comments: Комментарии
+          posts: Blog Posts
       blog:
-        blogs:
-          not_found: Блог не найден
-          created: Блог создан
-          create_failure: Не удалось создать блог
-          updated: Блог обновлен
-          update_failure: Не удалось обновить блог
-          deleted: Блог удален
-          index:
-            page_title: Блоги
-            new_blog: Новый блог
-            post_count:
-              zero: No Posts
-              one: '%{count} Post'
-              few: '%{count} Posts'
-              many: '%{count} Posts'
-              other: '%{count} Posts'
-            comment_count: &comment_count
-              zero: No Comments
-              one: '%{count} Comment'
-              few: '%{count} Comments'
-              many: '%{count} Comments'
-              other: '%{count} Comments'
-            edit: Редактировать
-            delete: Удалить
-            confirm_message: Вы уверены?
-          edit:
-            page_title: Редактировать блог
-          new:
-            page_title: Новый блог
-          form:
-            cancel: Cancel
         posts:
-          created: Запись блога создана
-          create_failure: Не удалось создать запись блога
-          updated: Запись блога обновлена
-          update_failure: Не удалось обновить запись блога
-          deleted: Запись блога удалена
-          not_found: Запись блога не найдена
+          created: Blog Post created
+          create_failure: Failed to create Blog Post
+          updated: Blog Post updated
+          update_failure: Failed to update Blog Post
+          deleted: Blog Post removed
+          not_found: Blog Post not found
           index:
-            page_title: Записи блога
-            new_blog_post: Создать запись блога
-            title: Название
-            author: Автор
-            published: Опубликовано
-            comments: Комментарии
-            comment_count:
-              <<: *comment_count
-            edit: Редактировать
-            delete: Удалить
-            confirm_message: Вы уверены?
+            title: Blog Posts
+            new_link: New Blog Post
+            edit: Edit
+            delete: Delete
+            are_you_sure: Are you sure?
           new:
-            page_title: Новая запись блога
+            title: New Blog Post
           edit:
-            page_title: Редактирование записи блога
+            title: Edit Blog Post
           form:
+            create: Create Post
+            update: Update Post
             cancel: Cancel
-        comments:
-          created: Комментарий создан
-          create_failure: Не удалось создать комментарий
-          deleted: Комментарий удален
-          not_found: Комментарий не найден
-          index:
-            page_title: Комментарии к блогу
-            post: Запись блога
-            comment: Комметарий
-            posted: Опубликован
-            status: Статус
-          comment:
-            unpublish: Отменить публикацию
-            publish: Опубликовать
-            delete: Удалить
-            confirm_message: Вы уверены?

@@ -1,69 +1,20 @@
 de:
   activerecord:
     models:
-      comfy/blog/blog: Blog
       comfy/blog/post: Beitrag
-      comfy/blog/comment: Kommentar
     attributes:
-      comfy/blog/blog:
-        identifier: Identifikator
-        label: Beschriftung
-        path: Pfad
-        app_layout: App Layout
-        description: Beschreibung
       comfy/blog/post:
         title: Titel
         slug: URL-Teil
-        author: Autor
-        excerpt: Auszug
         published_at: Veröffentlicht am
         is_published: Ist veröffentlicht
-      comfy/blog/comment:
-        author: Autor
-        email: E-Mail
-        content: Inhalt
-        is_published: Ist veröffentlicht
-        created_at: Erstellt am
 
   comfy:
     admin:
       cms:
         base:
-          blogs: Blogs
           posts: Beiträge
-          comments: Kommentare
       blog:
-        blogs:
-          not_found: Blog nicht gefunden
-          created: Blog erstellt
-          create_failure: Erstellung des Blogs fehlgeschlagen
-          updated: Blog aktualisiert
-          update_failure: Aktualisierung des Blogs fehlgeschlagen
-          deleted: Blog gelöscht
-          index:
-            page_title: Blogs
-            new_blog: Neues Blog
-            post_count:
-              zero: Keine Beiträge
-              one: '%{count} Beitrag'
-              few: '%{count} Beiträge'
-              many: '%{count} Beiträge'
-              other: '%{count} Beiträge'
-            comment_count: &comment_count
-              zero: Keine Kommentare
-              one: '%{count} Kommentar'
-              few: '%{count} Kommentare'
-              many: '%{count} Kommentare'
-              other: '%{count} Kommentare'
-            edit: Ändern
-            delete: Löschen
-            confirm_message: Sind Sie sicher?
-          edit:
-            page_title: Blog ändern
-          new:
-            page_title: Neues Blog
-          form:
-            cancel: Abbrechen
         posts:
           created: Blogbeitrag erstellt
           create_failure: Erstellung des Blogbeitrags fehlgeschlagen
@@ -72,36 +23,16 @@ de:
           deleted: Blogbeitrag gelöscht
           not_found: Blogbeitrag nicht gefunden
           index:
-            page_title: Blogbeiträge
-            new_blog_post: Neuer Blogbeitrag
-            title: Titel
-            author: Autor
-            published: Veröffentlicht
-            comments: Kommentare
-            comment_count:
-              <<: *comment_count
+            title: Blogbeiträge
+            new_link: Neuer Blogbeitrag
             edit: Ändern
             delete: Löschen
-            confirm_message: Sind Sie sicher?
+            are_you_sure: Sind Sie sicher?
           new:
-            page_title: Neuer Blogbeitrag
+            title: Neuer Blogbeitrag
           edit:
-            page_title: Blogbeitrag ändern
+            title: Blogbeitrag ändern
           form:
+            create: Create Post
+            update: Update Post
             cancel: Abbrechen
-        comments:
-          created: Kommentar hinzugefügt
-          create_failure: Hinzufügen des Kommentars fehlgeschlagen
-          deleted: Kommentar gelöscht
-          not_found: Kommentar nicht gefunden
-          index:
-            page_title: Blogkommentare
-            post: Blogbeiträge
-            comment: Kommentar
-            posted: Abgegeben
-            status: Status
-          comment:
-            unpublish: Veröffentlichung aufheben
-            publish: Veröffentlichen
-            delete: Löschen
-            confirm_message: Sind Sie sicher?
