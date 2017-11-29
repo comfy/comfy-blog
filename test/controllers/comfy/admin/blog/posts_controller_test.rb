@@ -48,7 +48,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:post)
     assert_template :new
-    assert_select "form[action='/admin/sites/#{@site.id}/posts']"
+    assert_select "form[action='/admin/sites/#{@site.id}/blog-posts']"
   end
 
   def test_creation
@@ -87,7 +87,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template :edit
     assert assigns(:post)
-    assert_select "form[action='/admin/sites/#{@site.id}/posts/#{@post.id}']"
+    assert_select "form[action='/admin/sites/#{@site.id}/blog-posts/#{@post.id}']"
   end
 
   def test_get_edit_failure
