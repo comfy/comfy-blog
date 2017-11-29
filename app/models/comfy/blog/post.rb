@@ -17,15 +17,9 @@ class Comfy::Blog::Post < ActiveRecord::Base
     format:     {with: /\A%*\w[a-z0-9_\-\%]*\z/i }
 
   # -- Scopes ------------------------------------------------------------------
-  scope :published, -> {
-    where(is_published: true)
-  }
-  scope :for_year, -> year {
-    where(year: year)
-  }
-  scope :for_month, -> month {
-    where(month: month)
-  }
+  scope :published, -> {where(is_published: true)}
+  scope :for_year,  -> year {where(year: year)}
+  scope :for_month, -> month {where(month: month)}
 
   # -- Callbacks ---------------------------------------------------------------
   before_validation :set_slug,

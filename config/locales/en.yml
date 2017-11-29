@@ -1,14 +1,8 @@
 en:
   activerecord:
     models:
-      comfy/blog/blog: Blog
       comfy/blog/post: Post
     attributes:
-      comfy/blog/blog:
-        identifier: Identifier
-        label: Label
-        path: Path
-        description: Description
       comfy/blog/post:
         title: Title
         slug: Slug
@@ -19,36 +13,8 @@ en:
     admin:
       cms:
         base:
-          blogs: Blogs
-          posts: Posts
+          posts: Blog Posts
       blog:
-        blogs:
-          not_found: Blog not found
-          created: Blog created
-          create_failure: Failed to create Blog
-          updated: Blog updated
-          update_failure: Failed to update Blog
-          deleted: Blog deleted
-          index:
-            title: Blogs
-            new_link: New Blog
-            post_count:
-              zero: No Posts
-              one: '%{count} Post'
-              few: '%{count} Posts'
-              many: '%{count} Posts'
-              other: '%{count} Posts'
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
-          edit:
-            title: Edit blog
-          new:
-            title: New blog
-          form:
-            create: Create Blog
-            update: Update Blog
-            cancel: Cancel
         posts:
           created: Blog Post created
           create_failure: Failed to create Blog Post

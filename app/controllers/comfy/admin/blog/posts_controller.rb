@@ -1,14 +1,13 @@
-class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
+class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
-  before_action :load_blog
   before_action :build_post, only: [:new, :create]
   before_action :load_post,  only: [:edit, :update, :destroy]
 
   def index
-    return redirect_to action: :new if @blog.posts.count == 0
+    return redirect_to action: :new if @site.blog_posts.count == 0
 
-    posts_scope = @blog.posts.
-      includes(:categories).for_category(params[:categories]).order(:published_at)
+    posts_scope = @site.blog_posts.
+      includes(:categories).for_category(params[:categories]).order(published_at: :desc)
     @posts = comfy_paginate(posts_scope)
   end
 
@@ -49,16 +48,16 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
 protected
 
   def load_post
-    @post = @blog.posts.find(params[:id])
+    @post = @site.blog_posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:danger] = t('.not_found')
     redirect_to action: :index
   end
 
   def build_post
-    @post = @blog.posts.new(post_params)
+    @post = @site.blog_posts.new(post_params)
     @post.published_at ||= Time.zone.now
-    @post.layout ||= (@blog.posts.last.try(:layout) || @site.layouts.first)
+    @post.layout ||= (@site.blog_posts.last.try(:layout) || @site.layouts.first)
   end
 
   def post_params

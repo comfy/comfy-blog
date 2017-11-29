@@ -3,13 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 # 2.0.beta gems
-gem 'rails',
-  github: "rails/rails"
-gem "arel",
-  github: "rails/arel"
-gem "bootstrap_form",
-  github: "bootstrap-ruby/rails-bootstrap-forms",
-  branch: "bootstrap-v4"
+gem 'rails', ">= 5.2.beta1"
 gem "comfortable_mexican_sofa",
   github: "comfy/comfortable-mexican-sofa"
 

@@ -3,14 +3,14 @@
 = form.text_field :title, data: {slugify: @post.new_record?}
 = form.text_field :slug, data: {slug: true}
 
-= form.text_field :published_at, value: @post.published_at.try(:to_s, :db), data: {'cms-datetime' => true}
-
-= render 'comfy/admin/cms/categories/form', form: form
-
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
   = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_cms_site_page_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
 
 = render "comfy/admin/cms/pages/form_fragments", form: form, record: @post
+
+= render 'comfy/admin/cms/categories/form', form: form
+
+= form.text_field :published_at, value: @post.published_at.try(:to_s, :db), data: {'cms-datetime' => true}
 
 .row
   .col-sm-10.ml-auto
