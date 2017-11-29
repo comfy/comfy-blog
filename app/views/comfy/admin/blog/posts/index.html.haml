@@ -19,7 +19,7 @@
             .item-meta
               = post.published_at.try(:to_s, :db)
 
-              - link = comfy_blog_post_dated_path(@site.path, post.year, post.month, post.slug)
+              - link = comfy_blog_post_path(@site.path, post.year, post.month, post.slug)
               = link_to link, link, target: "_blank"
 
           .item-categories.ml-auto.d-flex.align-items-center

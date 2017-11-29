@@ -10,10 +10,8 @@ gem "comfortable_mexican_sofa",
 gem 'kaminari'
 
 group :development do
-  gem "listen"
-  gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'web-console'
+  gem 'listen'
   gem "rubocop", "~> 0.51.0", require: false
 end
 
