@@ -55,9 +55,10 @@ protected
   end
 
   def build_post
+    layout = (@site.blog_posts.order(:created_at).last.try(:layout) || @site.layouts.order(:created_at).first)
     @post = @site.blog_posts.new(post_params)
     @post.published_at ||= Time.zone.now
-    @post.layout ||= (@site.blog_posts.last.try(:layout) || @site.layouts.first)
+    @post.layout ||= layout
   end
 
   def post_params
