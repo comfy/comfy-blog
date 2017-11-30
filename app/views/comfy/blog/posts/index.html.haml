@@ -13,6 +13,8 @@
       = comfy_paginate @posts
 
     .col-md-4
+
+      %h3 Archive
       - dates_with_counts = @cms_site.blog_posts.published.group(:year, :month).order(year: :desc, month: :desc).count
       - dates_with_counts.each do |(year, month), count|
         %li
@@ -20,3 +22,7 @@
           - site_path = @cms_site.url(relative: true)
           = link_to date, comfy_blog_posts_of_month_path(site_path, year: year, month: month)
           %small (#{count})
+
+      %h3 Tags
+      - Comfy::Cms::Category.of_type('Comfy::Blog::Post').all.each do |tag|
+        = link_to tag.label, category: tag.label

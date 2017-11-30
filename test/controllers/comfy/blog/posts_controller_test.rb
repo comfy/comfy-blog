@@ -50,6 +50,28 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 0, assigns(:blog_posts).size
   end
 
+  def test_get_index_with_category
+    category = @site.categories.create!(
+      label:            'Test Category',
+      categorized_type: 'Comfy::Blog::Post'
+    )
+    category.categorizations.create!(categorized: @post)
+
+    get comfy_blog_posts_path, params: {category: category.label}
+
+    assert_response :success
+    assert assigns(:blog_posts)
+    assert_equal 1, assigns(:blog_posts).count
+    assert assigns(:blog_posts).first.categories.member? category
+  end
+
+  def test_get_index_with_category_invalid
+    get comfy_blog_posts_path, params: {category: 'invalid'}
+    assert_response :success
+    assert assigns(:blog_posts)
+    assert_equal 0, assigns(:blog_posts).count
+  end
+
   def test_get_show
     @post.update_column(:content_cache, "blog post content")
     get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)

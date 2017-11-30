@@ -10,6 +10,8 @@ class Comfy::Blog::PostsController < Comfy::Cms::BaseController
       @cms_site.blog_posts.published
     end
 
+    scope = scope.for_category(params[:category]) if params[:category]
+
     @blog_posts = comfy_paginate(scope, per_page: ComfyBlog.config.posts_per_page)
     render layout: ComfyBlog.config.app_layout
   end
