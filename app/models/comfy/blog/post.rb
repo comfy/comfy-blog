@@ -30,7 +30,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   def url(relative: false)
     public_blog_path = ComfyBlog.config.public_blog_path
     post_path = ['/', public_blog_path, self.year, self.month, self.slug].join('/').squeeze('/')
-    self.site.url(relative: relative) + post_path
+    [self.site.url(relative: relative), post_path].join
   end
 
 protected
