@@ -19,6 +19,5 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.2.2"
 
-  # TODO: add it back when CMS gets published
-  # s.add_dependency 'comfortable_mexican_sofa', '>= 2.0.0'
+  s.add_dependency 'comfortable_mexican_sofa', '>= 2.0.0'
 end
