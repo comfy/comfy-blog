@@ -1,7 +1,8 @@
 module ComfyBlog
   class Configuration
 
-    # application layout to be used to index blog posts
+    # Application layout to be used to index blog posts.
+    # Default is 'comfy/blog/application'
     attr_accessor :app_layout
 
     # Number of posts per page. Default is 10

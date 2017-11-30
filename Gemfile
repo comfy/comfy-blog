@@ -6,7 +6,6 @@ gemspec
 gem 'rails', ">= 5.2.beta1"
 gem "comfortable_mexican_sofa",
   github: "comfy/comfortable-mexican-sofa"
-
 gem 'kaminari'
 
 group :development do
