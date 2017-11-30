@@ -2,6 +2,7 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
   before_action :build_post, only: [:new, :create]
   before_action :load_post,  only: [:edit, :update, :destroy]
+  before_action :authorize
 
   def index
     return redirect_to action: :new if @site.blog_posts.count == 0
