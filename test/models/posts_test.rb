@@ -48,9 +48,9 @@ class BlogPostsTest < ActiveSupport::TestCase
         title: 'Test Post',
         layout: @layout
       )
-      assert_equal 'test-post',     post.slug
-      assert_equal Time.now.year,   post.year
-      assert_equal Time.now.month,  post.month
+      assert_equal 'test-post',           post.slug
+      assert_equal Time.zone.now.year,    post.year
+      assert_equal Time.zone.now.month,   post.month
     end
   end
 
