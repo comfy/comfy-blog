@@ -1,0 +1,7 @@
+post:
+  record: default (Comfy::Blog::Post)
+  data: <%= {
+    "fragments_attributes" => [
+      { "identifier" => "content",
+        "content"    => "old content" }
+    ]}.to_yaml.inspect %>

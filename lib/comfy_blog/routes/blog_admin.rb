@@ -7,7 +7,11 @@ class ActionDispatch::Routing::Mapper
     scope module: :comfy, as: :comfy do
       scope module: :admin do
         namespace :blog, as: :admin, path: path, except: [:show] do
-          resources :posts, as: :blog_posts, path: "blog-posts"
+          resources :posts, as: :blog_posts, path: "blog-posts" do
+            resources :revisions, only: [:index, :show], controller: "revisions/post" do
+              patch :revert, on: :member
+            end
+          end
         end
       end
     end
