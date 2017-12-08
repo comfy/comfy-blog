@@ -2,8 +2,6 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem "comfortable_mexican_sofa", github: "comfy/comfortable-mexican-sofa"
-
 gem 'kaminari'
 
 group :development do
