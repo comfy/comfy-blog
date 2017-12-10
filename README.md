@@ -8,6 +8,7 @@ ComfyBlog is a simple blog management engine for [ComfortableMexicanSofa](https:
 [![Dependency Status](https://img.shields.io/gemnasium/comfy/comfy-blog.svg?style=flat)](https://gemnasium.com/comfy/comfy-blog)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/comfy/comfy-blog.svg?style=flat)](https://codeclimate.com/github/comfy/comfy-blog)
 [![Coverage Status](https://img.shields.io/coveralls/comfy/comfy-blog.svg?style=flat)](https://coveralls.io/r/comfy/comfy-blog?branch=master)
+[![Gitter](https://badges.gitter.im/comfy/comfortable-mexican-sofa.svg)](https://gitter.im/comfy/comfortable-mexican-sofa)
 
 ## Dependencies
 
