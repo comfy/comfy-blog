@@ -1,8 +1,13 @@
 class Comfy::Admin::Blog::Revisions::PostController < Comfy::Admin::Cms::Revisions::BaseController
 
   def show
-    @current_content    = @record.fragments.inject({}){|c, b| c[b.identifier] = b.content; c }
-    @versioned_content  = @record.fragments.inject({}){|c, b| c[b.identifier] = @revision.data['fragments_attributes'].detect{|r| r[:identifier] == b.identifier}.try(:[], :content); c }
+    @current_content = @record.fragments.each_with_object({}) do |b, c|
+      c[b.identifier] = b.content
+    end
+    @versioned_content = @record.fragments.each_with_object({}) do |b, c|
+      data = @revision.data['fragments_attributes'].detect{|r| r[:identifier] == b.identifier}
+      c[b.identifier] = data.try(:[], :content)
+    end
 
     render "comfy/admin/cms/revisions/show"
   end
@@ -19,4 +24,5 @@ private
   def record_path
     edit_comfy_admin_blog_post_path(@site, @record)
   end
+
 end
