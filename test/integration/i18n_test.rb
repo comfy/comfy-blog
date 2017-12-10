@@ -4,7 +4,7 @@ class I18nIntegrationTest < ActionDispatch::IntegrationTest
 
   def collect_combined_keys(hash, ns = nil)
     hash.collect do |k, v|
-      keys = [ ]
+      keys = []
       keys << collect_combined_keys(v, "#{ns}.#{k}") if v.is_a?(Hash)
       keys << "#{ns}.#{k}"
     end.flatten
@@ -17,7 +17,7 @@ class I18nIntegrationTest < ActionDispatch::IntegrationTest
     end
 
     # collecting all locales
-    locale_keys = { }
+    locale_keys = {}
     locales.each do |locale|
       translations = YAML.load_file("#{locales_path}/#{locale}.yml")
       locale_keys[locale] = collect_combined_keys(translations[locale])
@@ -34,4 +34,5 @@ class I18nIntegrationTest < ActionDispatch::IntegrationTest
       assert extra.blank?, "#{locale} locale has extra: #{extra.join(', ')}"
     end
   end
+
 end

@@ -43,7 +43,7 @@ class BlogPostsTest < ActiveSupport::TestCase
   end
 
   def test_creation
-    assert_difference -> {Comfy::Blog::Post.count} do
+    assert_difference -> { Comfy::Blog::Post.count } do
       post = @site.blog_posts.create!(
         title: "Test Post",
         layout: @layout
@@ -99,4 +99,5 @@ class BlogPostsTest < ActiveSupport::TestCase
     ComfyBlog.config.public_blog_path = "test-blog"
     assert_equal "//test.host/test-blog/2012/1/default-title", @post.url
   end
+
 end

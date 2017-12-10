@@ -41,10 +41,11 @@ class ActiveSupport::TestCase
   #   assert_exception_raised                                 do ... end
   #   assert_exception_raised ActiveRecord::RecordInvalid     do ... end
   #   assert_exception_raised Plugin::Error, 'error_message'  do ... end
-  def assert_exception_raised(exception_class = nil, error_message = nil, &block)
+  def assert_exception_raised(exception_class = nil, error_message = nil)
     exception_raised = nil
     yield
-  rescue => exception_raised
+  rescue StandardError => exception_raised
+    exception_raised
   ensure
     if exception_raised
       if exception_class
@@ -76,9 +77,10 @@ class ActionDispatch::IntegrationTest
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.username,
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.password
     )
-    options.merge!(headers: headers)
+    options[:headers] = headers
     send(method, path, options)
   end
+
 end
 
 class Rails::Generators::TestCase
@@ -89,7 +91,7 @@ class Rails::Generators::TestCase
         :prepare_files
 
   def prepare_files
-    config_path = File.join(self.destination_root, "config")
+    config_path = File.join(destination_root, "config")
     routes_path = File.join(config_path, "routes.rb")
     FileUtils.mkdir_p(config_path)
     FileUtils.touch(routes_path)
@@ -106,4 +108,5 @@ class Rails::Generators::TestCase
       )
     )
   end
+
 end

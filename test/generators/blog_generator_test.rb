@@ -2,6 +2,7 @@ require_relative "../test_helper"
 require_relative "../../lib/generators/comfy/blog/blog_generator"
 
 class CmsGeneratorTest < Rails::Generators::TestCase
+
   tests Comfy::Generators::BlogGenerator
 
   def test_generator

@@ -16,7 +16,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_index_as_rss
-    get comfy_blog_posts_path, params: {format: :rss}
+    get comfy_blog_posts_path, params: { format: :rss }
     assert_response :success
     assert_template :index
     assert assigns(:blog_posts)
@@ -57,7 +57,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     )
     category.categorizations.create!(categorized: @post)
 
-    get comfy_blog_posts_path, params: {category: category.label}
+    get comfy_blog_posts_path, params: { category: category.label }
 
     assert_response :success
     assert assigns(:blog_posts)
@@ -66,7 +66,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_index_with_category_invalid
-    get comfy_blog_posts_path, params: {category: "invalid"}
+    get comfy_blog_posts_path, params: { category: "invalid" }
     assert_response :success
     assert assigns(:blog_posts)
     assert_equal 0, assigns(:blog_posts).count
@@ -91,4 +91,5 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
       get comfy_blog_post_path(@site.path, 1234, 99, @post.slug)
     end
   end
+
 end

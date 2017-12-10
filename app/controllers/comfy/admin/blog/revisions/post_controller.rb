@@ -5,7 +5,7 @@ class Comfy::Admin::Blog::Revisions::PostController < Comfy::Admin::Cms::Revisio
       c[b.identifier] = b.content
     end
     @versioned_content = @record.fragments.each_with_object({}) do |b, c|
-      data = @revision.data["fragments_attributes"].detect{|r| r[:identifier] == b.identifier}
+      data = @revision.data["fragments_attributes"].detect { |r| r[:identifier] == b.identifier }
       c[b.identifier] = data.try(:[], :content)
     end
 

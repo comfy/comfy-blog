@@ -5,10 +5,12 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
   before_action :authorize
 
   def index
-    return redirect_to action: :new if @site.blog_posts.count == 0
+    return redirect_to action: :new if @site.blog_posts.count.zero?
 
-    posts_scope = @site.blog_posts.
-      includes(:categories).for_category(params[:categories]).order(published_at: :desc)
+    posts_scope = @site.blog_posts
+      .includes(:categories)
+      .for_category(params[:categories])
+      .order(published_at: :desc)
     @posts = comfy_paginate(posts_scope)
   end
 
@@ -65,4 +67,5 @@ protected
   def post_params
     params.fetch(:post, {}).permit!
   end
+
 end

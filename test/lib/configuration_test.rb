@@ -13,4 +13,5 @@ class ConfigurationTest < ActiveSupport::TestCase
     ComfyBlog.config.posts_per_page = 5
     assert_equal 5, ComfyBlog.config.posts_per_page
   end
+
 end
