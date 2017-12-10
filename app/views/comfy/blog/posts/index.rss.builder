@@ -1,8 +1,8 @@
-xml.instruct! :xml, version: '1.0'
-xml.rss version: '2.0' do
+xml.instruct! :xml, version: "1.0"
+xml.rss version: "2.0" do
   xml.channel do
-    xml.title 'My Blog'
-    xml.description 'My Blog Description'
+    xml.title "My Blog"
+    xml.description "My Blog Description"
     xml.link comfy_blog_posts_url(@cms_site.path)
 
     @blog_posts.each do |post|

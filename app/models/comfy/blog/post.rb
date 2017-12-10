@@ -1,6 +1,6 @@
 class Comfy::Blog::Post < ActiveRecord::Base
 
-  self.table_name = 'comfy_blog_posts'
+  self.table_name = "comfy_blog_posts"
 
   include Comfy::Cms::WithFragments
   include Comfy::Cms::WithCategories
@@ -9,19 +9,19 @@ class Comfy::Blog::Post < ActiveRecord::Base
 
   # -- Relationships -----------------------------------------------------------
   belongs_to :site,
-    class_name: 'Comfy::Cms::Site'
+    class_name: "Comfy::Cms::Site"
 
   # -- Validations -------------------------------------------------------------
   validates :title, :slug, :year, :month,
     presence: true
   validates :slug,
-    uniqueness: {scope: [:site_id, :year, :month]},
+    uniqueness: {scope: %i[site_id year month]},
     format:     {with: /\A%*\w[a-z0-9_\-\%]*\z/i }
 
   # -- Scopes ------------------------------------------------------------------
   scope :published, -> {where(is_published: true)}
-  scope :for_year,  -> year {where(year: year)}
-  scope :for_month, -> month {where(month: month)}
+  scope :for_year,  -> (year) {where(year: year)}
+  scope :for_month, -> (month) {where(month: month)}
 
   # -- Callbacks ---------------------------------------------------------------
   before_validation :set_slug,
@@ -31,7 +31,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   # -- Instance Mathods --------------------------------------------------------
   def url(relative: false)
     public_blog_path = ComfyBlog.config.public_blog_path
-    post_path = ['/', public_blog_path, self.year, self.month, self.slug].join('/').squeeze('/')
+    post_path = ["/", public_blog_path, self.year, self.month, self.slug].join("/").squeeze("/")
     [self.site.url(relative: relative), post_path].join
   end
 

@@ -1,4 +1,4 @@
-require_relative '../../../test_helper'
+require_relative "../../../test_helper"
 
 class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
@@ -52,8 +52,8 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
   def test_get_index_with_category
     category = @site.categories.create!(
-      label:            'Test Category',
-      categorized_type: 'Comfy::Blog::Post'
+      label:            "Test Category",
+      categorized_type: "Comfy::Blog::Post"
     )
     category.categorizations.create!(categorized: @post)
 
@@ -66,7 +66,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_index_with_category_invalid
-    get comfy_blog_posts_path, params: {category: 'invalid'}
+    get comfy_blog_posts_path, params: {category: "invalid"}
     assert_response :success
     assert assigns(:blog_posts)
     assert_equal 0, assigns(:blog_posts).count

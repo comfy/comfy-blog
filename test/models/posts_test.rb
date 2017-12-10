@@ -1,4 +1,4 @@
-require_relative '../test_helper'
+require_relative "../test_helper"
 
 class BlogPostsTest < ActiveSupport::TestCase
 
@@ -35,8 +35,8 @@ class BlogPostsTest < ActiveSupport::TestCase
 
   def test_validation_of_slug_format
     post = @site.blog_posts.new(
-      title: 'Test Title',
-      slug:  'test%slug',
+      title: "Test Title",
+      slug:  "test%slug",
       layout: @layout
     )
     assert post.valid?
@@ -45,19 +45,19 @@ class BlogPostsTest < ActiveSupport::TestCase
   def test_creation
     assert_difference -> {Comfy::Blog::Post.count} do
       post = @site.blog_posts.create!(
-        title: 'Test Post',
+        title: "Test Post",
         layout: @layout
       )
-      assert_equal 'test-post',           post.slug
+      assert_equal "test-post",           post.slug
       assert_equal Time.zone.now.year,    post.year
       assert_equal Time.zone.now.month,   post.month
     end
   end
 
   def test_set_slug
-    post = Comfy::Blog::Post.new(title: 'Test Title')
+    post = Comfy::Blog::Post.new(title: "Test Title")
     post.send(:set_slug)
-    assert_equal 'test-title', post.slug
+    assert_equal "test-title", post.slug
   end
 
   def test_set_date
@@ -93,10 +93,10 @@ class BlogPostsTest < ActiveSupport::TestCase
   end
 
   def test_url
-    assert_equal '//test.host/blog/2012/1/default-title', @post.url
-    assert_equal '/blog/2012/1/default-title', @post.url(relative: true)
+    assert_equal "//test.host/blog/2012/1/default-title", @post.url
+    assert_equal "/blog/2012/1/default-title", @post.url(relative: true)
 
     ComfyBlog.config.public_blog_path = "test-blog"
-    assert_equal '//test.host/test-blog/2012/1/default-title', @post.url
+    assert_equal "//test.host/test-blog/2012/1/default-title", @post.url
   end
 end

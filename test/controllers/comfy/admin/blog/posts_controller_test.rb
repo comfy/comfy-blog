@@ -1,4 +1,4 @@
-require_relative '../../../../test_helper'
+require_relative "../../../../test_helper"
 
 class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
@@ -24,8 +24,8 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
   def test_get_index_with_category
     category = @site.categories.create!(
-      label:            'Test Category',
-      categorized_type: 'Comfy::Blog::Post'
+      label:            "Test Category",
+      categorized_type: "Comfy::Blog::Post"
     )
     category.categorizations.create!(categorized: @post)
 
@@ -37,7 +37,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_index_with_category_invalid
-    r :get, comfy_admin_blog_posts_path(@site), params: {categories: 'invalid'}
+    r :get, comfy_admin_blog_posts_path(@site), params: {categories: "invalid"}
     assert_response :success
     assert assigns(:posts)
     assert_equal 0, assigns(:posts).count
@@ -56,19 +56,19 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     frag_count = -> {Comfy::Cms::Fragment.count}
     assert_difference [post_count, frag_count] do
       r :post, comfy_admin_blog_posts_path(@site), params: {post: {
-        title:        'Test Post',
-        slug:         'test-post',
+        title:        "Test Post",
+        slug:         "test-post",
         published_at: 2.days.ago.to_s(:db),
-        is_published: '1',
+        is_published: "1",
         layout_id:    @layout,
         fragments_attributes: [
-          { identifier: 'content',
-            content:    'test text' }
+          { identifier: "content",
+            content:    "test text" }
         ]
       }}
       assert_response :redirect
       assert_redirected_to action: :edit, id: assigns(:post)
-      assert_equal 'Blog Post created', flash[:success]
+      assert_equal "Blog Post created", flash[:success]
     end
   end
 
@@ -78,7 +78,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
       assert_template :new
       assert assigns(:post)
-      assert_equal 'Failed to create Blog Post', flash[:danger]
+      assert_equal "Failed to create Blog Post", flash[:danger]
     end
   end
 
@@ -91,34 +91,34 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_edit_failure
-    r :get, edit_comfy_admin_blog_post_path(@site, 'invalid')
+    r :get, edit_comfy_admin_blog_post_path(@site, "invalid")
     assert_response :redirect
     assert_redirected_to action: :index
-    assert_equal 'Blog Post not found', flash[:danger]
+    assert_equal "Blog Post not found", flash[:danger]
   end
 
   def test_update
     r :put, comfy_admin_blog_post_path(@site, @post), params: {post: {
-      title: 'Updated Post'
+      title: "Updated Post"
     }}
     assert_response :redirect
     assert_redirected_to action: :edit, id: assigns(:post)
-    assert_equal 'Blog Post updated', flash[:success]
+    assert_equal "Blog Post updated", flash[:success]
 
     @post.reload
-    assert_equal 'Updated Post', @post.title
+    assert_equal "Updated Post", @post.title
   end
 
   def test_update_failure
     r :put, comfy_admin_blog_post_path(@site, @post), params: {post: {
-      title: ''
+      title: ""
     }}
     assert_response :success
     assert_template :edit
-    assert_equal 'Failed to update Blog Post', flash[:danger]
+    assert_equal "Failed to update Blog Post", flash[:danger]
 
     @post.reload
-    assert_not_equal '', @post.title
+    assert_not_equal "", @post.title
   end
 
   def test_destroy
@@ -126,7 +126,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
       r :delete, comfy_admin_blog_post_path(@site, @post)
       assert_response :redirect
       assert_redirected_to action: :index
-      assert_equal 'Blog Post removed', flash[:success]
+      assert_equal "Blog Post removed", flash[:success]
     end
   end
 end

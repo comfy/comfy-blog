@@ -14,7 +14,7 @@ module ComfyBlog
     # Configuration defaults
     def initialize
       @posts_per_page   = 10
-      @app_layout       = 'comfy/blog/application'
+      @app_layout       = "comfy/blog/application"
       @public_blog_path = nil
     end
 

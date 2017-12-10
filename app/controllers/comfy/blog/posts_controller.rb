@@ -24,7 +24,7 @@ class Comfy::Blog::PostsController < Comfy::Cms::BaseController
             content_type: "text/html"
 
   rescue ActiveRecord::RecordNotFound
-    render cms_page: '/404', status: 404
+    render cms_page: "/404", status: 404
   end
 
 private

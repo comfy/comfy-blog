@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ComfyBlog
   class Application < Rails::Application
 
-    require_relative '../lib/comfy_blog'
+    require_relative "../lib/comfy_blog"
 
     config.load_defaults 5.2
 
@@ -29,7 +29,7 @@ module ComfyBlog
     config.railties_order = [ActiveStorage::Engine, :main_app, :all]
 
     # Making sure we don't load our dev routes as part of the engine
-    config.paths['config/routes.rb'] << 'config/blog_routes.rb'
+    config.paths["config/routes.rb"] << "config/blog_routes.rb"
 
     config.i18n.enforce_available_locales = true
   end

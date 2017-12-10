@@ -1,16 +1,16 @@
-ENV['RAILS_ENV'] = 'test'
+ENV["RAILS_ENV"] = "test"
 
-require 'simplecov'
-require 'coveralls'
+require "simplecov"
+require "coveralls"
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start do
-  add_filter 'lib/generators'
-  add_filter 'lib/comfy_blog/engine.rb '
+  add_filter "lib/generators"
+  add_filter "lib/comfy_blog/engine.rb "
 end
-require_relative '../config/environment'
+require_relative "../config/environment"
 
-require 'rails/test_help'
-require 'rails/generators'
+require "rails/test_help"
+require "rails/generators"
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -23,8 +23,8 @@ class ActiveSupport::TestCase
   def reset_config
     ComfyBlog.configure do |config|
       config.posts_per_page   = 10
-      config.app_layout       = 'comfy/blog/application'
-      config.public_blog_path = 'blog'
+      config.app_layout       = "comfy/blog/application"
+      config.public_blog_path = "blog"
     end
   end
 
@@ -54,7 +54,7 @@ class ActiveSupport::TestCase
       end
       assert_equal error_message, exception_raised.to_s if error_message
     else
-      flunk 'Exception was not raised'
+      flunk "Exception was not raised"
     end
   end
 
@@ -65,14 +65,14 @@ class ActionDispatch::IntegrationTest
   setup :setup_host
 
   def setup_host
-    host! 'test.host'
+    host! "test.host"
   end
 
   # Attaching http_auth stuff with request. Example use:
   #   r :get, '/cms-admin/pages'
   def r(method, path, options = {})
     headers = options[:headers] || {}
-    headers['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials(
+    headers["HTTP_AUTHORIZATION"] = ActionController::HttpAuthentication::Basic.encode_credentials(
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.username,
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.password
     )
@@ -83,17 +83,17 @@ end
 
 class Rails::Generators::TestCase
 
-  destination File.expand_path('../tmp', File.dirname(__FILE__))
+  destination File.expand_path("../tmp", File.dirname(__FILE__))
 
   setup :prepare_destination,
         :prepare_files
 
   def prepare_files
-    config_path = File.join(self.destination_root, 'config')
-    routes_path = File.join(config_path, 'routes.rb')
+    config_path = File.join(self.destination_root, "config")
+    routes_path = File.join(config_path, "routes.rb")
     FileUtils.mkdir_p(config_path)
     FileUtils.touch(routes_path)
-    File.open(routes_path, 'w') do |f|
+    File.open(routes_path, "w") do |f|
       f.write("Test::Application.routes.draw do\n\nend")
     end
   end
@@ -101,7 +101,7 @@ class Rails::Generators::TestCase
   def read_file(filename)
     File.read(
       File.join(
-        File.expand_path('fixtures/generators', File.dirname(__FILE__)),
+        File.expand_path("fixtures/generators", File.dirname(__FILE__)),
         filename
       )
     )

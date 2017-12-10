@@ -1,7 +1,7 @@
 class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
-  before_action :build_post, only: [:new, :create]
-  before_action :load_post,  only: [:edit, :update, :destroy]
+  before_action :build_post, only: %i[new create]
+  before_action :load_post,  only: %i[edit update destroy]
   before_action :authorize
 
   def index
@@ -18,11 +18,11 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
   def create
     @post.save!
-    flash[:success] = t('.created')
+    flash[:success] = t(".created")
     redirect_to action: :edit, id: @post
 
   rescue ActiveRecord::RecordInvalid
-    flash.now[:danger] = t('.create_failure')
+    flash.now[:danger] = t(".create_failure")
     render action: :new
   end
 
@@ -32,17 +32,17 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
   def update
     @post.update_attributes!(post_params)
-    flash[:success] = t('.updated')
+    flash[:success] = t(".updated")
     redirect_to action: :edit, id: @post
 
   rescue ActiveRecord::RecordInvalid
-    flash.now[:danger] = t('.update_failure')
+    flash.now[:danger] = t(".update_failure")
     render action: :edit
   end
 
   def destroy
     @post.destroy
-    flash[:success] = t('.deleted')
+    flash[:success] = t(".deleted")
     redirect_to action: :index
   end
 
@@ -51,7 +51,7 @@ protected
   def load_post
     @post = @site.blog_posts.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:danger] = t('.not_found')
+    flash[:danger] = t(".not_found")
     redirect_to action: :index
   end
 
