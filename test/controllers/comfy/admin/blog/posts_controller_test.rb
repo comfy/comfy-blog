@@ -130,4 +130,24 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  def test_get_form_fragments
+    r :get, form_fragments_comfy_admin_blog_post_path(site_id: @site, id: @post), xhr: true, params: {
+      layout_id: @layout.id
+    }
+    assert_response :success
+    assert assigns(:post)
+    assert_equal 1, assigns(:post).fragment_nodes.size
+    assert_template :form_fragments
+  end
+
+  def test_get_form_fragments_for_new_post
+    r :get, form_fragments_comfy_admin_blog_post_path(site_id: @site, id: 0), xhr: true, params: {
+      layout_id: @layout.id
+    }
+    assert_response :success
+    assert assigns(:post)
+    assert_equal 1, assigns(:post).fragment_nodes.size
+    assert_template :form_fragments
+  end
+
 end

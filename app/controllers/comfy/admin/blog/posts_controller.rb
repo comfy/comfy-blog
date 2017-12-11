@@ -48,6 +48,11 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
     redirect_to action: :index
   end
 
+  def form_fragments
+    @post = @site.blog_posts.find_by(id: params[:id]) || @site.blog_posts.new
+    @post.layout = @site.layouts.find_by(id: params[:layout_id])
+  end
+
 protected
 
   def load_post

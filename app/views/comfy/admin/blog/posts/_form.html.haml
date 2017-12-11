@@ -4,9 +4,9 @@
 = form.text_field :slug, data: {slug: true}
 
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
-  = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_cms_site_page_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
+  = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
 
-= render "comfy/admin/cms/pages/form_fragments", form: form, record: @post
+= render "comfy/admin/cms/fragments/form_fragments", form: form, record: @post
 
 = render 'comfy/admin/cms/categories/form', form: form
 
