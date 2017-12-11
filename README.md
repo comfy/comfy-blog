@@ -37,6 +37,8 @@ comfy_route :blog, path: 'blog'
 
 You should also find view templates in `/app/views/blog` folder. Feel free to adjust them as you see fit.
 
+![Admin Area Preview](https://github.com/comfy/comfy-blog/raw/master/doc/preview.jpg)
+
 ---
 
 Copyright 2009-2017 Oleg Khabarov
