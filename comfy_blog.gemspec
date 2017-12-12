@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = ">= 2.2.2"
 
-  s.add_dependency "comfortable_mexican_sofa", ">= 2.0.3"
+  s.add_dependency "comfortable_mexican_sofa", ">= 2.0.4"
 end
