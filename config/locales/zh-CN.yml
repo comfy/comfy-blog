@@ -1,38 +1,38 @@
 zh-CN:
   activerecord:
     models:
-      comfy/blog/post: Post
+      comfy/blog/post: 博客
     attributes:
       comfy/blog/post:
-        title: Title
-        slug: Slug
-        published_at: Published at
-        is_published: Is Published
+        title: 标题
+        slug: 缩略路径
+        published_at: 发布于
+        is_published: 发布
 
   comfy:
     admin:
       cms:
         base:
-          posts: Blog Posts
+          posts: 博客
       blog:
         posts:
-          created: Blog Post created
-          create_failure: Failed to create Blog Post
-          updated: Blog Post updated
-          update_failure: Failed to update Blog Post
-          deleted: Blog Post removed
-          not_found: Blog Post not found
+          created: 博客创建成功
+          create_failure: 博客创建失败
+          updated: 博客更新成功
+          update_failure: 博客更新失败
+          deleted: 博客删除成功
+          not_found: 博客不存在
           index:
-            title: Blog Posts
-            new_link: New Blog Post
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
+            title: 博客
+            new_link: 创建新博客
+            edit: 编辑
+            delete: 删除
+            are_you_sure: 确定删除该博客吗?
           new:
-            title: New Blog Post
+            title: 新博客
           edit:
-            title: Edit Blog Post
+            title: 编辑博客
           form:
-            create: Create Post
-            update: Update Post
-            cancel: Cancel
+            create: 创建博客
+            update: 更新博客
+            cancel: 取消
