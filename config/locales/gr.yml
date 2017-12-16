@@ -1,0 +1,38 @@
+gr:
+  activerecord:
+    models:
+      comfy/blog/post: Δημοσίευση
+    attributes:
+      comfy/blog/post:
+        title: Τίτλος
+        slug: Slug
+        published_at: Δημοσιεύθηκε στο
+        is_published: Έχει Δημοσιευθεί
+
+  comfy:
+    admin:
+      cms:
+        base:
+          posts: Δημοσιεύσεις του Blog
+      blog:
+        posts:
+          created: Η Δημοσιεύση δημιουργήθηκε
+          create_failure: Αποτυχία δημιουργίας της δημοσίευσης
+          updated: Η Δημοσίευση ενημερώθηκε
+          update_failure: Αποτυχία ενημέρωσης της δημοσίευσης
+          deleted: Η Δημοσίεση διαγράφηκε
+          not_found: Η Δημοσίευση δεν βρέθηκε
+          index:
+            title: Δημοσιεύσεις του Blog
+            new_link: Νέα Δημοσίευση
+            edit: Επεξεργασία
+            delete: Διαγραφή
+            are_you_sure: Είστε σίγουροι;
+          new:
+            title: Νέα Δημοσίευση στο Blog
+          edit:
+            title: Επεξεργασία στο Blog
+          form:
+            create: Δημιουργία Δημοσίευσης
+            update: Ενημέρωση Δημοσίευσης
+            cancel: Ακύρωση
