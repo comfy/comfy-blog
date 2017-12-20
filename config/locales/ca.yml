@@ -1,0 +1,38 @@
+ca:
+  activerecord:
+    models:
+      comfy/blog/post: Entrada
+    attributes:
+      comfy/blog/post:
+        title: Títol
+        slug: Ruta
+        published_at: Publicat
+        is_published: Publicada
+
+  comfy:
+    admin:
+      cms:
+        base:
+          posts: Entrada del blog
+      blog:
+        posts:
+          created: S'ha creat l'entrada del blog
+          create_failure: No s'ha pogut crear l'entrada del blog
+          updated: S'ha actualitzat l'entrada del blog
+          update_failure: No s'ha pogut actualitzar l'entrada del blog
+          deleted: S'ha esborrat l'entrada del blog
+          not_found: L'entrada del blog no s'ha pogut trobar
+          index:
+            title: Entrada del blog
+            new_link: S'ha creat una nova entrada al blog
+            edit: Edita
+            delete: Esborra
+            are_you_sure: Esteu segur de que voleu esborrar aquesta entrada?
+          new:
+            title: Nova entrada del blog
+          edit:
+            title: Edita l'entrada del blog
+          form:
+            create: Crea una entrada
+            update: Actualitza una entrada
+            cancel: Cancel.la
