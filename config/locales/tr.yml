@@ -1,38 +1,38 @@
 tr:
   activerecord:
     models:
-      comfy/blog/post: Post
+      comfy/blog/post: Yazı
     attributes:
       comfy/blog/post:
-        title: Title
+        title: Başlık
         slug: Slug
-        published_at: Published at
-        is_published: Is Published
+        published_at: Yayınlanma tarihi
+        is_published: Yayında mı?
 
   comfy:
     admin:
       cms:
         base:
-          posts: Blog Posts
+          posts: Blog Yazıları
       blog:
         posts:
-          created: Blog Post created
-          create_failure: Failed to create Blog Post
-          updated: Blog Post updated
-          update_failure: Failed to update Blog Post
-          deleted: Blog Post removed
-          not_found: Blog Post not found
+          created: Blog Yazısı oluşturuldu
+          create_failure: Blog Yazıdı oluşturulamadı
+          updated: Blog Yazısı güncellendi
+          update_failure: Blog Yazısıp güncellenemedi
+          deleted: Blog Yazısı silindi
+          not_found: Blog Yazısı bulunamadı
           index:
-            title: Blog Posts
-            new_link: New Blog Post
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
+            title: Blog Yazıları
+            new_link: Yeni Blog Yazısı
+            edit: Düzenle
+            delete: Sil
+            are_you_sure: Emin misin?
           new:
-            title: New Blog Post
+            title: Yeni Blog Yazısı
           edit:
-            title: Edit Blog Post
+            title: Blog Yazısını Düzenle
           form:
-            create: Create Post
-            update: Update Post
-            cancel: Cancel
+            create: Yazı Oluştur
+            update: Yazıyı Güncelle
+            cancel: İptal
