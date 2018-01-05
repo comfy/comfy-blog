@@ -31,14 +31,14 @@ Then from the Rails project's root run:
 Take a look inside your `config/routes.rb` file and you should see following lines there:
 
 ```ruby
-comfy_route :blog_admin, path: 'admin'
-comfy_route :blog, path: 'blog'
+comfy_route :blog_admin, path: "admin"
+comfy_route :blog, path: "blog"
 ```
 
 You should also find view templates in `/app/views/blog` folder. Feel free to adjust them as you see fit.
 
-![Admin Area Preview](https://github.com/comfy/comfy-blog/raw/master/doc/preview.jpg)
+![Admin Area Preview](/doc/preview.jpg)
 
 ---
 
-Copyright 2009-2017 Oleg Khabarov
+Copyright 2009-2018 Oleg Khabarov
