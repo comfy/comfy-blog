@@ -1,38 +1,38 @@
 fr:
   activerecord:
     models:
-      comfy/blog/post: Post
+      comfy/blog/post: Article
     attributes:
       comfy/blog/post:
-        title: Title
-        slug: Slug
-        published_at: Published at
-        is_published: Is Published
+        title: Titre
+        slug: Identifiant
+        published_at: Publié le
+        is_published: Publié
 
   comfy:
     admin:
       cms:
         base:
-          posts: Blog Posts
+          posts: Articles de Blog
       blog:
         posts:
-          created: Blog Post created
-          create_failure: Failed to create Blog Post
-          updated: Blog Post updated
-          update_failure: Failed to update Blog Post
-          deleted: Blog Post removed
-          not_found: Blog Post not found
+          created: Article de Blog créé
+          create_failure: Échec de la création de l'Article de Blog
+          updated: Article de Blog modifié
+          update_failure: Échec de la modification de l'Article de Blog
+          deleted: Article de Blog supprimé
+          not_found: Article de Blog introuvable
           index:
-            title: Blog Posts
-            new_link: New Blog Post
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
+            title: Articles de Blog
+            new_link: Nouvel Article de Blog
+            edit: Modifier
+            delete: Supprimer
+            are_you_sure: Êtes-vous sûr ?
           new:
-            title: New Blog Post
+            title: Nouvel Article de Blog
           edit:
-            title: Edit Blog Post
+            title: Modifier l'Article de Blog
           form:
-            create: Create Post
-            update: Update Post
-            cancel: Cancel
+            create: Créer l'Article
+            update: Modifier l'Article
+            cancel: Annuler
