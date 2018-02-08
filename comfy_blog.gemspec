@@ -13,7 +13,10 @@ Gem::Specification.new do |s|
   s.description = "Simple Blog Engine for ComfortableMexicanSofa"
   s.license     = "MIT"
 
-  s.files         = `git ls-files`.split("\n")
+  s.files = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|doc)/})
+  end
+
   s.platform      = Gem::Platform::RUBY
   s.require_paths = ["lib"]
 
