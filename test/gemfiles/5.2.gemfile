@@ -2,12 +2,15 @@ source 'http://rubygems.org'
 
 gemspec path: "../../"
 
-group :test do
+group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "kaminari"
   gem "puma"
   gem "rubocop", require: false
   gem "sqlite3"
+end
+
+group :test do
   gem "coveralls",  require: false
   gem "mocha",      require: false
   gem "rails-controller-testing"
