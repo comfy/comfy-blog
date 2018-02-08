@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
     f.match(%r{^(test|doc)/})
   end
 
-  s.platform      = Gem::Platform::RUBY
   s.require_paths = ["lib"]
 
   s.required_ruby_version = ">= 2.2.2"
