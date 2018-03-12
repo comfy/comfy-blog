@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
 
   before_action :build_post, only: %i[new create]

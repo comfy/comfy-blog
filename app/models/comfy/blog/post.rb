@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comfy::Blog::Post < ActiveRecord::Base
 
   self.table_name = "comfy_blog_posts"

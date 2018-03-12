@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comfy::Admin::Blog::Revisions::PostController < Comfy::Admin::Cms::Revisions::BaseController
 
   def show

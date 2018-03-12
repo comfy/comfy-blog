@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
-  s.required_ruby_version = ">= 2.2.2"
+  s.required_ruby_version = ">= 2.3.0"
 
   s.add_dependency "comfortable_mexican_sofa", ">= 2.0.10"
 end

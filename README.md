@@ -19,7 +19,7 @@ Make sure that you have [ComfortableMexicanSofa](https://github.com/comfy/comfor
 Add gem definition to your Gemfile:
 
 ```ruby
-gem 'comfy_blog', '~> 2.0.0'
+gem "comfy_blog", "~> 2.0.0"
 ```
 
 Then from the Rails project's root run:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comfy::Blog::PostsController < Comfy::Cms::BaseController
 
   include Comfy::Paginate
