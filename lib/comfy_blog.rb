@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "comfy_blog/version"
 require_relative "comfy_blog/engine"
 require_relative "comfy_blog/configuration"

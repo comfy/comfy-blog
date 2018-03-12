@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 defined?(ComfyBlog::Application) && ComfyBlog::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 

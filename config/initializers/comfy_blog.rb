@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ComfyBlog.configure do |config|
   # application layout to be used to index blog posts
   #   config.app_layout = 'comfy/blog/application'

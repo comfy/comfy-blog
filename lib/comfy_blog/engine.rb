@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rubygems"
 require "rails"
 require "comfortable_mexican_sofa"
