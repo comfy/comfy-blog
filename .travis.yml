@@ -12,9 +12,8 @@ branches:
 before_install:
   - gem update --system
   - gem update bundler
-before_script:
-  - rake db:migrate
 script:
+  - bundle exec rake db:migrate
   - bundle exec rake test
   - bundle exec rubocop
 matrix:
