@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gemspec path: "../../"
 
 # CMS has dependency on prerelease and Bundler chokes on it
-gem "rails", "~> 5.2.0.rc1"
+gem "rails", "~> 5.2.0"
 
 group :development, :test do
   gem "byebug",   "~> 10.0.0", platforms: %i[mri mingw x64_mingw]
