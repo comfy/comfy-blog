@@ -6,18 +6,17 @@
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
   = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
 
-= render "comfy/admin/cms/fragments/form_fragments", form: form, record: @post
+#form-fragments-container
+  = render "comfy/admin/cms/fragments/form_fragments", record: @post, scope: :post
 
-= render 'comfy/admin/cms/categories/form', form: form
+= render "comfy/admin/cms/categories/form", form: form
 
 = form.text_field :published_at, value: @post.published_at.try(:to_s, :db), data: {'cms-datetime' => true}
 
-.row
-  .col-sm-10.ml-auto
-    = form.check_box :is_published
+= form.check_box :is_published
 
 = comfy_admin_partial "comfy/admin/blog/partials/post_form_after", form: form
 
 = form.form_actions do
-  = form.submit t(@post.new_record?? '.create' : '.update'), class: "btn btn-primary"
-  = link_to t('.cancel'), comfy_admin_blog_posts_path(@site, @blog), class: 'btn btn-link'
+  = submit_tag t(@post.new_record?? ".create" : ".update"), class: "btn btn-primary ml-sm-1", data: {disable_with: false}
+  = link_to t(".cancel"), comfy_admin_blog_posts_path(@site, @blog), class: "btn btn-link"

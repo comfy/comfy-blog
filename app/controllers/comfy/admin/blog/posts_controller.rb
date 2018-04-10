@@ -53,6 +53,12 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Cms::BaseController
   def form_fragments
     @post = @site.blog_posts.find_by(id: params[:id]) || @site.blog_posts.new
     @post.layout = @site.layouts.find_by(id: params[:layout_id])
+
+    render(
+      partial:  "comfy/admin/cms/fragments/form_fragments",
+      locals:   { record: @post, scope: :post },
+      layout:   false
+    )
   end
 
 protected

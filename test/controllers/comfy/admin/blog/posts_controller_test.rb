@@ -139,7 +139,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:post)
     assert_equal 1, assigns(:post).fragment_nodes.size
-    assert_template :form_fragments
+    assert_template "comfy/admin/cms/fragments/_form_fragments"
   end
 
   def test_get_form_fragments_for_new_post
@@ -149,7 +149,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:post)
     assert_equal 1, assigns(:post).fragment_nodes.size
-    assert_template :form_fragments
+    assert_template "comfy/admin/cms/fragments/_form_fragments"
   end
 
 end
