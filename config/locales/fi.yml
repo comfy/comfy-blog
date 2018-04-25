@@ -1,0 +1,38 @@
+fi:
+  activerecord:
+    models:
+      comfy/blog/post: Artikkeli
+    attributes:
+      comfy/blog/post:
+        title: Otsikko
+        slug: URL-osa
+        published_at: Julkaistu
+        is_published: On julkaistu
+
+  comfy:
+    admin:
+      cms:
+        base:
+          posts: Artikkelit
+      blog:
+        posts:
+          created: Blogiartikkeli luotu
+          create_failure: Blogiartikkelia ei voitu luoda
+          updated: Blogiartikkeli päivitetty
+          update_failure: Blogiartikkelia ei voitu päivittää
+          deleted: Blogiartikkeli poistettu
+          not_found: Blogiartikkelia ei löydy
+          index:
+            title: Blogiartikkelit
+            new_link: Uusi blogiartikkeli
+            edit: Muokkaa
+            delete: Poista
+            are_you_sure: Oletko varma?
+          new:
+            title: Uusi blogiartikkeli
+          edit:
+            title: Muokkaa blogiartikkelia
+          form:
+            create: Luo artikkeli
+            update: Päivitä artikkeli
+            cancel: Peru
