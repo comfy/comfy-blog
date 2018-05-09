@@ -5,5 +5,5 @@ default:
   is_published: true
   year: 2012
   month: 1
-  published_at: <%= 2.days.ago %>
+  published_at: 2012-01-01 01:23:00
   layout: default

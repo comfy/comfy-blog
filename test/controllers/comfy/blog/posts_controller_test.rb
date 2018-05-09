@@ -75,14 +75,15 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_show
-    expected_content =
-      "<h1>Default Title</h1>\n"\
-      "<p>\n"\
-      "Published on\n"\
-      ":\n"\
-      "#{@post.published_at.to_formatted_s(:short)}\n"\
-      "</p>\n"\
-      "blog post content\n"\
+    expected_content = <<~HTML
+      <h1>Default Title</h1>
+      <p>
+      Published on
+      :
+      01 Jan 01:23
+      </p>
+      blog post content
+      HTML
 
     @post.update_column(:content_cache, "blog post content")
     get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)
