@@ -22,7 +22,7 @@ class Comfy::Blog::PostsController < Comfy::Cms::BaseController
   def show
     load_post
 
-    render  layout: app_layout
+    render layout: app_layout
 
   rescue ActiveRecord::RecordNotFound
     render cms_page: "/404", status: 404
