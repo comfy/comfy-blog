@@ -74,6 +74,28 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 0, assigns(:blog_posts).count
   end
 
+  def test_get_index_is_sorted
+    new_post = @site.blog_posts.create!(
+      site: comfy_cms_sites(:default),
+      title: "Default title 2",
+      slug: "default-title-2",
+      is_published: true,
+      year: 2012,
+      month: 1,
+      published_at: DateTime.new(2012, 1, 1, 1, 24, 0),
+      layout: comfy_cms_layouts(:default)
+    )
+
+    get comfy_blog_posts_path
+
+    assert_response :success
+    assert assigns(:blog_posts)
+    assert_equal 2, assigns(:blog_posts).count
+
+    assert_equal new_post, assigns(:blog_posts)[0]
+    assert_equal comfy_blog_posts(:default), assigns(:blog_posts)[1]
+  end
+
   def test_get_show
     @post.update_column(:content_cache, "blog post content")
     get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)
