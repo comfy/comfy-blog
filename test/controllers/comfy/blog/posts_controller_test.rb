@@ -90,20 +90,19 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_get_show
-    expected_content = <<~HTML
+    @post.update_column(:content_cache, "blog post content")
+
+    expected = <<~HTML
       <h1>Default Title</h1>
       <p>
-      Published on
-      :
-      01 Jan 01:23
+      Published on: 01 Jan 01:23
       </p>
       blog post content
-      HTML
+    HTML
 
-    @post.update_column(:content_cache, "blog post content")
     get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)
     assert_response :success
-    assert_equal expected_content, response.body
+    assert_equal expected, response.body
   end
 
   def test_get_show_unpublished
