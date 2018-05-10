@@ -9,7 +9,7 @@ module Comfy
       include Rails::Generators::Migration
       include Thor::Actions
 
-      source_root File.expand_path("../../../../..", __FILE__)
+      source_root File.expand_path("../../../..", __dir__)
 
       def self.next_migration_number(dirname)
         ActiveRecord::Generators::Base.next_migration_number(dirname)

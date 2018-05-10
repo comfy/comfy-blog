@@ -11,7 +11,7 @@ group :development, :test do
   gem "byebug",   "~> 10.0.0", platforms: %i[mri mingw x64_mingw]
   gem "kaminari", "~> 1.1.1"
   gem "puma",     "~> 3.11.2"
-  gem "rubocop",  "~> 0.52.1", require: false
+  gem "rubocop",  "~> 0.55.0", require: false
   gem "sqlite3",  "~> 1.3.13"
 end
 
