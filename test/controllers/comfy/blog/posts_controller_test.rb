@@ -76,14 +76,9 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
 
   def test_get_index_is_sorted
     new_post = @site.blog_posts.create!(
-      site: comfy_cms_sites(:default),
-      title: "Default title 2",
-      slug: "default-title-2",
-      is_published: true,
-      year: 2012,
-      month: 1,
-      published_at: DateTime.new(2012, 1, 1, 1, 24, 0),
-      layout: comfy_cms_layouts(:default)
+      title:        "Test Post",
+      published_at: @post.published_at + 1.day,
+      layout:       comfy_cms_layouts(:default)
     )
 
     get comfy_blog_posts_path
@@ -91,9 +86,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert assigns(:blog_posts)
     assert_equal 2, assigns(:blog_posts).count
-
-    assert_equal new_post, assigns(:blog_posts)[0]
-    assert_equal comfy_blog_posts(:default), assigns(:blog_posts)[1]
+    assert_equal [new_post, @post], assigns(:blog_posts).to_a
   end
 
   def test_get_show
