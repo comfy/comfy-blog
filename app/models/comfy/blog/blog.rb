@@ -19,7 +19,7 @@ class Comfy::Blog::Blog < ActiveRecord::Base
     :uniqueness => { :scope => :site_id },
     :format     => { :with => /\A\w[a-z0-9_-]*\z/i },
     :presence   => true,
-    :if         => 'restricted_path?'
+    :if         => :restricted_path?
   
 protected
 

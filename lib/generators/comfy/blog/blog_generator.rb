@@ -32,7 +32,7 @@ module Comfy
       
       def generate_routing
         route_string  = "  comfy_route :blog_admin, :path => '/admin'\n"
-        route_string << "  comfy_route :blog, :path => '/blog'\n"
+        route_string << "comfy_route :blog, :path => '/blog'\n\n"
         route route_string[2..-1]
       end
       
