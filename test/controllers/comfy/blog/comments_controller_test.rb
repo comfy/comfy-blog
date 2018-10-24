@@ -9,11 +9,11 @@ class Comfy::Blog::CommentsControllerTest < ActionController::TestCase
 
   def test_creation
     assert_difference 'Comfy::Blog::Comment.count' do
-      post :create, :slug => @post.slug, :comment => {
+      post :create, params: { :slug => @post.slug, :comment => {
         :author   => 'Test',
         :email    => 'test@test.test',
         :content  => 'Test Content'
-      }
+      }}
       assert_response :redirect
       assert_redirected_to comfy_blog_post_path
       assert_equal 'Comment created', flash[:success]
@@ -26,7 +26,7 @@ class Comfy::Blog::CommentsControllerTest < ActionController::TestCase
   
   def test_creation_failure
     assert_no_difference 'Comfy::Blog::Comment.count' do
-      post :create, :slug => @post.slug, :comment => { }
+      post :create, params: { :slug => @post.slug, :comment => { } }
       assert_response :success
       assert_template :show
       assert_equal 'Failed to create Comment', flash[:error]
