@@ -6,21 +6,18 @@ before_script:
 script:
   - rake ci
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.5
-  - 2.2.0
+   - 2.2.2
+   - 2.4.1
+   - 2.5.1
 gemfile:
-  - test/gemfiles/Gemfile.rails.4.0
-  - test/gemfiles/Gemfile.rails.4.1
-  - test/gemfiles/Gemfile.rails.4.2
+  - test/gemfiles/Gemfile.rails.5.2
 branches:
   only:
     - master
 matrix:
   fast_finish: true
   include:
-    - rvm: 2.2.0
+    - rvm: 2.4.1
       gemfile: test/gemfiles/Gemfile.rails.master
   allow_failures:
     - gemfile: test/gemfiles/Gemfile.rails.master
