@@ -1,38 +1,38 @@
 pl:
   activerecord:
     models:
-      comfy/blog/post: Post
+      comfy/blog/post: Wpis
     attributes:
       comfy/blog/post:
-        title: Title
-        slug: Slug
-        published_at: Published at
-        is_published: Is Published
+        title: Tytuł
+        slug: Przyjazna ścieżka
+        published_at: Data publikacji
+        is_published: Opublikowano
 
   comfy:
     admin:
       cms:
         base:
-          posts: Blog Posts
+          posts: Wpis
       blog:
         posts:
-          created: Blog Post created
-          create_failure: Failed to create Blog Post
-          updated: Blog Post updated
-          update_failure: Failed to update Blog Post
-          deleted: Blog Post removed
-          not_found: Blog Post not found
+          created: Wpis został utworzony
+          create_failure: Stworzenie wpisu się nie powiodło
+          updated: Wpis został zaktualizowany
+          update_failure: Aktualizacja wpisu się nie powiodła
+          deleted: Wpis został usunięty
+          not_found: Nie znaleziono wpisu
           index:
-            title: Blog Posts
-            new_link: New Blog Post
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
+            title: Wpisy
+            new_link: Nowy wpis
+            edit: Edytuj
+            delete: Usuń
+            are_you_sure: Czy jesteś pewna/pewien?
           new:
-            title: New Blog Post
+            title: Nowy wpis
           edit:
-            title: Edit Blog Post
+            title: Edytuj wpis
           form:
-            create: Create Post
-            update: Update Post
-            cancel: Cancel
+            create: Stwórz wpis
+            update: Zaktualizuj wpis
+            cancel: Anuluj
