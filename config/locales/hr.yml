@@ -6,8 +6,8 @@ hr:
       comfy/blog/post:
         title: Naslov
         slug: Slug
-        published_at: Objavljeno na
-        is_published: Objavljno
+        published_at: Vrijeme objave
+        is_published: Objavljeno
 
   comfy:
     admin:
@@ -35,4 +35,4 @@ hr:
           form:
             create: Kreiraj
             update: Ažuriraj
-            cancel: Odistani
+            cancel: Odustani
