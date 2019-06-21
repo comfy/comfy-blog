@@ -1,0 +1,38 @@
+hr:
+  activerecord:
+    models:
+      comfy/blog/post: Objava
+    attributes:
+      comfy/blog/post:
+        title: Naslov
+        slug: Slug
+        published_at: Objavljeno na
+        is_published: Objavljno
+
+  comfy:
+    admin:
+      cms:
+        base:
+          posts: Blog
+      blog:
+        posts:
+          created: Objava kreirana
+          create_failure: Objava nije kreirana
+          updated: Objava ažurirana
+          update_failure: Objava nije ažurirana
+          deleted: Objava izbrisana
+          not_found: Objava nije pronađena
+          index:
+            title: Objave
+            new_link: Nova objava
+            edit: Uredi
+            delete: Obriši
+            are_you_sure: Jeste li sigurni?
+          new:
+            title: Kreiranje objave
+          edit:
+            title: Uređivanje objave
+          form:
+            create: Kreiraj
+            update: Ažuriraj
+            cancel: Odistani
