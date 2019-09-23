@@ -2,12 +2,13 @@
 
 = form.text_field :title, data: {slugify: @post.new_record?}
 = form.text_field :slug, data: {slug: true}
-= form.select :file_id, options_for_select(@site.files.order(:label).map{|f| [f.label, f.id] }, @post.file&.id), prompt: ' SELECT FILE '
+- file_prompt = " - #{'DE' if @post.file.present?}SELECT FILE - "
+= form.select :file_id, options_for_select(@site.files.order(:label).map{|f| [f.label, f.id] }, @post.file&.id), :include_blank => file_prompt
 - if @post.file.present?
   - if @post.file.attachment.attached?
     - attachment = @post.file.attachment
-    = form.form_group bootstrap: {label: {text: 'Attached File'}} do
-      .file-featured_image
+    = form.form_group bootstrap: {label: {text: 'File Preview'}} do
+      .file-attachment
         = link_to url_for(attachment) do
           - if attachment.variable?
             = image_tag attachment.variant(resize: "320x240").processed
