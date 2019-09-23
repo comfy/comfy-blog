@@ -7,6 +7,7 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @site   = comfy_cms_sites(:default)
     @layout = comfy_cms_layouts(:default)
+    @file   = comfy_cms_files(:default)
     @post   = comfy_blog_posts(:default)
   end
 
@@ -66,6 +67,33 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
         fragments_attributes: [
           { identifier: "content",
             content:    "test text" }
+        ]
+      } }
+      assert_response :redirect
+      assert_redirected_to action: :edit, id: assigns(:post)
+      assert_equal "Blog Post created", flash[:success]
+    end
+  end
+
+  def test_creation_with_file
+    post_count = -> { Comfy::Blog::Post.count }
+    frag_count = -> { Comfy::Cms::Fragment.count }
+    @file.attachment = fixture_file_upload(
+      File.open(Rails.root.join('test', 'support', 'test-image.png')),
+      'image/png'
+    )
+    @file.save!
+    assert_difference [post_count, frag_count] do
+      r :post, comfy_admin_blog_posts_path(@site), params: { post: {
+        title:        "Test Post",
+        slug:         "test-post",
+        published_at: 2.days.ago.to_s(:db),
+        is_published: "1",
+        file_id:      @file,
+        layout_id:    @layout,
+        fragments_attributes: [
+          { identifier: "content",
+            content:    "this post references an uploaded file" }
         ]
       } }
       assert_response :redirect
