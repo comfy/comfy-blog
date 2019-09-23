@@ -16,14 +16,28 @@ module Comfy
       end
 
       def generate_migration
-        destination   = File.expand_path("db/migrate/01_create_blog.rb", destination_root)
-        migration_dir = File.dirname(destination)
-        destination   = self.class.migration_exists?(migration_dir, "create_blog")
+        migrations = [
+          '01_create_blog',
+          '02_add_file_reference_to_blog_posts'
+        ]
 
-        if destination
-          puts "\e[0m\e[31mFound existing create_blog migration. Remove it if you want to regenerate.\e[0m"
-        else
-          migration_template "db/migrate/01_create_blog.rb", "db/migrate/create_blog.rb"
+        migrations.each do |identifier|
+          destination = File.expand_path(
+            "db/migrate/#{identifier}.rb", destination_root
+          )
+          migration_dir = File.dirname(destination)
+          destination   = self.class.migration_exists?(
+            migration_dir, identifier.gsub(/\d.*?_/, '')
+          )
+
+          if destination
+            puts "\e[0m\e[31mFound existing #{identifier.
+              gsub(/\d.*?_/, '')} migration. Remove it " +
+              "if you want to regenerate.\e[0m"
+          else
+            migration_template "db/migrate/#{identifier}.rb",
+              "db/migrate/#{identifier.gsub(/\d.*?_/, '')}.rb"
+          end
         end
       end
 
