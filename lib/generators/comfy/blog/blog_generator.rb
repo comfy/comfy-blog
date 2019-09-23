@@ -16,10 +16,11 @@ module Comfy
       end
 
       def generate_migration
-        migrations = [
-          '01_create_blog',
-          '02_add_file_reference_to_blog_posts'
+        migrations = %w[
+          01_create_blog
+          02_add_file_reference_to_blog_posts
         ]
+        version_regex = %r{\d.*?_}
 
         migrations.each do |identifier|
           destination = File.expand_path(
@@ -27,16 +28,16 @@ module Comfy
           )
           migration_dir = File.dirname(destination)
           destination   = self.class.migration_exists?(
-            migration_dir, identifier.gsub(/\d.*?_/, '')
+            migration_dir, identifier.gsub(version_regex, "")
           )
 
           if destination
-            puts "\e[0m\e[31mFound existing #{identifier.
-              gsub(/\d.*?_/, '')} migration. Remove it " +
-              "if you want to regenerate.\e[0m"
+            puts "\e[0m\e[31mFound existing #{identifier
+              .gsub(version_regex, '')} migration. Remove it \
+              if you want to regenerate.\e[0m"
           else
             migration_template "db/migrate/#{identifier}.rb",
-              "db/migrate/#{identifier.gsub(/\d.*?_/, '')}.rb"
+              "db/migrate/#{identifier.gsub(version_regex, '')}.rb"
           end
         end
       end

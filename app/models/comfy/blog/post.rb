@@ -14,7 +14,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
     class_name: "Comfy::Cms::Site"
 
   belongs_to :file,
-    class_name: 'Comfy::Cms::File',
+    class_name: "Comfy::Cms::File",
     optional: true
 
   # -- Validations -------------------------------------------------------------

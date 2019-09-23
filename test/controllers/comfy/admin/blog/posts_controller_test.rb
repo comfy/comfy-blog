@@ -79,8 +79,8 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
     post_count = -> { Comfy::Blog::Post.count }
     frag_count = -> { Comfy::Cms::Fragment.count }
     @file.attachment = fixture_file_upload(
-      File.open(Rails.root.join('test', 'support', 'test-image.png')),
-      'image/png'
+      File.open(Rails.root.join("test", "support", "test-image.png")),
+      "image/png"
     )
     @file.save!
     assert_difference [post_count, frag_count] do
