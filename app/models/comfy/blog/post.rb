@@ -13,6 +13,9 @@ class Comfy::Blog::Post < ActiveRecord::Base
   belongs_to :site,
     class_name: "Comfy::Cms::Site"
 
+  belongs_to :file,
+    class_name: 'Comfy::Cms::File'
+
   # -- Validations -------------------------------------------------------------
   validates :title, :slug, :year, :month,
     presence: true

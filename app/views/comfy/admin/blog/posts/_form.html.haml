@@ -2,7 +2,17 @@
 
 = form.text_field :title, data: {slugify: @post.new_record?}
 = form.text_field :slug, data: {slug: true}
-
+= form.select :file_id, options_for_select(@site.files.order(:label).map{|f| [f.label, f.id] }, @post.file&.id), prompt: ' SELECT FILE '
+- if @post.file.present?
+  - if @post.file.attachment.attached?
+    - attachment = @post.file.attachment
+    = form.form_group bootstrap: {label: {text: 'Attached File'}} do
+      .file-featured_image
+        = link_to url_for(attachment) do
+          - if attachment.variable?
+            = image_tag attachment.variant(resize: "320x240").processed
+          - else
+            = attachment.filename.to_s
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
   = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
 
