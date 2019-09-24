@@ -1,5 +1,12 @@
 %h1= @cms_post.title
 
+- if @cms_post.file.present? && @cms_post.file.attachment.attached?
+  - attachment = @cms_post.file.attachment
+  = link_to url_for(attachment) do
+    - if attachment.content_type.include? "image"
+      = image_tag attachment.variant(resize: "640x480").processed
+    - else
+      = attachment.filename.to_s
 %p
   - label = Comfy::Blog::Post.human_attribute_name(:published_on)
   - time  = @cms_post.published_at.to_formatted_s(:short)

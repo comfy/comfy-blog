@@ -2,8 +2,10 @@
 
 = form.text_field :title, data: {slugify: @post.new_record?}
 = form.text_field :slug, data: {slug: true}
-- file_prompt = " - #{'DE' if @post.file.present?}SELECT FILE - "
-= form.select :file_id, options_for_select(@site.files.order(:label).map{|f| [f.label, f.id] }, @post.file&.id), :include_blank => file_prompt
+= form.select :file_id, |
+  options_for_select(@site.files.order(:label).map{|f| [f.label, f.id] }, |
+  @post.file&.id), |
+  include_blank: " - #{'DE' if @post.file.present?}SELECT FILE - "
 - if @post.file.present?
   - if @post.file.attachment.attached?
     - attachment = @post.file.attachment
@@ -15,7 +17,9 @@
           - else
             = attachment.filename.to_s
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
-  = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, id: "fragments-toggle"}
+  = form.select :layout_id, options, {}, {data: |
+    {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, |
+    id: "fragments-toggle"}
 
 #form-fragments-container
   = render "comfy/admin/cms/fragments/form_fragments", record: @post, scope: :post
