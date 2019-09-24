@@ -4,11 +4,16 @@
       %h1 Blog Posts
 
       - @blog_posts.each do |post|
-
-        %h2
-          = link_to post.title, comfy_blog_post_path(@cms_site.path, post.year, post.month, post.slug)
-        .date
-          = post.published_at.to_s(:db)
+        .row
+          - image_attached = post.file.present? && post.file.attachment.attached? && post.file.attachment.content_type.include?("image")
+          %div{class: "col-md-#{image_attached ? '9' : '12'}"}
+            %h2
+              = link_to post.title, comfy_blog_post_path(@cms_site.path, post.year, post.month, post.slug)
+            .date
+              = post.published_at.to_s(:db)
+          - if image_attached
+            .col-md-3
+              = image_tag post.file.attachment.variant(resize: "120x120").processed
 
       = comfy_paginate @blog_posts
 

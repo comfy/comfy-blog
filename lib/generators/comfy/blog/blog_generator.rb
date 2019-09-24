@@ -32,9 +32,7 @@ module Comfy
           )
 
           if destination
-            puts "\e[0m\e[31mFound existing #{identifier
-              .gsub(version_regex, '')} migration. Remove it \
-              if you want to regenerate.\e[0m"
+            puts "\e[0m\e[31mFound existing #{identifier.gsub(version_regex, '')} migration. Remove it if you want to regenerate.\e[0m"
           else
             migration_template "db/migrate/#{identifier}.rb",
               "db/migrate/#{identifier.gsub(version_regex, '')}.rb"
