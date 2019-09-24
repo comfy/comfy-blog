@@ -11,7 +11,7 @@
               = link_to post.title, comfy_blog_post_path(@cms_site.path, post.year, post.month, post.slug)
             .date
               = post.published_at.to_s(:db)
-          - if image_attached
+          - if image_attached && post.file.attachment.variable?
             .col-md-3
               = image_tag post.file.attachment.variant(resize: "120x120").processed
 
