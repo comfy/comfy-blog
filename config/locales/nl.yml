@@ -1,38 +1,38 @@
 nl:
   activerecord:
     models:
-      comfy/blog/post: Post
+      comfy/blog/post: Bericht
     attributes:
       comfy/blog/post:
-        title: Title
+        title: Titel
         slug: Slug
-        published_at: Published at
-        is_published: Is Published
+        published_at: Gepubliceerd op
+        is_published: Is gepubliceerd
 
   comfy:
     admin:
       cms:
         base:
-          posts: Blog Posts
+          posts: Blog berichten
       blog:
         posts:
-          created: Blog Post created
-          create_failure: Failed to create Blog Post
-          updated: Blog Post updated
-          update_failure: Failed to update Blog Post
-          deleted: Blog Post removed
-          not_found: Blog Post not found
+          created: Blog bericht aangemaakt
+          create_failure: Blog bericht aanmaken is mislukt
+          updated: Blog bericht geüpdatet
+          update_failure: Blog bericht updaten is mislukt
+          deleted: Blog bericht verwijderd
+          not_found: Blog bericht niet gevonden
           index:
-            title: Blog Posts
-            new_link: New Blog Post
-            edit: Edit
-            delete: Delete
-            are_you_sure: Are you sure?
+            title: Blog berichten
+            new_link: Nieuw blog bericht
+            edit: Aanpassen
+            delete: Verwijderen
+            are_you_sure: Weet je het zeker?
           new:
-            title: New Blog Post
+            title: Nieuw blog bericht
           edit:
-            title: Edit Blog Post
+            title: Blog bericht aanpassen
           form:
-            create: Create Post
-            update: Update Post
-            cancel: Cancel
+            create: Maak bericht aan
+            update: Update aericht
+            cancel: Annuleer
