@@ -23,7 +23,7 @@ class BlogPostsTest < ActiveSupport::TestCase
   end
 
   def test_validation_of_slug_uniqueness
-    @post.update_attributes!(published_at: Time.now)
+    @post.update!(published_at: Time.now)
     post = @site.blog_posts.new(
       title:  @post.title,
       layout: @layout
@@ -31,7 +31,7 @@ class BlogPostsTest < ActiveSupport::TestCase
     assert post.invalid?
     assert_errors_on post, [:slug]
 
-    @post.update_attributes!(published_at: 1.year.ago)
+    @post.update!(published_at: 1.year.ago)
     assert post.valid?
   end
 
