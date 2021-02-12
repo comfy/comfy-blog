@@ -33,6 +33,6 @@ de:
           edit:
             title: Blogbeitrag ändern
           form:
-            create: Create Post
-            update: Update Post
+            create: Blogeintrag erstellen
+            update: Blogeintrag updaten
             cancel: Abbrechen
