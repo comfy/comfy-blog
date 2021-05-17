@@ -17,5 +17,5 @@ Gem::Specification.new do |s|
   s.platform      = Gem::Platform::RUBY
   s.require_paths = ['lib']
 
-  s.add_dependency 'comfortable_mexican_sofa', '>= 1.12.7'
+  s.add_dependency 'comfortable_mexican_sofa', '>= 1.14.0', '< 2.0'
 end
