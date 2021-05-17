@@ -8,14 +8,14 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
   end
 
   def test_get_index
-    get :index, :site_id => @site
+    get :index, params: { :site_id => @site }
     assert_response :success
     assert assigns(:blogs)
     assert_template :index
   end
 
   def test_get_new
-    get :new, :site_id => @site
+    get :new, params: { :site_id => @site }
     assert_response :success
     assert assigns(:blog)
     assert_template :new
@@ -23,7 +23,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
   end
 
   def test_get_edit
-    get :edit, :site_id => @site, :id => @blog
+    get :edit, params: { :site_id => @site, :id => @blog }
     assert_response :success
     assert assigns(:blog)
     assert_template :edit
@@ -31,7 +31,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
   end
 
   def test_get_edit_failure
-    get :edit, :site_id => @site, :id => 'invalid'
+    get :edit, params: { :site_id => @site, :id => 'invalid' }
     assert_response :redirect
     assert_redirected_to :action => :index
     assert_equal 'Blog not found', flash[:error]
@@ -39,12 +39,12 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
 
   def test_creation
     assert_difference 'Comfy::Blog::Blog.count' do
-      post :create, :site_id => @site, :blog => {
+      post :create, params: { :site_id => @site, :blog => {
         :label        => 'Test Blog',
         :identifier   => 'test-blog',
         :path         => 'test-blog',
         :description  => 'Test Description'
-      }
+      }}
       blog = Comfy::Blog::Blog.last
       assert_response :redirect
       assert_redirected_to :action => :edit, :id => blog
@@ -54,7 +54,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
 
   def test_creation_failure
     assert_no_difference 'Comfy::Blog::Blog.count' do
-      post :create, :site_id => @site, :blog => { }
+      post :create, params: { :site_id => @site, :blog => { } }
       assert_response :success
       assert_template :new
       assert_equal 'Failed to create Blog', flash[:error]
@@ -62,9 +62,9 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
   end
 
   def test_update
-    put :update, :site_id => @site, :id => @blog, blog: {
+    put :update, params: { :site_id => @site, :id => @blog, blog: {
       :label => 'Updated'
-    }
+    }}
     assert_response :redirect
     assert_redirected_to :action => :edit, :id => @blog
     assert_equal 'Blog updated', flash[:success]
@@ -73,9 +73,9 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
   end
 
   def test_update_failure
-    put :update, :site_id => @site, :id => @blog, :blog => {
+    put :update, params: { :site_id => @site, :id => @blog, :blog => {
       :label => ''
-    }
+    }}
     assert_response :success
     assert_template :edit
     assert_equal 'Failed to update Blog', flash[:error]
@@ -85,7 +85,7 @@ class Comfy::Admin::Blog::BlogsControllerTest < ActionController::TestCase
 
   def test_destroy
     assert_difference 'Comfy::Blog::Blog.count', -1 do
-      delete :destroy, :site_id => @site, :id => @blog
+      delete :destroy, params: { :site_id => @site, :id => @blog }
       assert_response :redirect
       assert_redirected_to :action => :index
       assert_equal 'Blog deleted', flash[:success]

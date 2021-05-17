@@ -1,4 +1,4 @@
-class CreateBlog < ActiveRecord::Migration
+class CreateBlog < ActiveRecord::Migration[4.2]
 
   def self.up
     create_table :comfy_blogs do |t|

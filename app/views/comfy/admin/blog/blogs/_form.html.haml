@@ -2,7 +2,7 @@
 = form.text_field :identifier, :data => {:slug => true}
 = form.text_field :path
 
-- if (options = Comfy::Cms::Layout.app_layouts_for_select).present?
+- if (options = Comfy::Cms::Layout.app_layouts_for_select(lookup_context.view_paths)).present?
   = form.select :app_layout, options
 
 = form.text_area :description, :class => 'short'

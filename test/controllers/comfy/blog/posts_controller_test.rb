@@ -31,27 +31,27 @@ class Comfy::Blog::PostsControllerTest < ActionController::TestCase
   end
   
   def test_get_index_for_year_archive
-    get :index, :year => 2012
+    get :index, params: { :year => 2012 }
     assert_response :success
     assert_equal 1, assigns(:posts).size
     
-    get :index, :year => 1999
+    get :index, params: { :year => 1999 }
     assert_response :success
     assert_equal 0, assigns(:posts).size
   end
   
   def test_get_index_for_month_archive
-    get :index, :year => 2012, :month => 1
+    get :index, params: { :year => 2012, :month => 1 }
     assert_response :success
     assert_equal 1, assigns(:posts).size
     
-    get :index, :year => 2012, :month => 12
+    get :index, params: { :year => 2012, :month => 12 }
     assert_response :success
     assert_equal 0, assigns(:posts).size
   end
   
   def test_get_show
-    get :serve, :slug => @post.slug
+    get :serve, params: { :slug => @post.slug }
     assert_response :success
     assert_template :show
     assert assigns(:post)
@@ -60,12 +60,12 @@ class Comfy::Blog::PostsControllerTest < ActionController::TestCase
   def test_get_show_unpublished
     @post.update_attribute(:is_published, false)
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get :serve, :slug => @post.slug
+      get :serve, params: { :slug => @post.slug }
     end
   end
   
   def test_get_show_with_date
-    get :show, :year => @post.year, :month => @post.month, :slug => @post.slug
+    get :show, params: { :year => @post.year, :month => @post.month, :slug => @post.slug }
     assert_response :success
     assert_template :show
     assert assigns(:post)
@@ -73,7 +73,7 @@ class Comfy::Blog::PostsControllerTest < ActionController::TestCase
   
   def test_get_show_with_date_invalid
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get :show, :year => '1999', :month => '99', :slug => 'invalid'
+      get :show, params: { :year => '1999', :month => '99', :slug => 'invalid' }
     end
   end
   
