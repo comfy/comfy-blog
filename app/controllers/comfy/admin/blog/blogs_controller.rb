@@ -25,7 +25,7 @@ class Comfy::Admin::Blog::BlogsController < Comfy::Admin::Blog::BaseController
   end
 
   def update
-    @blog.update_attributes!(blog_params)
+    @blog.update!(blog_params)
     flash[:success] = 'Blog updated'
     redirect_to :action => :edit, :id => @blog
   rescue ActiveRecord::RecordInvalid

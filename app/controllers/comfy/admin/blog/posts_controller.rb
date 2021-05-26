@@ -28,7 +28,7 @@ class Comfy::Admin::Blog::PostsController < Comfy::Admin::Blog::BaseController
   end
 
   def update
-    @post.update_attributes!(post_params)
+    @post.update!(post_params)
     flash[:success] = 'Blog Post updated'
     redirect_to :action => :edit, :id => @post
 

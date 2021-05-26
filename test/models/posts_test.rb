@@ -16,7 +16,7 @@ class BlogPostsTest < ActiveSupport::TestCase
 
   def test_validation_of_slug_uniqueness
     old_post = comfy_blog_posts(:default)
-    old_post.update_attributes!(:published_at => Time.now)
+    old_post.update!(:published_at => Time.now)
     post = comfy_blog_blogs(:default).posts.new(
       :title    => old_post.title,
       :content  => 'Test Content'
@@ -24,7 +24,7 @@ class BlogPostsTest < ActiveSupport::TestCase
     assert post.invalid?
     assert_errors_on post, [:slug]
 
-    old_post.update_attributes!(:published_at => 1.year.ago)
+    old_post.update!(:published_at => 1.year.ago)
     assert post.valid?
   end
 
