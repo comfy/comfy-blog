@@ -104,5 +104,25 @@ class Comfy::Admin::Blog::PostsControllerTest < ActionController::TestCase
       assert_equal 'Blog Post removed', flash[:success]
     end
   end
-  
+
+  def test_get_index_with_category
+    category = @site.categories.create!(
+      :label            => 'Test Category',
+      :categorized_type => 'Comfy::Blog::Post'
+    )
+    category.categorizations.create!(:categorized => comfy_blog_posts(:default))
+
+    get :index, params: { :site_id => @site, :blog_id => @blog, :category => category.label }
+    assert_response :success
+    assert assigns(:posts)
+    assert_equal 1, assigns(:posts).count
+    assert assigns(:posts).first.categories.member? category
+  end
+
+  def test_get_index_with_category_invalid
+    get :index, params: { :site_id => @site, :blog_id => @blog, :category => 'invalid' }
+    assert_response :success
+    assert assigns(:posts)
+    assert_equal 0, assigns(:posts).count
+  end
 end

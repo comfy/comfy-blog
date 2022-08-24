@@ -31,6 +31,13 @@ comfy_route :blog, :path => 'blog'
 
 You should also find view templates in `/app/views/blog` folder. Feel free to adjust them as you see fit.
 
+
+## Upgrading
+
+### Upgrading to v 1.15 from earlier versions
+
+If you're upgrading to v 1.15, you should review the upgrade procedure for ComfortableMexicanSofa
+
 ---
 
 Copyright 2009-2014 Oleg Khabarov
