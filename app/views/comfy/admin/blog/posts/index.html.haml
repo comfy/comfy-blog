@@ -4,6 +4,8 @@
 
 = comfy_paginate @posts
 
+= render :partial => 'comfy/admin/cms/categories/index', :object => 'Comfy::Blog::Post'
+
 %table.table.table-hover
   %tr
     %th.main Title

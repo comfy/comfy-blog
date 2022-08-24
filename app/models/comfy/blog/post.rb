@@ -1,6 +1,8 @@
 class Comfy::Blog::Post < ActiveRecord::Base
   
   self.table_name = 'comfy_blog_posts'
+
+  cms_is_categorized
   
   # -- Relationships --------------------------------------------------------
   belongs_to :blog

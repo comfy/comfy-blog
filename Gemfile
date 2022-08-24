@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gemspec
 
 gem 'kaminari'
+gem 'comfortable_mexican_sofa', path: '/Users/ath0/dev/github/comfortable-mexican-sofa'
 
 group :development do
   gem 'awesome_print'

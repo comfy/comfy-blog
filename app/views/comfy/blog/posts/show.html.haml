@@ -9,6 +9,11 @@
 .content
   = @post.content.html_safe
 
+.categories
+  %ul
+    = @post.categories.each do |category|
+      %li= category.label
+
 .comments
   - @post.comments.published.each do |comment|
     .comment

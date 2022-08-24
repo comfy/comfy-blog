@@ -1,0 +1,9 @@
+%h1 All Blog Posts in category "#{@category.label}"
+
+- if @posts.any?
+  %ul
+    - @posts.each do |post|
+      %li= link_to post.title, comfy_blog_post_path(@cms_site.path, @blog.path, post.slug)
+      
+- else
+  %p No Blog posts were filed in this category

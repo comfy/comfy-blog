@@ -1,0 +1,8 @@
+%h1 Blog Post Categories
+
+- if @categories.any?
+  %ul
+  - @categories.each do |category|
+    %li= link_to category.label, comfy_blog_category_path(@cms_site.path, @blog.path, category.slug)
+
+= comfy_paginate @categories
